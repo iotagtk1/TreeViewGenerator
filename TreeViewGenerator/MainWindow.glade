@@ -15,7 +15,7 @@
         <property name="can_focus">False</property>
         <child>
           <object class="GtkTreeView" id="dataBaseView">
-            <property name="width_request">122</property>
+            <property name="width_request">124</property>
             <property name="height_request">171</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -46,8 +46,8 @@
             <signal name="group-changed" handler="on_TreeViewBtn_group_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">278</property>
-            <property name="y">9</property>
+            <property name="x">426</property>
+            <property name="y">15</property>
           </packing>
         </child>
         <child>
@@ -64,8 +64,8 @@
             <signal name="group-changed" handler="on_ComboBoxBtn_group_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">277</property>
-            <property name="y">47</property>
+            <property name="x">426</property>
+            <property name="y">58</property>
           </packing>
         </child>
         <child>
@@ -86,7 +86,7 @@
         </child>
         <child>
           <object class="GtkTreeView" id="tableView">
-            <property name="width_request">121</property>
+            <property name="width_request">120</property>
             <property name="height_request">171</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -117,6 +117,37 @@
           <packing>
             <property name="x">601</property>
             <property name="y">8</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTreeView" id="columnView">
+            <property name="width_request">120</property>
+            <property name="height_request">171</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="columnViewSelection">
+                <property name="mode">multiple</property>
+                <signal name="changed" handler="on_columnViewSelection_changed" swapped="no"/>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">271</property>
+            <property name="y">11</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">100</property>
+            <property name="height_request">39</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">カスタムか正規かcombo</property>
+          </object>
+          <packing>
+            <property name="x">431</property>
+            <property name="y">117</property>
           </packing>
         </child>
       </object>

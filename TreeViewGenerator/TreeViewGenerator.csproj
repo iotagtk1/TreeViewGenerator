@@ -96,6 +96,9 @@
       <Compile Include="..\..\..\core_commonclasses\Utility\clsUtility.cs">
         <Link>core_commonclasses\Utility\clsUtility.cs</Link>
       </Compile>
+      <Compile Include="..\MainWindow+ColumnView.cs">
+        <Link>MainWindow+ColumnView.cs</Link>
+      </Compile>
       <Compile Include="..\MainWindow+DbTreeView.cs">
         <Link>MainWindow+DbTreeView.cs</Link>
       </Compile>
@@ -111,6 +114,9 @@
       <Compile Remove="DbModel\dbModel.cs" />
       <Compile Include="..\MainWindow+TableView.cs">
         <Link>MainWindow+TableView.cs</Link>
+      </Compile>
+      <Compile Include="..\MainWindow+utility.cs">
+        <Link>MainWindow+utility.cs</Link>
       </Compile>
       <Compile Include="DbModel\DbModel.cs" />
     </ItemGroup>

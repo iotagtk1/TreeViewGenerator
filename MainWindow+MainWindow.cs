@@ -8,7 +8,7 @@ namespace TreeViewGenerator
 {
 	partial class MainWindow
 	{
-		
+		ITreeModel SelectedDataBaseRow;
 		/// <summary>
 		/// DataBase TreeViewを選択
 		/// </summary>
@@ -16,14 +16,15 @@ namespace TreeViewGenerator
 		/// <param name="e"></param>
 		private void on_dataBaseSelection_changed(object sender , EventArgs e){
 
-			ITreeModel model;	
-			if (((Gtk.TreeSelection)sender).GetSelectedRows(out model) != null)
+				
+			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedDataBaseRow) != null)
 			{
-				_mkTalbeSelect((DbModel)model);
+				_mkTalbeSelect((DbModel)SelectedDataBaseRow);
 			}
 
 		}
 		
+		ITreeModel SelectedTableViewRow;	
 		/// <summary>
 		/// テーブルTreeView
 		/// </summary>
@@ -31,16 +32,29 @@ namespace TreeViewGenerator
 		/// <param name="e"></param>
 		private void on_tableViewSelection_changed(object sender , EventArgs e){
 		
-			ITreeModel model0;	
-			if (((Gtk.TreeSelection)sender).GetSelectedRows(out model0) != null)
+			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedTableViewRow) != null)
 			{
-			   
-				// (TableViewModel)model0
-
+				_mkColumnTalbeSelect((TableViewModel)SelectedTableViewRow);
 			}
+			
+			Console.WriteLine(SelectedTableViewRow);
 
 		}
 		
+		ITreeModel SelectedColumnViewRow;
+		/// <summary>
+		/// ColumnViewをクリックする
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void on_columnViewSelection_changed(object sender , EventArgs e){
+				
+			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedColumnViewRow) != null)
+			{
+				// ((type_MainWindow)model)    
+			}
+
+		}
 		
 		/// <summary>
 		/// Comoboxを選択
@@ -77,6 +91,6 @@ namespace TreeViewGenerator
 		}
 		
 		
-		
+
 	}
 }

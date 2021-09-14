@@ -28,5 +28,10 @@ namespace TreeViewGenerator
 	
 		[UI] private readonly Gtk.RadioButton TreeViewRadioBtn = null;
 		[UI] private readonly Gtk.RadioButton ComboBoxRadioBtn = null;
+	
+		[UI] private readonly Gtk.TreeView columnView = null;
+		[UI] private readonly Gtk.TreeSelection columnViewSelection = null;
+	
+		[UI] private readonly Gtk.Button updateBtn = null;
 	}
 }

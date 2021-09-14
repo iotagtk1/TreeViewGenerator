@@ -7,6 +7,7 @@ namespace TreeViewGenerator
 {
     partial class MainWindow : Window
     {
+        private string saveDataFileName = "data.xml";
 
         public MainWindow() : this(new Builder("MainWindow.glade"))
         {
@@ -20,6 +21,8 @@ namespace TreeViewGenerator
                     _mkDbTreeView();
 
                     _mkTableTreeView();
+
+                    _mkColumnTableTreeView();
 
                     ArrayList dbPathArray = _dirPathAnalyze(clsArgsConfig.Instance().FileDirPath);
 
