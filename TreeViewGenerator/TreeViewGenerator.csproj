@@ -1,0 +1,140 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="**\*.glade" />
+        <EmbeddedResource Include="**\*.glade">
+            <LogicalName>%(Filename)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <None Update="treeViewGene.db3">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.0.90" />
+        <PackageReference Include="GtkSharp" Version="3.24.24.*" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.9" />
+        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.6" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\..\core_commonclasses\clsString.cs">
+        <Link>core_commonclasses\clsString.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\DB\clsDapper.cs">
+        <Link>core_commonclasses\DB\clsDapper.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\DB\clsSqliteM.cs">
+        <Link>core_commonclasses\DB\clsSqliteM.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsError.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsError.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsJson.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsJson.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsObject.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsObject.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsString.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsString.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsXml.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsXml.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\File\clsFile+static.cs">
+        <Link>core_commonclasses\File\clsFile+static.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\File\clsFolder+static.cs">
+        <Link>core_commonclasses\File\clsFolder+static.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\File\clsIniFile.cs">
+        <Link>core_commonclasses\File\clsIniFile.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\File\clsJson.cs">
+        <Link>core_commonclasses\File\clsJson.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\File\clsPath.cs">
+        <Link>core_commonclasses\File\clsPath.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\clsDialog+Utility.cs">
+        <Link>core_commonclasses\UI\clsDialog+Utility.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\clsDialog.cs">
+        <Link>core_commonclasses\UI\clsDialog.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\ComboBoxEx.cs">
+        <Link>core_commonclasses\UI\ComboBoxEx.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\RenderCell.cs">
+        <Link>core_commonclasses\UI\RenderCell.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\TreeViewColumnEx.cs">
+        <Link>core_commonclasses\UI\TreeViewColumnEx.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\UI\treeViewEx.cs">
+        <Link>core_commonclasses\UI\treeViewEx.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\Utility\clsArgs.cs">
+        <Link>core_commonclasses\Utility\clsArgs.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\Utility\clsClipboard.cs">
+        <Link>core_commonclasses\Utility\clsClipboard.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\core_commonclasses\Utility\clsUtility.cs">
+        <Link>core_commonclasses\Utility\clsUtility.cs</Link>
+      </Compile>
+      <Compile Include="..\MainWindow+DbTreeView.cs">
+        <Link>MainWindow+DbTreeView.cs</Link>
+      </Compile>
+      <Compile Include="..\MainWindow+ini.cs">
+        <Link>MainWindow+ini.cs</Link>
+      </Compile>
+      <Compile Include="..\MainWindow+MainWindow.cs">
+        <Link>MainWindow+MainWindow.cs</Link>
+      </Compile>
+      <Compile Include="..\MainWindow+MainWindow_id.cs">
+        <Link>MainWindow+MainWindow_id.cs</Link>
+      </Compile>
+      <Compile Remove="DbModel\dbModel.cs" />
+      <Compile Include="..\MainWindow+TableView.cs">
+        <Link>MainWindow+TableView.cs</Link>
+      </Compile>
+      <Compile Include="DbModel\DbModel.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\core_commonclasses\CustomUI\buttonEx.glade">
+        <Link>core_commonclasses\CustomUI\buttonEx.glade</Link>
+      </Content>
+      <Content Include="..\..\..\core_commonclasses\CustomUI\buttonEx.glade~">
+        <Link>core_commonclasses\CustomUI\buttonEx.glade~</Link>
+      </Content>
+      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.glade">
+        <Link>core_commonclasses\CustomUI\CustomBox.glade</Link>
+      </Content>
+      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.glade~">
+        <Link>core_commonclasses\CustomUI\CustomBox.glade~</Link>
+      </Content>
+      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.xml">
+        <Link>core_commonclasses\CustomUI\CustomBox.xml</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
+    </ItemGroup>
+
+</Project>
