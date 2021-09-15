@@ -13,6 +13,7 @@
         <None Update="treeViewGene.db3">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Remove="Template\TreeViewTemplate.tt" />
     </ItemGroup>
 
     <ItemGroup>
@@ -120,6 +121,7 @@
         <Link>MainWindow+utility.cs</Link>
       </Compile>
       <Compile Include="DbModel\DbModel.cs" />
+      <Compile Remove="Template\TreeViewTemplate.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -142,6 +144,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Template" />
     </ItemGroup>
 
 </Project>
