@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewGenerator", "TreeVi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperExtensions", "..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj", "{E4CFBC53-A8D3-4BAB-8A98-677DFE3403B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewProtokApp", "TreeViewProtokApp\TreeViewProtokApp.csproj", "{F73DE56A-21A0-432D-B5A1-BBF14255FCAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E4CFBC53-A8D3-4BAB-8A98-677DFE3403B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4CFBC53-A8D3-4BAB-8A98-677DFE3403B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4CFBC53-A8D3-4BAB-8A98-677DFE3403B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73DE56A-21A0-432D-B5A1-BBF14255FCAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73DE56A-21A0-432D-B5A1-BBF14255FCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73DE56A-21A0-432D-B5A1-BBF14255FCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73DE56A-21A0-432D-B5A1-BBF14255FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
