@@ -1,0 +1,6 @@
+
+ttファイルを別のプロジェクトにコピーして利用すること。
+別プロジェクトからファイル参照ではCS生成時に名前空間がおかしくなるため
+
+The tt file should be copied to another project for use.
+If you reference a file from another project, the namespace will be wrong when generating CS.
