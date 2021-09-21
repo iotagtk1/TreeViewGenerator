@@ -18,6 +18,11 @@ namespace TreeViewGenerator
 		    {
 			    clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
 		    }
+		    
+		    if (clsIniFile.singlton["config", "customCheckBtn_customTemplate"] == "")
+		    {
+			    clsIniFile.singlton["config", "customCheckBtn_customTemplate"] = "false";
+		    }   
 
 		    TreeViewRadioBtn.Active = Convert.ToBoolean(clsIniFile.singlton["config", "TreeViewBtn_group_active"]) ? true : false;
 

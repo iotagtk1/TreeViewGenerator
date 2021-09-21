@@ -39,8 +39,8 @@ namespace TreeViewGenerator
 		    Gtk.TreeViewColumnEx TitleColumn = new Gtk.TreeViewColumnEx ();
 		    TitleColumn.Title = "名前";
 		    TitleColumn.bindingPropertyName = "title";
-		    CellRendererText cell = TitleColumn._mkCellRendererText(DataBaseView , "",100);
-		    DataBaseView._mkBinding();
+		    CellRendererText cell = TitleColumn._mkCellRendererText(dataBaseView , "",100);
+		    dataBaseView._mkBinding();
 		    
 	    }
 	    private void _mkSelect(ArrayList fileList)
@@ -56,7 +56,7 @@ namespace TreeViewGenerator
 			    dbListViewStore.AppendValues (dbModel);
 		    }
 
-		    DataBaseView.Model = dbListViewStore;
+		    dataBaseView.Model = dbListViewStore;
 	    }
 		
     }

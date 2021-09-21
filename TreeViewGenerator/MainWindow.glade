@@ -232,7 +232,6 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="text" translatable="yes">ComboView名</property>
-            <signal name="changed" handler="on_ComboViewEntry_changed" swapped="no"/>
           </object>
           <packing>
             <property name="x">584</property>
@@ -243,3 +242,4 @@
     </child>
   </object>
 </interface>
+

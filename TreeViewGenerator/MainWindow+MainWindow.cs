@@ -81,28 +81,7 @@ namespace TreeViewGenerator
 			}
 
 		}
-
-		/// <summary>
-		/// Comoboxを選択
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void on_TreeViewBtn_group_changed(object sender, EventArgs e)
-		{
-
-			if (((RadioButton)sender).Active)
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
-			}
-			else
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "false";
-			}
-			
-			SelectedOutPutType = _getOutPutType();
-
-		}
-
+	
 		private void on_customCheckBtn_toggled(object sender , EventArgs e){
 			
 			if (((ToggleButton)sender).Active){
@@ -120,9 +99,10 @@ namespace TreeViewGenerator
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void on_ComboBoxBtn_group_changed(object sender, EventArgs e)
-		{
 
+		
+		private void on_ComboBoxBtn_toggled(object sender , EventArgs e){
+			
 			if (((RadioButton)sender).Active)
 			{
 				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "false";
@@ -130,6 +110,20 @@ namespace TreeViewGenerator
 			else
 			{
 				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
+			}
+			
+			SelectedOutPutType = _getOutPutType();
+		}
+		
+		private void on_TreeViewBtn_toggled(object sender , EventArgs e){
+			
+			if (((RadioButton)sender).Active)
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
+			}
+			else
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "false";
 			}
 			
 			SelectedOutPutType = _getOutPutType();
@@ -157,6 +151,7 @@ namespace TreeViewGenerator
 					TreeViewTemplate TreeViewTemplate1 = new TreeViewTemplate();
 					ModelName = TreeViewTemplate1.ModelName;
 					TreeViewName = TreeViewTemplate1.TreeViewName;
+					ComboBoxName = TreeViewTemplate1.ComboBoxName;
 					ListStoreName = TreeViewTemplate1.ListStoreName;
 					SubNameSpace = TreeViewTemplate1.SubNameSpace;
 					break;
@@ -164,20 +159,23 @@ namespace TreeViewGenerator
 					TreeViewTemplateEx TreeViewTemplateEx = new TreeViewTemplateEx();
 					ModelName = TreeViewTemplateEx.ModelName;
 					TreeViewName = TreeViewTemplateEx.TreeViewName;
+					ComboBoxName = TreeViewTemplateEx.ComboBoxName;
 					ListStoreName = TreeViewTemplateEx.ListStoreName;
 					SubNameSpace = TreeViewTemplateEx.SubNameSpace;
 					break;  
 				case OutPutType.ComboBox:
 					ComboBoxTemplate ComboBoxTemplate = new ComboBoxTemplate();
 					ModelName = ComboBoxTemplate.ModelName;
-					TreeViewName = ComboBoxTemplate.ComboBoxName;
+					TreeViewName = ComboBoxTemplate.TreeViewName;
+					ComboBoxName = ComboBoxTemplate.ComboBoxName;
 					ListStoreName = ComboBoxTemplate.ListStoreName;
 					SubNameSpace = ComboBoxTemplate.SubNameSpace;
 					break;
 				case OutPutType.ComboBoxEx:
 					ComboBoxTemplateEx ComboBoxTemplateEx = new ComboBoxTemplateEx();
 					ModelName = ComboBoxTemplateEx.ModelName;
-					TreeViewName = ComboBoxTemplateEx.ComboBoxName;
+					TreeViewName = ComboBoxTemplateEx.TreeViewName;
+					ComboBoxName = ComboBoxTemplateEx.ComboBoxName;
 					ListStoreName = ComboBoxTemplateEx.ListStoreName;
 					SubNameSpace = ComboBoxTemplateEx.SubNameSpace;
 					break;
@@ -188,44 +186,56 @@ namespace TreeViewGenerator
 			ListStoreEntry.Text = ListStoreName;
 			ModelViewEntry.Text = ModelName;
 			SubNameSpaceEntry.Text = SubNameSpace;
-			
-			clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = TreeViewName;
-			clsIniFile.singlton[SelectedDbTableKey,"ComboViewEntry"] = ComboBoxName;
-			clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = ListStoreName;
-			clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = ModelName;
-			clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = SubNameSpace;
+
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = TreeViewName;
+				clsIniFile.singlton[SelectedDbTableKey,"ComboViewEntry"] = ComboBoxName;
+				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = ListStoreName;
+				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = ModelName;
+				clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = SubNameSpace;
+			}
+
 		}
 
 		private void on_TreeViewEntry_changed(object sender, EventArgs e)
 		{
 
 			string text = ((Gtk.Entry)sender).Text;
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = text;
+			}
 
-			clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = text;
-			
 		}
 
 		private void on_ListStoreEntry_changed(object sender , EventArgs e){
 			
 			string text = ((Gtk.Entry)sender).Text;
-
-			clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = text;
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = text;
+			}
 
 		}
 		
 		private void on_ModelViewEntry_changed(object sender , EventArgs e){
 			
 			string text = ((Gtk.Entry)sender).Text;
-			
-			clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = text;
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = text;
+			}
 
 		}
 		
 		private void on_SubNameSpaceEntry_changed(object sender , EventArgs e){
 
 			string text = ((Gtk.Entry)sender).Text;
-
-			clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = text;
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = text;
+			}
 
 		}
 
@@ -233,10 +243,40 @@ namespace TreeViewGenerator
 			
 			string text = ((Gtk.Entry)sender).Text;
 
-			clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] = text;
+			if (SelectedDbTableKey != "")
+			{
+				clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] = text;
+			}
+			
 		}
 		
 		
-	}
+	
+
+		
+	
+
+		
+		
+	
+	
+		private void on_TreeViewBtn_group_changed(object sender , EventArgs e){
+			if (((RadioButton)sender).Active){
+			    
+			}else{
+			    
+			}
+
+			
+		}
+		private void on_ComboBoxBtn_group_changed(object sender , EventArgs e){
+			if (((RadioButton)sender).Active){
+			    
+			}else{
+			    
+			}
+
+			
+		}}
 
 }
