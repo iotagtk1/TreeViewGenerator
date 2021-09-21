@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="**\*.glade" />
+        <EmbeddedResource Include="**\*.glade">
+            <LogicalName>%(Filename)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <None Update="template\ComboBoxTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>ComboBoxTemplate.cs</LastGenOutput>
+        </None>
+        <None Update="template\TreeViewTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>TreeViewTemplate.cs</LastGenOutput>
+        </None>
+        <None Update="template\TreeViewTemplateEx.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>TreeViewTemplateEx.cs</LastGenOutput>
+        </None>
+        <None Update="template\ComboBoxTemplateEx.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>ComboBoxTemplateEx.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GtkSharp" Version="3.24.24.*" />
+        <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="template\ComboBoxTemplate.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>ComboBoxTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Update="template\TreeViewTemplate.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>TreeViewTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Update="template\TreeViewTemplateEx.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>TreeViewTemplateEx.tt</DependentUpon>
+      </Compile>
+      <Compile Update="template\ComboBoxTemplateEx.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>ComboBoxTemplateEx.tt</DependentUpon>
+      </Compile>
+      <Compile Remove="ColumnModel.cs" />
+      <Compile Remove="DbModel.cs" />
+      <Compile Remove="TableViewModel.cs" />
+      <Compile Include="..\TreeViewGenerator\DbModel\ColumnModel.cs">
+        <Link>DbModel\ColumnModel.cs</Link>
+      </Compile>
+      <Compile Include="..\TreeViewGenerator\DbModel\DbModel.cs">
+        <Link>DbModel\DbModel.cs</Link>
+      </Compile>
+      <Compile Include="..\TreeViewGenerator\DbModel\TableViewModel.cs">
+        <Link>DbModel\TableViewModel.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+</Project>

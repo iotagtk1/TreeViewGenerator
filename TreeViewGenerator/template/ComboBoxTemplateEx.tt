@@ -1,0 +1,40 @@
+<#@ template language="C#" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+<# var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;#>
+namespace <#=assemblyName#><#
+   if (SubNameSpace != "")
+   {
+#>.<#= SubNameSpace #> <#
+   }
+#>
+{
+[UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+private void _mkComboBox()
+{
+<#
+
+foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+{
+    if (ColumnModel1.effective)
+    {
+#>
+    <#=ComboBoxName#>._mkCellRendererText("<#=ColumnModel1.title#>");   
+<#
+    }
+}
+#>
+
+    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
+
+    List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
+    foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
+        <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
+    }
+
+    <#=ComboBoxName#>._mkBinding();
+
+    <#=ComboBoxName#>.Model = <#=ListStoreName#>;
+
+}
