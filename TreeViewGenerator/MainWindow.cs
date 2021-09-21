@@ -3,12 +3,20 @@ using System.Collections;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
+
 namespace TreeViewGenerator
 {
     partial class MainWindow : Window
     {
-        private string saveDataFileName = "data.xml";
-
+        private string saveDataFilePath = "./data.xml";
+        
+        enum OutPutType
+        {
+            TreeView = 0,     
+            TreeViewEx = 1,
+            ComboBox = 2,
+            ComboBoxEx = 3,
+        }
         public MainWindow() : this(new Builder("MainWindow.glade"))
         {
             try

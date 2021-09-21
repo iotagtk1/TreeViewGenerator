@@ -1,0 +1,61 @@
+<#@ template language="C#" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+<# var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;#>
+namespace <#=assemblyName#><#
+   if (SubNameSpace != "")
+   {
+#>.<#= SubNameSpace #> <#
+   }
+#>
+{
+[UI] private readonly Gtk.TreeView <#=TreeViewName#> = null;
+private void _mkTreeView()
+{  
+
+    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
+
+<#
+foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+{
+    if (ColumnModel1.effective && ColumnModel1.typeFix == "text")
+    {
+#>
+
+    Gtk.TreeViewColumnEx <#=ColumnModel1.title#>Column = new Gtk.TreeViewColumnEx ();
+    <#=ColumnModel1.title#>Column.Title = "<#=ColumnModel1.title#>";
+    <#=ColumnModel1.title#>Column._mkCellRendererText(<#=TreeViewName#> , "",100);
+    <#=ColumnModel1.title#>Column.bindingPropertyName = "<#=ColumnModel1.title#>";
+<#
+    }else if (ColumnModel1.effective && ColumnModel1.typeFix == "bool"){
+#>
+
+	Gtk.TreeViewColumnEx　<#=ColumnModel1.title#>Column = new Gtk.TreeViewColumnEx ();
+	<#=ColumnModel1.title#>Column.Title = "<#=ColumnModel1.title#>";
+	<#=ColumnModel1.title#>Column.bindingPropertyName = "<#=ColumnModel1.title#>";
+	Gtk.CellRendererToggle <#=ColumnModel1.title#>ColumnToggle = <#=ColumnModel1.title#>Column._mkCellRendererToggle(<#=TreeViewName#> ,"",60);
+	<#=ColumnModel1.title#>ColumnToggle.Toggled += delegate(object o, ToggledArgs args)
+	{
+		TreeIter iter;
+		if (<#=ListStoreName#>.GetIterFromString(out iter, args.Path))
+		{
+			<#=ModelName#> <#=ModelName#>1 = (<#=ModelName#>)<#=ListStoreName#>.GetValue(iter, 0);
+			<#=ModelName#>1.<#=ColumnModel1.title#> = <#=ModelName#>1.<#=ColumnModel1.title#> == true ? false : true;
+		}
+	};        
+    <#}
+}
+#>
+
+    List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
+
+    foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
+        <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
+    }
+
+    <#=TreeViewName#>.Model = <#=ListStoreName#>;
+
+    <#=TreeViewName#>._mkBinding();
+
+}

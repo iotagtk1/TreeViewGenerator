@@ -14,6 +14,8 @@
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Remove="Template\TreeViewTemplate.tt" />
+        <EmbeddedResource Remove="Template\**" />
+        <None Remove="Template\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -98,30 +100,26 @@
       <Compile Include="..\..\..\core_commonclasses\Utility\clsUtility.cs">
         <Link>core_commonclasses\Utility\clsUtility.cs</Link>
       </Compile>
-      <Compile Include="..\MainWindow+ColumnView.cs">
-        <Link>MainWindow+ColumnView.cs</Link>
-      </Compile>
-      <Compile Include="..\MainWindow+DbTreeView.cs">
-        <Link>MainWindow+DbTreeView.cs</Link>
-      </Compile>
-      <Compile Include="..\MainWindow+ini.cs">
-        <Link>MainWindow+ini.cs</Link>
-      </Compile>
-      <Compile Include="..\MainWindow+MainWindow.cs">
-        <Link>MainWindow+MainWindow.cs</Link>
-      </Compile>
-      <Compile Include="..\MainWindow+MainWindow_id.cs">
-        <Link>MainWindow+MainWindow_id.cs</Link>
-      </Compile>
       <Compile Remove="DbModel\dbModel.cs" />
-      <Compile Include="..\MainWindow+TableView.cs">
-        <Link>MainWindow+TableView.cs</Link>
-      </Compile>
-      <Compile Include="..\MainWindow+utility.cs">
-        <Link>MainWindow+utility.cs</Link>
+      <Compile Include="..\TreeViewProtokApp\template\clsTreeViewTemplate.cs">
+        <Link>template\clsTreeViewTemplate.cs</Link>
       </Compile>
       <Compile Include="DbModel\DbModel.cs" />
       <Compile Remove="Template\TreeViewTemplate.cs" />
+      <Compile Remove="Template\**" />
+      <Compile Remove="clsTreeViewTemplate.cs" />
+      <Compile Include="template\ComboBoxTemplate.cs">
+        <DependentUpon>ComboBoxTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Include="template\ComboBoxTemplateEx.cs">
+        <DependentUpon>ComboBoxTemplateEx.tt</DependentUpon>
+      </Compile>
+      <Compile Include="template\TreeViewTemplate.cs">
+        <DependentUpon>TreeViewTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Include="template\TreeViewTemplateEx.cs">
+        <DependentUpon>TreeViewTemplateEx.tt</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -140,14 +138,26 @@
       <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.xml">
         <Link>core_commonclasses\CustomUI\CustomBox.xml</Link>
       </Content>
+      <Content Include="template\ComboBoxTemplate.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>ComboBoxTemplate.cs</LastGenOutput>
+      </Content>
+      <Content Include="template\ComboBoxTemplateEx.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>ComboBoxTemplateEx.cs</LastGenOutput>
+      </Content>
+      <Content Include="template\TreeViewTemplate.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>TreeViewTemplate.cs</LastGenOutput>
+      </Content>
+      <Content Include="template\TreeViewTemplateEx.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>TreeViewTemplateEx.cs</LastGenOutput>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Template" />
     </ItemGroup>
 
 </Project>

@@ -4,19 +4,20 @@
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkWindow" id="MainWindow">
     <property name="can_focus">False</property>
-    <property name="default_width">680</property>
-    <property name="default_height">500</property>
+    <property name="window_position">center</property>
+    <property name="default_width">820</property>
+    <property name="default_height">575</property>
     <child>
       <placeholder/>
     </child>
     <child>
-      <object class="GtkLayout">
+      <object class="GtkLayout" id="modelNameEntry">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
           <object class="GtkTreeView" id="dataBaseView">
             <property name="width_request">124</property>
-            <property name="height_request">171</property>
+            <property name="height_request">190</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="headers_visible">False</property>
@@ -46,8 +47,8 @@
             <signal name="group-changed" handler="on_TreeViewBtn_group_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">426</property>
-            <property name="y">15</property>
+            <property name="x">412</property>
+            <property name="y">11</property>
           </packing>
         </child>
         <child>
@@ -64,14 +65,14 @@
             <signal name="group-changed" handler="on_ComboBoxBtn_group_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">426</property>
-            <property name="y">58</property>
+            <property name="x">412</property>
+            <property name="y">44</property>
           </packing>
         </child>
         <child>
           <object class="GtkTextView" id="sampleView">
-            <property name="width_request">657</property>
-            <property name="height_request">279</property>
+            <property name="width_request">796</property>
+            <property name="height_request">356</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="left_margin">3</property>
@@ -80,14 +81,14 @@
             <property name="bottom_margin">3</property>
           </object>
           <packing>
-            <property name="x">10</property>
-            <property name="y">187</property>
+            <property name="x">9</property>
+            <property name="y">211</property>
           </packing>
         </child>
         <child>
           <object class="GtkTreeView" id="tableView">
             <property name="width_request">120</property>
-            <property name="height_request">171</property>
+            <property name="height_request">191</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="headers_visible">False</property>
@@ -115,14 +116,14 @@
             <signal name="clicked" handler="on_closeBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">601</property>
-            <property name="y">8</property>
+            <property name="x">743</property>
+            <property name="y">10</property>
           </packing>
         </child>
         <child>
           <object class="GtkTreeView" id="columnView">
             <property name="width_request">120</property>
-            <property name="height_request">171</property>
+            <property name="height_request">192</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child internal-child="selection">
@@ -138,16 +139,104 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
-            <property name="width_request">100</property>
-            <property name="height_request">39</property>
+          <object class="GtkCheckButton" id="customCheckBtn">
+            <property name="label" translatable="yes">カスタムTmplate</property>
+            <property name="width_request">143</property>
+            <property name="height_request">28</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">カスタムか正規かcombo</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="on_customCheckBtn_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">431</property>
-            <property name="y">117</property>
+            <property name="x">537</property>
+            <property name="y">11</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="TreeViewEntry">
+            <property name="width_request">166</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">TreeView名</property>
+            <signal name="changed" handler="on_TreeViewEntry_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">412</property>
+            <property name="y">127</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="ListStoreEntry">
+            <property name="width_request">166</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">ListStore名</property>
+            <signal name="changed" handler="on_ListStoreEntry_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">412</property>
+            <property name="y">168</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="ModelViewEntry">
+            <property name="width_request">166</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">Model名</property>
+            <signal name="changed" handler="on_ModelViewEntry_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">584</property>
+            <property name="y">127</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="defualtSetBtn">
+            <property name="label" translatable="yes">デフォルト</property>
+            <property name="width_request">89</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_defualtSetBtn_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">412</property>
+            <property name="y">85</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="SubNameSpaceEntry">
+            <property name="width_request">166</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">SubNameSpace名</property>
+            <signal name="changed" handler="on_SubNameSpaceEntry_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">585</property>
+            <property name="y">168</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="ComboViewEntry">
+            <property name="width_request">166</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">ComboView名</property>
+            <signal name="changed" handler="on_ComboViewEntry_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">584</property>
+            <property name="y">87</property>
           </packing>
         </child>
       </object>
