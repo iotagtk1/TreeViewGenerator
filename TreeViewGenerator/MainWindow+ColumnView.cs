@@ -32,6 +32,7 @@ namespace TreeViewGenerator
 				   ColumnModel ColumnModel1 = (ColumnModel)ColumnListViewStore.GetValue(iter, 0);
 				   ColumnModel1.effective = ColumnModel1.effective == true ? false : true;
 				   _saveAll();
+				   _outPutText();
 			    }
 		    };
 

@@ -11,6 +11,29 @@ namespace TreeViewGenerator
 {
     partial class MainWindow
     {
+	    private void _outPutText()
+	    {
+		    List<ColumnModel> ColumnModelArray_OutPut = new List<ColumnModel>();
+
+		    if (ColumnListViewStore != null)
+		    {
+			    ColumnListViewStore.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
+				    ColumnModel modelObj = model.GetValue(iter, 0) as ColumnModel;
+				    ColumnModelArray_OutPut.Add(modelObj);
+				    return false;
+			    });
+
+			    string outPutText = _getOutPutText(ColumnModelArray_OutPut,
+				    ListStoreEntry.Text,
+				    ModelViewEntry.Text,
+				    SubNameSpaceEntry.Text,
+				    TreeViewEntry.Text,
+				    ComboViewEntry.Text
+			    );
+
+			    sampleView.Buffer.Text = outPutText;
+		    }
+	    }
 
 	    private string _getOutPutText(List<ColumnModel> columnModelArray,string listStoreText,string modelText,string subNameText,string treeViewText = "",string comboViewText = "")
 	    {

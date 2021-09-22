@@ -52,24 +52,9 @@ namespace TreeViewGenerator
 				SelectedDbTableKey = _getDbTableKey();
 	
 				_mkColumnTalbeSelect(SelectedTableViewRow);
-				
-				List<ColumnModel> ColumnModelArray_OutPut = new List<ColumnModel>();
-				ColumnListViewStore.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
-					ColumnModel modelObj = model.GetValue(iter, 0) as ColumnModel;
-					ColumnModelArray_OutPut.Add(modelObj);
-					return false;
-				});
 
-				string outPutText = _getOutPutText(ColumnModelArray_OutPut,
-					ListStoreEntry.Text,
-					ModelViewEntry.Text,
-					SubNameSpaceEntry.Text,
-					TreeViewEntry.Text,
-					ComboViewEntry.Text
-				);
+				_outPutText();
 
-				sampleView.Buffer.Text = outPutText;
-				
 			}
 
 		}
@@ -91,6 +76,7 @@ namespace TreeViewGenerator
 				SelectedColumnViewRow  = (ColumnModel)ColumnListViewStore.GetValue(iter, 0);
 				((ColumnModel)SelectedColumnViewRow).effective = ((ColumnModel)SelectedColumnViewRow).effective == true ? false : true;
 				_saveAll();
+				_outPutText();
 
 			}
 
@@ -105,6 +91,8 @@ namespace TreeViewGenerator
 			}
 
 			SelectedOutPutType = _getOutPutType();
+			
+			_outPutText();
 
 		}
 		
@@ -178,6 +166,8 @@ namespace TreeViewGenerator
 				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = ModelName;
 				clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = SubNameSpace;
 			}
+			
+			_outPutText();
 
 		}
 		private void on_TreeViewEntry_changed(object sender, EventArgs e)
@@ -187,6 +177,7 @@ namespace TreeViewGenerator
 			if (SelectedDbTableKey != "")
 			{
 				clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = text;
+				_outPutText();
 			}
 
 		}
@@ -197,6 +188,7 @@ namespace TreeViewGenerator
 			if (SelectedDbTableKey != "")
 			{
 				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = text;
+				_outPutText();
 			}
 
 		}
@@ -207,6 +199,7 @@ namespace TreeViewGenerator
 			if (SelectedDbTableKey != "")
 			{
 				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = text;
+				_outPutText();
 			}
 
 		}
@@ -217,6 +210,7 @@ namespace TreeViewGenerator
 			if (SelectedDbTableKey != "")
 			{
 				clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = text;
+				_outPutText();
 			}
 
 		}
@@ -228,6 +222,7 @@ namespace TreeViewGenerator
 			if (SelectedDbTableKey != "")
 			{
 				clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] = text;
+				_outPutText();
 			}
 			
 		}
@@ -244,6 +239,7 @@ namespace TreeViewGenerator
 			}
 			
 			SelectedOutPutType = _getOutPutType();
+			_outPutText();
 		}
 		
 		private void on_ComboBoxRadioBtn_toggled(object sender , EventArgs e){
@@ -260,6 +256,7 @@ namespace TreeViewGenerator
 			}
 			
 			SelectedOutPutType = _getOutPutType();
+			_outPutText();
 			
 		}
 
