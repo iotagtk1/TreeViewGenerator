@@ -10,7 +10,7 @@ namespace TreeViewGenerator
 	partial class MainWindow
 	{
 		
-		ITreeModel SelectedDataBaseRow;
+		DbModel SelectedDataBaseRow;
 
 		private OutPutType SelectedOutPutType;
 
@@ -21,15 +21,19 @@ namespace TreeViewGenerator
 		/// <param name="e"></param>
 		private void on_dataBaseSelection_changed(object sender, EventArgs e)
 		{
-
-			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedDataBaseRow) != null)
+			
+			TreeIter iter;
+			ITreeModel model;
+			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
-				_mkTalbeSelect((DbModel)SelectedDataBaseRow);
+				SelectedDataBaseRow = (DbModel)DbListViewStore.GetValue(iter, 0);
+				
+				_mkTalbeSelect(SelectedDataBaseRow);
 			}
-
+			
 		}
 
-		ITreeModel SelectedTableViewRow;
+		TableViewModel SelectedTableViewRow;
 
 		/// <summary>
 		/// テーブルTreeView
@@ -38,19 +42,25 @@ namespace TreeViewGenerator
 		/// <param name="e"></param>
 		private void on_tableViewSelection_changed(object sender, EventArgs e)
 		{
-
-			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedTableViewRow) != null)
+			
+			TreeIter iter;
+			ITreeModel model;
+			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
-				_mkColumnTalbeSelect((TableViewModel)SelectedTableViewRow);
-
-				List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+				SelectedTableViewRow = (TableViewModel)TableListViewStore.GetValue(iter, 0);
+				
+				SelectedDbTableKey = _getDbTableKey();
+	
+				_mkColumnTalbeSelect(SelectedTableViewRow);
+				
+				List<ColumnModel> ColumnModelArray_OutPut = new List<ColumnModel>();
 				ColumnListViewStore.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
 					ColumnModel modelObj = model.GetValue(iter, 0) as ColumnModel;
-					ColumnModelArray.Add(modelObj);
+					ColumnModelArray_OutPut.Add(modelObj);
 					return false;
 				});
 
-				string outPutText = _getOutPutText(ColumnModelArray,
+				string outPutText = _getOutPutText(ColumnModelArray_OutPut,
 					ListStoreEntry.Text,
 					ModelViewEntry.Text,
 					SubNameSpaceEntry.Text,
@@ -59,12 +69,12 @@ namespace TreeViewGenerator
 				);
 
 				sampleView.Buffer.Text = outPutText;
-
+				
 			}
 
 		}
 
-		ITreeModel SelectedColumnViewRow;
+		ColumnModel SelectedColumnViewRow;
 
 		/// <summary>
 		/// ColumnViewをクリックする
@@ -74,10 +84,14 @@ namespace TreeViewGenerator
 		private void on_columnViewSelection_changed(object sender, EventArgs e)
 		{
 			
-			if (((Gtk.TreeSelection)sender).GetSelectedRows(out SelectedColumnViewRow) != null)
-			{  
+			TreeIter iter;
+			ITreeModel model;
+			if (((Gtk.TreeSelection)sender).GetSelected(out model, out iter))
+			{
+				SelectedColumnViewRow  = (ColumnModel)ColumnListViewStore.GetValue(iter, 0);
 				((ColumnModel)SelectedColumnViewRow).effective = ((ColumnModel)SelectedColumnViewRow).effective == true ? false : true;
-				 _saveAll();
+				_saveAll();
+
 			}
 
 		}
@@ -99,37 +113,6 @@ namespace TreeViewGenerator
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-
-		
-		private void on_ComboBoxBtn_toggled(object sender , EventArgs e){
-			
-			if (((RadioButton)sender).Active)
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "false";
-			}
-			else
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
-			}
-			
-			SelectedOutPutType = _getOutPutType();
-		}
-		
-		private void on_TreeViewBtn_toggled(object sender , EventArgs e){
-			
-			if (((RadioButton)sender).Active)
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
-			}
-			else
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "false";
-			}
-			
-			SelectedOutPutType = _getOutPutType();
-
-		}
-
 		private void on_closeBtn_clicked(object sender, EventArgs e)
 		{
 			this.Close();
@@ -197,7 +180,6 @@ namespace TreeViewGenerator
 			}
 
 		}
-
 		private void on_TreeViewEntry_changed(object sender, EventArgs e)
 		{
 
@@ -250,33 +232,39 @@ namespace TreeViewGenerator
 			
 		}
 		
-		
-	
-
-		
-	
-
-		
-		
-	
-	
-		private void on_TreeViewBtn_group_changed(object sender , EventArgs e){
-			if (((RadioButton)sender).Active){
-			    
-			}else{
-			    
+		private void on_TreeViewRadioBtn_toggled(object sender , EventArgs e){
+			
+			if (((ToggleButton)sender).Active)
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_active"] = "true";
 			}
-
+			else
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_active"] = "false";
+			}
+			
+			SelectedOutPutType = _getOutPutType();
+		}
+		
+		private void on_ComboBoxRadioBtn_toggled(object sender , EventArgs e){
+			
+			Console.WriteLine("on_TreeViewBtn_toggled");
+			
+			if (((ToggleButton)sender).Active)
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_active"] = "false";
+			}
+			else
+			{
+				clsIniFile.singlton["config", "TreeViewBtn_active"] = "true";
+			}
+			
+			SelectedOutPutType = _getOutPutType();
 			
 		}
-		private void on_ComboBoxBtn_group_changed(object sender , EventArgs e){
-			if (((RadioButton)sender).Active){
-			    
-			}else{
-			    
-			}
 
-			
-		}}
+
+
+	}
 
 }

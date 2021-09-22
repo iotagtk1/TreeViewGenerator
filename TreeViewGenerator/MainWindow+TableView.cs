@@ -40,9 +40,6 @@ namespace TreeViewGenerator
 
 		    if (db != null && db.Rows.Count > 0)
 		    {
-			    
-			    SelectedDbTableKey = _getDbTableKey();
-
 			    foreach (DataRow dr in db.Rows)
 			    {
 				    TableViewModel TableViewModel1 = new TableViewModel();

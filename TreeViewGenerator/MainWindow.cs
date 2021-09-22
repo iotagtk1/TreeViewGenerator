@@ -26,17 +26,22 @@ namespace TreeViewGenerator
 
                 if (clsArgsConfig.Instance()._validateCommandKey())
                 {
-                    /*
+                    
+   
                     _mkDbTreeView();
-
+                    
                     _mkTableTreeView();
 
                     _mkColumnTableTreeView();
 
                     ArrayList dbPathArray = _dirPathAnalyze(clsArgsConfig.Instance().FileDirPath);
-
-                    _mkSelect(dbPathArray);
-                    */
+                    if (dbPathArray != null && dbPathArray.Count > 0)
+                    {
+                        _mkSelect(dbPathArray);
+                    }
+        
+                         
+                        
                 }
             }
             catch (Exception e)

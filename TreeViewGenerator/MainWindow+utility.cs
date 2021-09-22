@@ -38,12 +38,30 @@ namespace TreeViewGenerator
 	    }
 
 	    /// <summary>
+	    /// DbKeyを保存用に使う
+	    /// </summary>
+	    /// <returns></returns>
+	    private string _getDbKey()
+	    {
+		    if (SelectedDataBaseRow == null || ((DbModel)SelectedDataBaseRow).dbPath == "")
+		    {
+			    return "";
+		    } 
+		    
+		    string dbPathKey = ((DbModel)SelectedDataBaseRow).dbPath._md5();
+		    
+		    return dbPathKey ;
+	    }
+	    
+	    /// <summary>
 	    /// tablekeyとDbKeyを保存用に使う
 	    /// </summary>
 	    /// <returns></returns>
 	    private string _getDbTableKey()
 	    {
-		    if (((DbModel)SelectedDataBaseRow).dbPath == "" || ((TableViewModel)SelectedTableViewRow).title == "")
+		    if (SelectedDataBaseRow == null || 
+		        SelectedTableViewRow == null || 
+		        ((DbModel)SelectedDataBaseRow).dbPath == "" || ((TableViewModel)SelectedTableViewRow).title == "")
 		    {
 			    return "";
 		    } 

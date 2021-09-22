@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
@@ -44,11 +49,11 @@
             <property name="active">True</property>
             <property name="draw_indicator">True</property>
             <property name="group">ComboBoxRadioBtn</property>
-            <signal name="group-changed" handler="on_TreeViewBtn_group_changed" swapped="no"/>
+            <signal name="toggled" handler="on_TreeViewRadioBtn_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">412</property>
-            <property name="y">11</property>
+            <property name="x">461</property>
+            <property name="y">10</property>
           </packing>
         </child>
         <child>
@@ -62,11 +67,11 @@
             <property name="active">True</property>
             <property name="draw_indicator">True</property>
             <property name="group">TreeViewRadioBtn</property>
-            <signal name="group-changed" handler="on_ComboBoxBtn_group_changed" swapped="no"/>
+            <signal name="toggled" handler="on_ComboBoxRadioBtn_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">412</property>
-            <property name="y">44</property>
+            <property name="x">462</property>
+            <property name="y">45</property>
           </packing>
         </child>
         <child>
@@ -75,6 +80,7 @@
             <property name="height_request">356</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="vadjustment">adjustment1</property>
             <property name="left_margin">3</property>
             <property name="right_margin">3</property>
             <property name="top_margin">3</property>
@@ -95,7 +101,6 @@
             <property name="show_expanders">False</property>
             <child internal-child="selection">
               <object class="GtkTreeSelection" id="tableViewSelection">
-                <property name="mode">multiple</property>
                 <signal name="changed" handler="on_tableViewSelection_changed" swapped="no"/>
               </object>
             </child>
@@ -128,7 +133,6 @@
             <property name="can_focus">True</property>
             <child internal-child="selection">
               <object class="GtkTreeSelection" id="columnViewSelection">
-                <property name="mode">multiple</property>
                 <signal name="changed" handler="on_columnViewSelection_changed" swapped="no"/>
               </object>
             </child>
@@ -150,8 +154,8 @@
             <signal name="toggled" handler="on_customCheckBtn_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">537</property>
-            <property name="y">11</property>
+            <property name="x">595</property>
+            <property name="y">13</property>
           </packing>
         </child>
         <child>
@@ -164,8 +168,8 @@
             <signal name="changed" handler="on_TreeViewEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">412</property>
-            <property name="y">127</property>
+            <property name="x">463</property>
+            <property name="y">128</property>
           </packing>
         </child>
         <child>
@@ -178,8 +182,8 @@
             <signal name="changed" handler="on_ListStoreEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">412</property>
-            <property name="y">168</property>
+            <property name="x">463</property>
+            <property name="y">171</property>
           </packing>
         </child>
         <child>
@@ -192,8 +196,8 @@
             <signal name="changed" handler="on_ModelViewEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">584</property>
-            <property name="y">127</property>
+            <property name="x">636</property>
+            <property name="y">126</property>
           </packing>
         </child>
         <child>
@@ -207,22 +211,22 @@
             <signal name="clicked" handler="on_defualtSetBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">412</property>
-            <property name="y">85</property>
+            <property name="x">462</property>
+            <property name="y">87</property>
           </packing>
         </child>
         <child>
           <object class="GtkEntry" id="SubNameSpaceEntry">
             <property name="width_request">166</property>
-            <property name="height_request">20</property>
+            <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="text" translatable="yes">SubNameSpace名</property>
             <signal name="changed" handler="on_SubNameSpaceEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">585</property>
-            <property name="y">168</property>
+            <property name="x">636</property>
+            <property name="y">170</property>
           </packing>
         </child>
         <child>
@@ -234,8 +238,8 @@
             <property name="text" translatable="yes">ComboView名</property>
           </object>
           <packing>
-            <property name="x">584</property>
-            <property name="y">87</property>
+            <property name="x">636</property>
+            <property name="y">89</property>
           </packing>
         </child>
       </object>

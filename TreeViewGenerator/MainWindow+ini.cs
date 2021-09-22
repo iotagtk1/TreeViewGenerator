@@ -14,9 +14,9 @@ namespace TreeViewGenerator
         		                
 		    clsIniFile._sharedObject("./config.ini");
         		    
-		    if (clsIniFile.singlton["config", "TreeViewBtn_group_active"] == "")
+		    if (clsIniFile.singlton["config", "TreeViewBtn_active"] == "")
 		    {
-			    clsIniFile.singlton["config", "TreeViewBtn_group_active"] = "true";
+			    clsIniFile.singlton["config", "TreeViewBtn_active"] = "true";
 		    }
 		    
 		    if (clsIniFile.singlton["config", "customCheckBtn_customTemplate"] == "")
@@ -24,12 +24,10 @@ namespace TreeViewGenerator
 			    clsIniFile.singlton["config", "customCheckBtn_customTemplate"] = "false";
 		    }   
 
-		    TreeViewRadioBtn.Active = Convert.ToBoolean(clsIniFile.singlton["config", "TreeViewBtn_group_active"]) ? true : false;
-
+		    TreeViewRadioBtn.Active = Convert.ToBoolean(clsIniFile.singlton["config", "TreeViewBtn_active"]) ? true : false;
+		    ComboBoxRadioBtn.Active = TreeViewRadioBtn.Active ? false : true;
 		    customCheckBtn.Active = Convert.ToBoolean(clsIniFile.singlton["config", "customCheckBtn_customTemplate"]) ? true : false;
 
-		    
-		  
 	    }
 	    
 		

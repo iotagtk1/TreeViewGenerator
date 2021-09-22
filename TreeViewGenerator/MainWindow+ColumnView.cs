@@ -43,8 +43,8 @@ namespace TreeViewGenerator
 	    /// </summary>
 	    private void _saveAll()
 	    {
-		    string key = ((DbModel)SelectedDataBaseRow).dbPath._md5();
-		    if (key == "")
+
+		    if (SelectedDbTableKey == "")
 		    {
 			    Console.WriteLine("keyがない");
 			    return;
@@ -56,13 +56,21 @@ namespace TreeViewGenerator
 			    ColumnModelArray.Add(testModel1);
 			    return false;
 		    });
-
-		    if (!dataColumnDic.TryAdd(key,ColumnModelArray))
-		    {
-			    dataColumnDic[key] = ColumnModelArray;
-		    }
 		    
-		    dataColumnDic._saveXmlData(saveDataFilePath);
+		    if (dataColumnDic.ContainsKey(SelectedDbTableKey))
+		    {
+			    dataColumnDic[SelectedDbTableKey] = ColumnModelArray;
+		    }
+		    else
+		    {
+			    dataColumnDic.Add(SelectedDbTableKey,ColumnModelArray);
+		    }
+
+		    if (dataColumnDic != null)
+		    {
+			    clsFile._saveJsonData<Dictionary<string, List<ColumnModel>>>(saveDataFilePath, dataColumnDic);
+		    }
+
 	    }
 
 	    private Dictionary<string, List<ColumnModel>> dataColumnDic = null;
@@ -74,7 +82,7 @@ namespace TreeViewGenerator
 	    private void _mkColumnTalbeSelect(TableViewModel TableViewModel1)
 	    {
 
-		    if (TableViewModel1.title == "")
+		    if (TableViewModel1 == null || TableViewModel1.title == "")
 		    {
 			    columnView.Model = null;
 			    return;
@@ -89,28 +97,31 @@ namespace TreeViewGenerator
 		    ColumnListViewStore = new Gtk.ListStore (typeof (ColumnModel));
 
 		    string sql = "PRAGMA table_info('" + TableViewModel1.title  +"');";
-		    DataTable db = clsSqliteM.singleton._ReqDynamic(sql);
+		    DataTable columnDb = clsSqliteM.singleton._ReqDynamic(sql);
 
 		    //確定
-		    if (db != null && db.Rows.Count > 0)
+		    if (columnDb != null && columnDb.Rows.Count > 0)
 		    {
-			    
-			    string key = ((DbModel)SelectedDataBaseRow).dbPath._md5();
+			    dataColumnDic = clsFile._getJsonData<Dictionary<string, List<ColumnModel>>>(saveDataFilePath);
 
-			    dataColumnDic = saveDataFilePath._getSaveData<ColumnModel>();
-
-			    List<ColumnModel> ColumnModel_OldArray = new List<ColumnModel>();
-			    if (dataColumnDic != null && dataColumnDic[key] != null)
+			    if (dataColumnDic == null)
 			    {
-				    ColumnModel_OldArray = dataColumnDic[key];
+				    dataColumnDic = new Dictionary<string, List<ColumnModel>>();
+			    }
+			   
+			    List<ColumnModel> ColumnModel_OldArray = new List<ColumnModel>();
+			    if (dataColumnDic != null && dataColumnDic.ContainsKey(SelectedDbTableKey) && dataColumnDic[SelectedDbTableKey] != null)
+			    {
+				    ColumnModel_OldArray = dataColumnDic[SelectedDbTableKey];
 			    }
 			    
-			    foreach (DataRow dr in db.Rows)
+			    foreach (DataRow dr in columnDb.Rows)
 			    {
 				    ColumnModel ColumnModel1 = new ColumnModel();
 				    ColumnModel1.title = dr["name"].ToString();
 				    ColumnModel1.type = dr["type"].ToString();
 				    ColumnModel1.typeFix = _getNewKata(dr["type"].ToString());
+				    ColumnModel1.effective = true;
 				    
 				    foreach (ColumnModel ColumnModel_old in ColumnModel_OldArray)
 				    {
@@ -121,7 +132,7 @@ namespace TreeViewGenerator
 					    }
 				    }
 				    
-				    ColumnListViewStore.AppendValues (columnView);
+				    ColumnListViewStore.AppendValues (ColumnModel1);
 			    }
 
 			    columnView.Model = ColumnListViewStore;

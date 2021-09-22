@@ -31,7 +31,7 @@ namespace TreeViewGenerator
 		    return filesArray;
 	    }
 	    
-	    private Gtk.ListStore dbListViewStore;
+	    private Gtk.ListStore DbListViewStore;
 
 	    void _mkDbTreeView()
 	    {
@@ -46,17 +46,17 @@ namespace TreeViewGenerator
 	    private void _mkSelect(ArrayList fileList)
 	    {
 		    
-		    dbListViewStore = new Gtk.ListStore (typeof (DbModel));
+		    DbListViewStore = new Gtk.ListStore (typeof (DbModel));
 		    
 		    foreach (String dbPath in fileList)
 		    {
 			    DbModel dbModel = new DbModel();
 			    dbModel.title = clsPath._getFileNameNoExtension(dbPath);
 			    dbModel.dbPath = dbPath;
-			    dbListViewStore.AppendValues (dbModel);
+			    DbListViewStore.AppendValues (dbModel);
 		    }
 
-		    dataBaseView.Model = dbListViewStore;
+		    dataBaseView.Model = DbListViewStore;
 	    }
 		
     }
