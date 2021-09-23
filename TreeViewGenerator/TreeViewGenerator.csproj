@@ -11,7 +11,7 @@
             <LogicalName>%(Filename)%(Extension)</LogicalName>
         </EmbeddedResource>
         <None Update="treeViewGene.db3">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Remove="Template\TreeViewTemplate.tt" />
         <EmbeddedResource Remove="Template\**" />

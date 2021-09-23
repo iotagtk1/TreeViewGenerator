@@ -11,8 +11,9 @@ namespace TreeViewGenerator
 	{
 		
 		DbModel SelectedDataBaseRow;
-
-		private OutPutType SelectedOutPutType;
+		TableViewModel SelectedTableViewRow;
+		ColumnModel SelectedColumnViewRow;
+		OutPutType SelectedOutPutType;
 
 		/// <summary>
 		/// DataBase TreeViewを選択
@@ -33,8 +34,6 @@ namespace TreeViewGenerator
 			
 		}
 
-		TableViewModel SelectedTableViewRow;
-
 		/// <summary>
 		/// テーブルTreeView
 		/// </summary>
@@ -47,8 +46,6 @@ namespace TreeViewGenerator
 			ITreeModel model;
 			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
-				
-				Console.WriteLine("on_tableViewSelection_changed");
 				SelectedTableViewRow = (TableViewModel)TableListViewStore.GetValue(iter, 0);
 				
 				SelectedDbTableKey = _getDbTableKey();
@@ -63,7 +60,7 @@ namespace TreeViewGenerator
 
 		}
 
-		ColumnModel SelectedColumnViewRow;
+
 
 		/// <summary>
 		/// ColumnViewをクリックする
@@ -121,8 +118,6 @@ namespace TreeViewGenerator
 		}
 		private void on_TreeViewEntry_changed(object sender, EventArgs e)
 		{
-Console.WriteLine("on_TreeViewEntry_changed");
-
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
 			{
@@ -133,11 +128,10 @@ Console.WriteLine("on_TreeViewEntry_changed");
 		}
 
 		private void on_ListStoreEntry_changed(object sender , EventArgs e){
-			Console.WriteLine("ListStoreEntry");
+
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
 			{
-				Console.WriteLine("ListStoreEntry1" + text);
 				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = text;
 				_outPutText();
 			}
@@ -145,11 +139,10 @@ Console.WriteLine("on_TreeViewEntry_changed");
 		}
 		
 		private void on_ModelViewEntry_changed(object sender , EventArgs e){
-			Console.WriteLine("ModelViewEntry1");
+
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
 			{
-				Console.WriteLine("ModelViewEntry2");
 				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = text;
 				_outPutText();
 			}
