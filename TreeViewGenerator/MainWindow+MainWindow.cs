@@ -50,7 +50,9 @@ namespace TreeViewGenerator
 				SelectedTableViewRow = (TableViewModel)TableListViewStore.GetValue(iter, 0);
 				
 				SelectedDbTableKey = _getDbTableKey();
-	
+				
+				_initTextFiled();
+
 				_mkColumnTalbeSelect(SelectedTableViewRow);
 
 				_outPutText();
@@ -106,67 +108,12 @@ namespace TreeViewGenerator
 			this.Close();
 		}
 
-		private void on_defualtSetBtn_clicked(object sender , EventArgs e){
-			
-			SelectedOutPutType = _getOutPutType();
+		private void on_defualtSetBtn_clicked(object sender , EventArgs e)
+		{
 
-			string ModelName = "";
-			string TreeViewName = "";
-			string ComboBoxName = "";
-			string ListStoreName = "";
-			string SubNameSpace = "";
+			//OK
+			_defaultTextFiledSet();
 
-			switch (SelectedOutPutType)
-			{
-				case OutPutType.TreeView:
-					TreeViewTemplate TreeViewTemplate1 = new TreeViewTemplate();
-					ModelName = TreeViewTemplate1.ModelName;
-					TreeViewName = TreeViewTemplate1.TreeViewName;
-					ComboBoxName = TreeViewTemplate1.ComboBoxName;
-					ListStoreName = TreeViewTemplate1.ListStoreName;
-					SubNameSpace = TreeViewTemplate1.SubNameSpace;
-					break;
-				case OutPutType.TreeViewEx:
-					TreeViewTemplateEx TreeViewTemplateEx = new TreeViewTemplateEx();
-					ModelName = TreeViewTemplateEx.ModelName;
-					TreeViewName = TreeViewTemplateEx.TreeViewName;
-					ComboBoxName = TreeViewTemplateEx.ComboBoxName;
-					ListStoreName = TreeViewTemplateEx.ListStoreName;
-					SubNameSpace = TreeViewTemplateEx.SubNameSpace;
-					break;  
-				case OutPutType.ComboBox:
-					ComboBoxTemplate ComboBoxTemplate = new ComboBoxTemplate();
-					ModelName = ComboBoxTemplate.ModelName;
-					TreeViewName = ComboBoxTemplate.TreeViewName;
-					ComboBoxName = ComboBoxTemplate.ComboBoxName;
-					ListStoreName = ComboBoxTemplate.ListStoreName;
-					SubNameSpace = ComboBoxTemplate.SubNameSpace;
-					break;
-				case OutPutType.ComboBoxEx:
-					ComboBoxTemplateEx ComboBoxTemplateEx = new ComboBoxTemplateEx();
-					ModelName = ComboBoxTemplateEx.ModelName;
-					TreeViewName = ComboBoxTemplateEx.TreeViewName;
-					ComboBoxName = ComboBoxTemplateEx.ComboBoxName;
-					ListStoreName = ComboBoxTemplateEx.ListStoreName;
-					SubNameSpace = ComboBoxTemplateEx.SubNameSpace;
-					break;
-			}
-
-			TreeViewEntry.Text = TreeViewName;
-			ComboViewEntry.Text = ComboBoxName;
-			ListStoreEntry.Text = ListStoreName;
-			ModelViewEntry.Text = ModelName;
-			SubNameSpaceEntry.Text = SubNameSpace;
-
-			if (SelectedDbTableKey != "")
-			{
-				clsIniFile.singlton[SelectedDbTableKey,"TreeViewEntry"] = TreeViewName;
-				clsIniFile.singlton[SelectedDbTableKey,"ComboViewEntry"] = ComboBoxName;
-				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = ListStoreName;
-				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = ModelName;
-				clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] = SubNameSpace;
-			}
-			
 			_outPutText();
 
 		}
@@ -183,10 +130,11 @@ namespace TreeViewGenerator
 		}
 
 		private void on_ListStoreEntry_changed(object sender , EventArgs e){
-			
+			Console.WriteLine("ListStoreEntry");
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
 			{
+				Console.WriteLine("ListStoreEntry1" + text);
 				clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] = text;
 				_outPutText();
 			}
@@ -194,10 +142,11 @@ namespace TreeViewGenerator
 		}
 		
 		private void on_ModelViewEntry_changed(object sender , EventArgs e){
-			
+			Console.WriteLine("ModelViewEntry1");
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
 			{
+				Console.WriteLine("ModelViewEntry2");
 				clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] = text;
 				_outPutText();
 			}
@@ -226,9 +175,9 @@ namespace TreeViewGenerator
 			}
 			
 		}
-		
-		private void on_TreeViewRadioBtn_toggled(object sender , EventArgs e){
-			
+	
+		private void on_TreeViewRadioBtn_clicked(object sender , EventArgs e){
+	
 			if (((ToggleButton)sender).Active)
 			{
 				clsIniFile.singlton["config", "TreeViewBtn_active"] = "true";
@@ -240,28 +189,29 @@ namespace TreeViewGenerator
 			
 			SelectedOutPutType = _getOutPutType();
 			_outPutText();
+			
 		}
-		
-		private void on_ComboBoxRadioBtn_toggled(object sender , EventArgs e){
-			
-			Console.WriteLine("on_TreeViewBtn_toggled");
-			
-			if (((ToggleButton)sender).Active)
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_active"] = "false";
-			}
-			else
-			{
-				clsIniFile.singlton["config", "TreeViewBtn_active"] = "true";
-			}
-			
+		private void on_ComboBoxRadioBtn_clicked(object sender , EventArgs e){
+
 			SelectedOutPutType = _getOutPutType();
 			_outPutText();
 			
 		}
 
+		private void on_copyBtn_clicked(object sender , EventArgs e){
+	
+			clsClipboard._setText(sampleView.Buffer.Text);
+			
+		}
 
-
+		private void on_templateBtn_clicked(object sender , EventArgs e){
+			
+			clsDiagnosticsProcess._openDirBroser(templateDir);
+			
+		}
+		
+		
+		
 	}
 
 }

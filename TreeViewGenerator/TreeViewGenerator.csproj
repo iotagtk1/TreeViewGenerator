@@ -97,6 +97,9 @@
       <Compile Include="..\..\..\core_commonclasses\Utility\clsClipboard.cs">
         <Link>core_commonclasses\Utility\clsClipboard.cs</Link>
       </Compile>
+      <Compile Include="..\..\..\core_commonclasses\Utility\clsDiagnosticsProcess.cs">
+        <Link>core_commonclasses\Utility\clsDiagnosticsProcess.cs</Link>
+      </Compile>
       <Compile Include="..\..\..\core_commonclasses\Utility\clsUtility.cs">
         <Link>core_commonclasses\Utility\clsUtility.cs</Link>
       </Compile>
@@ -141,18 +144,22 @@
       <Content Include="template\ComboBoxTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>ComboBoxTemplate.cs</LastGenOutput>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="template\ComboBoxTemplateEx.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>ComboBoxTemplateEx.cs</LastGenOutput>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="template\TreeViewTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>TreeViewTemplate.cs</LastGenOutput>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="template\TreeViewTemplateEx.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>TreeViewTemplateEx.cs</LastGenOutput>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 

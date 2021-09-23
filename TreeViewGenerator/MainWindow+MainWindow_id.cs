@@ -33,5 +33,8 @@ namespace TreeViewGenerator
 		[UI] private readonly Gtk.Button defualtSetBtn = null;
 		[UI] private readonly Gtk.Entry SubNameSpaceEntry = null;
 		[UI] private readonly Gtk.Entry ComboViewEntry = null;
+	
+		[UI] private readonly Gtk.Button copyBtn = null;
+		[UI] private readonly Gtk.Button templateBtn = null;
 	}
 }

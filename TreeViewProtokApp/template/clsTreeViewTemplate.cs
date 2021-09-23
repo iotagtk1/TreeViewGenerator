@@ -12,7 +12,7 @@ namespace TreeViewProtokApp.template
         
         public string ListStoreName = "ListStore1";
 
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
 
         public string ModelName = "testModel";
 
@@ -27,7 +27,7 @@ namespace TreeViewProtokApp.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
         
         public string ModelName = "testModel";
 
@@ -43,7 +43,7 @@ namespace TreeViewProtokApp.template
 
         public string ListStoreName = "ListStore1";
 
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
         
         public string ModelName = "testModel";
 
@@ -58,7 +58,7 @@ namespace TreeViewProtokApp.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
         
         public string ModelName = "testModel";
 
@@ -79,7 +79,7 @@ namespace TreeViewGenerator.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
         
         public string ModelName = "testModel";
 
@@ -94,7 +94,7 @@ namespace TreeViewGenerator.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
 
         public string ModelName = "testModel";
         
@@ -110,7 +110,7 @@ namespace TreeViewGenerator.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
 
         public string ModelName = "testModel";
 
@@ -125,7 +125,7 @@ namespace TreeViewGenerator.template
 
         public string ListStoreName = "ListStore1";
         
-        public string SubNameSpace = "template";
+        public string SubNameSpace = "";
         
         public string ModelName = "testModel";
 

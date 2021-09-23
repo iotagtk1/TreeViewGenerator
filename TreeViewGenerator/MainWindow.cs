@@ -9,6 +9,8 @@ namespace TreeViewGenerator
     partial class MainWindow : Window
     {
         private string saveDataFilePath = "./data.xml";
+
+        private string templateDir = "./template";
         
         enum OutPutType
         {
