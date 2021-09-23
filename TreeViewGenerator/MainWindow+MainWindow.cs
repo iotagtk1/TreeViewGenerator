@@ -47,6 +47,8 @@ namespace TreeViewGenerator
 			ITreeModel model;
 			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
+				
+				Console.WriteLine("on_tableViewSelection_changed");
 				SelectedTableViewRow = (TableViewModel)TableListViewStore.GetValue(iter, 0);
 				
 				SelectedDbTableKey = _getDbTableKey();
@@ -119,6 +121,7 @@ namespace TreeViewGenerator
 		}
 		private void on_TreeViewEntry_changed(object sender, EventArgs e)
 		{
+Console.WriteLine("on_TreeViewEntry_changed");
 
 			string text = ((Gtk.Entry)sender).Text;
 			if (SelectedDbTableKey != "")
@@ -209,6 +212,9 @@ namespace TreeViewGenerator
 			clsDiagnosticsProcess._openDirBroser(templateDir);
 			
 		}
+		
+
+		
 		
 		
 		

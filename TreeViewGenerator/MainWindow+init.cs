@@ -38,7 +38,7 @@ namespace TreeViewGenerator
 
 	    }
 	    private void _initTextFiled(){
-		    
+
 		    if (clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"] != "")
 		    {
 			    TreeViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"];

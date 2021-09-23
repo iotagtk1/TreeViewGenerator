@@ -77,7 +77,7 @@
             <signal name="toggled" handler="on_customCheckBtn_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">595</property>
+            <property name="x">592</property>
             <property name="y">13</property>
           </packing>
         </child>
@@ -119,7 +119,7 @@
             <signal name="changed" handler="on_ModelViewEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">636</property>
+            <property name="x">641</property>
             <property name="y">126</property>
           </packing>
         </child>
@@ -148,7 +148,7 @@
             <signal name="changed" handler="on_SubNameSpaceEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">636</property>
+            <property name="x">641</property>
             <property name="y">170</property>
           </packing>
         </child>
@@ -161,7 +161,7 @@
             <property name="text" translatable="yes">ComboView名</property>
           </object>
           <packing>
-            <property name="x">636</property>
+            <property name="x">641</property>
             <property name="y">89</property>
           </packing>
         </child>
@@ -176,8 +176,8 @@
             <signal name="clicked" handler="on_copyBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">742</property>
-            <property name="y">53</property>
+            <property name="x">748</property>
+            <property name="y">52</property>
           </packing>
         </child>
         <child>
@@ -191,8 +191,8 @@
             <signal name="clicked" handler="on_templateBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">638</property>
-            <property name="y">57</property>
+            <property name="x">642</property>
+            <property name="y">56</property>
           </packing>
         </child>
         <child>
@@ -291,7 +291,6 @@
                 <property name="height_request">192</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="headers_visible">False</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="columnViewSelection">
                     <signal name="changed" handler="on_columnViewSelection_changed" swapped="no"/>
