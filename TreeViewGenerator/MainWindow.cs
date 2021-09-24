@@ -8,7 +8,7 @@ namespace TreeViewGenerator
 {
     partial class MainWindow : Window
     {
-        private string saveDataFilePath = "./data.xml";
+        private string saveDataFilePath = "./data.json";
 
         private string templateDir = "./template";
         
