@@ -13,7 +13,7 @@ GtkSharp
 Dapper
 
 Dapper Extensions
-****
+
 Microsoft.Data.Sqlite.Core
 
 System.CodeDom
