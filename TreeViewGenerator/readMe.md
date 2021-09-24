@@ -10,6 +10,18 @@ Rider
 
 GtkSharp
 
+Dapper
+
+Dapper Extensions
+****
+Microsoft.Data.Sqlite.Core
+
+System.CodeDom
+
+INIFileParserDotNetCore
+
+SQLitePCLRaw.bundle_green
+
 ### Rider Setting
 ExploerPanel - right click - edit execution configuration - external tools
 

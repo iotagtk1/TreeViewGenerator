@@ -13,18 +13,18 @@ namespace TreeViewGenerator
 
 		    ArrayList filesArray = new ArrayList();
             
-		    if (clsFile._isFile(fileFolderPath) && fileFolderPath._indexOf(".glade") != -1)
+		    if (clsFile._isFile(fileFolderPath) && fileFolderPath._indexOf(".db") != -1)
 		    {
 			    filesArray.Add(fileFolderPath);
  
 		    }else if (clsFolder._isFolder(fileFolderPath))
 		    {
-			    filesArray = clsFile._getFileList(fileFolderPath, ".db3", null, isAllDir: true);
+			    filesArray = clsFile._getFileList(fileFolderPath, ".db", null, isAllDir: true);
 		    }
 
 		    if (filesArray.Count == 0)
 		    {
-			    Console.WriteLine("フォルダ:{0} 書き出すGladeファイルがありません", fileFolderPath);
+			    Console.WriteLine("フォルダ:{0} Dbファイルがありません", fileFolderPath);
 			    return null;
 		    }
 

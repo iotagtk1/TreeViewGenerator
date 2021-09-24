@@ -30,6 +30,7 @@
 
     <ItemGroup>
         <PackageReference Include="GtkSharp" Version="3.24.24.*" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.10" />
         <PackageReference Include="System.CodeDom" Version="5.0.0" />
     </ItemGroup>
 
