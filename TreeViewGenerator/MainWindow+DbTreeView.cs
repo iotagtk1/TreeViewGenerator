@@ -37,9 +37,9 @@ namespace TreeViewGenerator
 	    {
 	
 		    Gtk.TreeViewColumnEx TitleColumn = new Gtk.TreeViewColumnEx ();
-		    TitleColumn.Title = "名前";
+		    TitleColumn.Title = "Db";
 		    TitleColumn.bindingPropertyName = "title";
-		    CellRendererText cell = TitleColumn._mkCellRendererText(dataBaseView , "",100);
+		    CellRendererText cell = TitleColumn._mkCellRendererText(dataBaseView , "",100,false);
 		    dataBaseView._mkBinding();
 		    
 	    }

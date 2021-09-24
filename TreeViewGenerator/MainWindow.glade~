@@ -52,22 +52,22 @@
         </child>
         <child>
           <object class="GtkButton" id="closeBtn">
-            <property name="label" translatable="yes">閉じる</property>
-            <property name="width_request">68</property>
-            <property name="height_request">39</property>
+            <property name="label" translatable="yes">Close</property>
+            <property name="width_request">62</property>
+            <property name="height_request">31</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="on_closeBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">743</property>
+            <property name="x">746</property>
             <property name="y">10</property>
           </packing>
         </child>
         <child>
           <object class="GtkCheckButton" id="customCheckBtn">
-            <property name="label" translatable="yes">カスタムTmplate</property>
+            <property name="label" translatable="yes">Custom Tmplate</property>
             <property name="width_request">143</property>
             <property name="height_request">28</property>
             <property name="visible">True</property>
@@ -87,7 +87,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">TreeView名</property>
+            <property name="text" translatable="yes">TreeView1</property>
             <signal name="changed" handler="on_TreeViewEntry_changed" swapped="no"/>
           </object>
           <packing>
@@ -101,7 +101,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">ListStore名</property>
+            <property name="text" translatable="yes">ListStore1</property>
             <signal name="changed" handler="on_ListStoreEntry_changed" swapped="no"/>
           </object>
           <packing>
@@ -115,7 +115,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">Model名</property>
+            <property name="text" translatable="yes">Model1</property>
             <signal name="changed" handler="on_ModelViewEntry_changed" swapped="no"/>
           </object>
           <packing>
@@ -125,9 +125,9 @@
         </child>
         <child>
           <object class="GtkButton" id="defualtSetBtn">
-            <property name="label" translatable="yes">デフォルト</property>
-            <property name="width_request">89</property>
-            <property name="height_request">35</property>
+            <property name="label" translatable="yes">DefaultValue</property>
+            <property name="width_request">102</property>
+            <property name="height_request">29</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -135,7 +135,7 @@
           </object>
           <packing>
             <property name="x">463</property>
-            <property name="y">87</property>
+            <property name="y">93</property>
           </packing>
         </child>
         <child>
@@ -144,7 +144,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">SubNameSpace名</property>
+            <property name="text" translatable="yes">SubNameSpace1</property>
             <signal name="changed" handler="on_SubNameSpaceEntry_changed" swapped="no"/>
           </object>
           <packing>
@@ -158,7 +158,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">ComboView名</property>
+            <property name="text" translatable="yes">ComboView1</property>
           </object>
           <packing>
             <property name="x">641</property>
@@ -167,23 +167,23 @@
         </child>
         <child>
           <object class="GtkButton" id="copyBtn">
-            <property name="label" translatable="yes">コピー</property>
-            <property name="width_request">59</property>
-            <property name="height_request">35</property>
+            <property name="label" translatable="yes">Copy</property>
+            <property name="width_request">63</property>
+            <property name="height_request">39</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="on_copyBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">748</property>
-            <property name="y">52</property>
+            <property name="x">744</property>
+            <property name="y">46</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="templateBtn">
-            <property name="label" translatable="yes">template</property>
-            <property name="width_request">76</property>
+            <property name="label" translatable="yes">templateDir</property>
+            <property name="width_request">96</property>
             <property name="height_request">29</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -191,7 +191,7 @@
             <signal name="clicked" handler="on_templateBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">642</property>
+            <property name="x">641</property>
             <property name="y">56</property>
           </packing>
         </child>
@@ -235,7 +235,6 @@
                 <property name="height_request">190</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="headers_visible">False</property>
                 <property name="show_expanders">False</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="dataBaseSelection">
@@ -263,7 +262,6 @@
                 <property name="height_request">191</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="headers_visible">False</property>
                 <property name="show_expanders">False</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="tableViewSelection">

@@ -126,21 +126,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\core_commonclasses\CustomUI\buttonEx.glade">
-        <Link>core_commonclasses\CustomUI\buttonEx.glade</Link>
-      </Content>
-      <Content Include="..\..\..\core_commonclasses\CustomUI\buttonEx.glade~">
-        <Link>core_commonclasses\CustomUI\buttonEx.glade~</Link>
-      </Content>
-      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.glade">
-        <Link>core_commonclasses\CustomUI\CustomBox.glade</Link>
-      </Content>
-      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.glade~">
-        <Link>core_commonclasses\CustomUI\CustomBox.glade~</Link>
-      </Content>
-      <Content Include="..\..\..\core_commonclasses\CustomUI\CustomBox.xml">
-        <Link>core_commonclasses\CustomUI\CustomBox.xml</Link>
-      </Content>
       <Content Include="template\ComboBoxTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>ComboBoxTemplate.cs</LastGenOutput>
@@ -165,6 +150,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="readMe" />
     </ItemGroup>
 
 </Project>

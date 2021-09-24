@@ -16,12 +16,12 @@ namespace TreeViewGenerator
 	    {
 	
 		    Gtk.TreeViewColumnEx TitleColumn = new Gtk.TreeViewColumnEx ();
-		    TitleColumn.Title = "名前";
+		    TitleColumn.Title = "Column";
 		    TitleColumn.bindingPropertyName = "title";
-		    CellRendererText cell = TitleColumn._mkCellRendererText(columnView , "",100);
+		    CellRendererText cell = TitleColumn._mkCellRendererText(columnView , "",100,false);
 		    
 		    Gtk.TreeViewColumnEx　isNgTimerColumn = new Gtk.TreeViewColumnEx ();
-		    isNgTimerColumn.Title = "書き出し";
+		    isNgTimerColumn.Title = "OutPut";
 		    isNgTimerColumn.bindingPropertyName = "effective";
 		    CellRendererToggle isNgTimerColumnToggle = isNgTimerColumn._mkCellRendererToggle(columnView ,"",60);
 		    isNgTimerColumnToggle.Toggled += delegate(object o, ToggledArgs args)
