@@ -4,7 +4,7 @@ using Dapper;
 
 /*
  * DateTimeOffset、Guid、TimeSpan 変換する時に使う
- * 
+ * 公式のDapperを仕様場合はSqliteのカラム名に_を含めないこと。エラーになる
  */
 
 public class clsDapper
