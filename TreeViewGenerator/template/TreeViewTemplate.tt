@@ -76,7 +76,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
     if (ColumnModel1.effective)
     {
         #>
-        <#=ColumnModel1.title#>Column.SetCellDataFunc (<#=ColumnModel1.title#>Cell, new Gtk.TreeCellDataFunc (Render<#=ColumnModel1.title#>));
+    <#=ColumnModel1.title#>Column.SetCellDataFunc (<#=ColumnModel1.title#>Cell, new Gtk.TreeCellDataFunc (Render<#=ColumnModel1.title#>));
         <#
     }
 }
@@ -97,7 +97,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
         <#if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
         {#>
         (cell as Gtk.CellRendererText).Text = <#=ModelName#>1.<#=ColumnModel1.title#>;
-        <#}
+      <#}
         #>
     }
 <#

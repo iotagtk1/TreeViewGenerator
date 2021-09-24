@@ -405,7 +405,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line default
             #line hidden
-            this.Write("        ");
+            this.Write("    ");
             
             #line 79 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
@@ -498,7 +498,7 @@ if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
             
             #line default
             #line hidden
-            this.Write(";\n        ");
+            this.Write(";\n      ");
             
             #line 100 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 }
