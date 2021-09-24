@@ -23,7 +23,7 @@ namespace TreeViewGenerator
 		    Gtk.TreeViewColumnEx　isNgTimerColumn = new Gtk.TreeViewColumnEx ();
 		    isNgTimerColumn.Title = "OutPut";
 		    isNgTimerColumn.bindingPropertyName = "effective";
-		    CellRendererToggle isNgTimerColumnToggle = isNgTimerColumn._mkCellRendererToggle(columnView ,"",60);
+		    CellRendererToggle isNgTimerColumnToggle = isNgTimerColumn._mkCellRendererToggle(columnView ,"",40);
 		    isNgTimerColumnToggle.Toggled += delegate(object o, ToggledArgs args)
 		    {
 			    TreeIter iter;
@@ -121,7 +121,7 @@ namespace TreeViewGenerator
 				    ColumnModel ColumnModel1 = new ColumnModel();
 				    ColumnModel1.title = dr["name"].ToString();
 				    ColumnModel1.type = dr["type"].ToString();
-				    ColumnModel1.typeFix = _getNewKata(dr["type"].ToString());
+				    ColumnModel1.typeFix = _getNewKata(dr["type"].ToString()).ToLower();
 				    ColumnModel1.effective = true;
 				    
 				    foreach (ColumnModel ColumnModel_old in ColumnModel_OldArray)

@@ -28,7 +28,7 @@
             <signal name="clicked" handler="on_TreeViewRadioBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">461</property>
+            <property name="x">464</property>
             <property name="y">10</property>
           </packing>
         </child>
@@ -46,7 +46,7 @@
             <signal name="clicked" handler="on_ComboBoxRadioBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">462</property>
+            <property name="x">464</property>
             <property name="y">45</property>
           </packing>
         </child>
@@ -91,7 +91,7 @@
             <signal name="changed" handler="on_TreeViewEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">463</property>
+            <property name="x">466</property>
             <property name="y">128</property>
           </packing>
         </child>
@@ -105,7 +105,7 @@
             <signal name="changed" handler="on_ListStoreEntry_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="x">463</property>
+            <property name="x">466</property>
             <property name="y">171</property>
           </packing>
         </child>
@@ -134,7 +134,7 @@
             <signal name="clicked" handler="on_defualtSetBtn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">463</property>
+            <property name="x">466</property>
             <property name="y">93</property>
           </packing>
         </child>
@@ -192,7 +192,7 @@
           </object>
           <packing>
             <property name="x">641</property>
-            <property name="y">56</property>
+            <property name="y">55</property>
           </packing>
         </child>
         <child>
@@ -209,10 +209,12 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="vscroll_policy">natural</property>
+                <property name="wrap_mode">word</property>
                 <property name="left_margin">3</property>
                 <property name="right_margin">3</property>
                 <property name="top_margin">3</property>
                 <property name="bottom_margin">3</property>
+                <property name="indent">10</property>
                 <property name="overwrite">True</property>
               </object>
             </child>
@@ -224,15 +226,15 @@
         </child>
         <child>
           <object class="GtkScrolledWindow">
-            <property name="width_request">124</property>
-            <property name="height_request">192</property>
+            <property name="width_request">128</property>
+            <property name="height_request">193</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkTreeView" id="dataBaseView">
                 <property name="width_request">124</property>
-                <property name="height_request">190</property>
+                <property name="height_request">191</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="show_expanders">False</property>
@@ -251,15 +253,15 @@
         </child>
         <child>
           <object class="GtkScrolledWindow">
-            <property name="width_request">120</property>
-            <property name="height_request">192</property>
+            <property name="width_request">128</property>
+            <property name="height_request">193</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkTreeView" id="tableView">
-                <property name="width_request">120</property>
-                <property name="height_request">191</property>
+                <property name="width_request">124</property>
+                <property name="height_request">193</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="show_expanders">False</property>
@@ -272,7 +274,7 @@
             </child>
           </object>
           <packing>
-            <property name="x">143</property>
+            <property name="x">144</property>
             <property name="y">10</property>
           </packing>
         </child>
@@ -286,7 +288,7 @@
             <child>
               <object class="GtkTreeView" id="columnView">
                 <property name="width_request">120</property>
-                <property name="height_request">192</property>
+                <property name="height_request">191</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <child internal-child="selection">
@@ -298,24 +300,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">271</property>
+            <property name="x">277</property>
             <property name="y">10</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="width_request">100</property>
-            <property name="height_request">80</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="shadow_type">in</property>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="x">168</property>
-            <property name="y">594</property>
           </packing>
         </child>
       </object>

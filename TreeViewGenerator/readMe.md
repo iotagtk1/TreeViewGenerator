@@ -22,6 +22,12 @@ INIFileParserDotNetCore
 
 SQLitePCLRaw.bundle_green
 
+### Sqlite Setting
+
+Please prepare a Sqlite file. The file extension should be .db3.
+
+Place it in Rider's Explorer.
+
 ### Rider Setting
 ExploerPanel - right click - edit execution configuration - external tools
 

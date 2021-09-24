@@ -94,16 +94,19 @@ namespace TreeViewGenerator
 	    /// <returns></returns>
 	    private string _getNewKata(string kataOld)
 	    {
+		    kataOld = kataOld.ToLower();
+
 		    foreach (string paternStr in kataCheckDic.Keys)
 		    {
 			    Match match = Regex.Match(kataOld, paternStr);
-			    if (match.Index > 0)
+			    if (match.Groups.Count > 0)
 			    {
 				    string kataNew = kataCheckDic[paternStr];
 				    return kataNew;
 					break;
 			    }
 		    }
+		    
 		    return kataOld;
 	    }
 		

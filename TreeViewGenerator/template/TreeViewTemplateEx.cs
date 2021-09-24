@@ -93,7 +93,7 @@ namespace TreeViewGenerator.template
 
 foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 {
-    if (ColumnModel1.effective && ColumnModel1.typeFix == "text")
+    if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
     {
 
             
