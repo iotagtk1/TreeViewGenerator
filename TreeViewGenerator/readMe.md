@@ -1,9 +1,12 @@
 ### Introduction
 
+### Explanation
+
+Generate TreeView ComboView program statement from Sqlite table structure
 ### Environment
 .net5
 
-Rider 2021 
+Rider
 
 GtkSharp
 
