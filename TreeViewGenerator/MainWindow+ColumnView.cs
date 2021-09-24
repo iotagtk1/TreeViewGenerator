@@ -98,7 +98,7 @@ namespace TreeViewGenerator
 		    ColumnListViewStore = new Gtk.ListStore (typeof (ColumnModel));
 
 		    string sql = "PRAGMA table_info('" + TableViewModel1.title  +"');";
-		    DataTable columnDb = clsSqliteM.singleton._ReqDynamic(sql);
+		    DataTable columnDb = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});
 
 		    //確定
 		    if (columnDb != null && columnDb.Rows.Count > 0)

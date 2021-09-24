@@ -36,7 +36,7 @@ namespace TreeViewGenerator
 		    TableListViewStore = new Gtk.ListStore (typeof (TableViewModel));
 
 		    string sql = "select name from sqlite_master where type='table';";
-		    DataTable db = clsSqliteM.singleton._ReqDynamic(sql);
+		    DataTable db = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name"});
 
 		    if (db != null && db.Rows.Count > 0)
 		    {
