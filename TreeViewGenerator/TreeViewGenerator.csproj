@@ -27,81 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\..\core_commonclasses\clsString.cs">
-        <Link>core_commonclasses\clsString.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\DB\clsDapper.cs">
-        <Link>core_commonclasses\DB\clsDapper.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\DB\clsSqliteM.cs">
-        <Link>core_commonclasses\DB\clsSqliteM.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsError.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsError.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsJson.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsJson.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsObject.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsObject.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsString.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsString.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\ExtensionsClass\clsExtensionsXml.cs">
-        <Link>core_commonclasses\ExtensionsClass\clsExtensionsXml.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\File\clsFile+static.cs">
-        <Link>core_commonclasses\File\clsFile+static.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\File\clsFolder+static.cs">
-        <Link>core_commonclasses\File\clsFolder+static.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\File\clsIniFile.cs">
-        <Link>core_commonclasses\File\clsIniFile.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\File\clsJson.cs">
-        <Link>core_commonclasses\File\clsJson.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\File\clsPath.cs">
-        <Link>core_commonclasses\File\clsPath.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\clsDialog+Utility.cs">
-        <Link>core_commonclasses\UI\clsDialog+Utility.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\clsDialog.cs">
-        <Link>core_commonclasses\UI\clsDialog.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\ComboBoxEx.cs">
-        <Link>core_commonclasses\UI\ComboBoxEx.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\RenderCell.cs">
-        <Link>core_commonclasses\UI\RenderCell.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\TreeViewColumnEx.cs">
-        <Link>core_commonclasses\UI\TreeViewColumnEx.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\UI\treeViewEx.cs">
-        <Link>core_commonclasses\UI\treeViewEx.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\Utility\clsArgs.cs">
-        <Link>core_commonclasses\Utility\clsArgs.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\Utility\clsClipboard.cs">
-        <Link>core_commonclasses\Utility\clsClipboard.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\Utility\clsDiagnosticsProcess.cs">
-        <Link>core_commonclasses\Utility\clsDiagnosticsProcess.cs</Link>
-      </Compile>
-      <Compile Include="..\..\..\core_commonclasses\Utility\clsUtility.cs">
-        <Link>core_commonclasses\Utility\clsUtility.cs</Link>
-      </Compile>
       <Compile Remove="DbModel\dbModel.cs" />
       <Compile Include="..\TreeViewProtokApp\template\clsTreeViewTemplate.cs">
         <Link>template\clsTreeViewTemplate.cs</Link>
@@ -121,6 +46,81 @@
       </Compile>
       <Compile Include="template\TreeViewTemplateEx.cs">
         <DependentUpon>TreeViewTemplateEx.tt</DependentUpon>
+      </Compile>
+      <Compile Update="core_commonclasses\DB\clsSqliteM.cs">
+        <Link>core_commonclasses\DB\clsSqliteM.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\DB\clsDapper.cs">
+        <Link>core_commonclasses\DB\clsDapper.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsString.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsString.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsArrayDic.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsObject.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsObject.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsError.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsError.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsXml.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsXml.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsJson.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsJson.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs">
+        <Link>core_commonclasses\ExtensionsClass\clsExtensionsDateTime.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\File\clsJson.cs">
+        <Link>core_commonclasses\File\clsJson.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\File\clsFolder+static.cs">
+        <Link>core_commonclasses\File\clsFolder+static.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\File\clsFile+static.cs">
+        <Link>core_commonclasses\File\clsFile+static.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\File\clsIniFile.cs">
+        <Link>core_commonclasses\File\clsIniFile.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\File\clsPath.cs">
+        <Link>core_commonclasses\File\clsPath.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\clsDialog.cs">
+        <Link>core_commonclasses\UI\clsDialog.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\ComboBoxEx.cs">
+        <Link>core_commonclasses\UI\ComboBoxEx.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\treeViewEx.cs">
+        <Link>core_commonclasses\UI\treeViewEx.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\RenderCell.cs">
+        <Link>core_commonclasses\UI\RenderCell.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\TreeViewColumnEx.cs">
+        <Link>core_commonclasses\UI\TreeViewColumnEx.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\UI\clsDialog+Utility.cs">
+        <Link>core_commonclasses\UI\clsDialog+Utility.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\Utility\clsUtility.cs">
+        <Link>core_commonclasses\Utility\clsUtility.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\Utility\clsArgs.cs">
+        <Link>core_commonclasses\Utility\clsArgs.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\Utility\clsClipboard.cs">
+        <Link>core_commonclasses\Utility\clsClipboard.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\Utility\clsDiagnosticsProcess.cs">
+        <Link>core_commonclasses\Utility\clsDiagnosticsProcess.cs</Link>
+      </Compile>
+      <Compile Update="core_commonclasses\clsString.cs">
+        <Link>core_commonclasses\clsString.cs</Link>
       </Compile>
     </ItemGroup>
 
@@ -148,11 +148,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
+      <Folder Include="readMe" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="readMe" />
+      <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
     </ItemGroup>
 
 </Project>
