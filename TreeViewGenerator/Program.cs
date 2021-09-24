@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Gtk;
 
 namespace TreeViewGenerator
@@ -16,6 +17,8 @@ namespace TreeViewGenerator
             try
             {
                 clsArgsConfig.Instance();
+
+   
                 clsArgsConfig.Instance()._setArgs(args);
             }
             catch (Exception e)
