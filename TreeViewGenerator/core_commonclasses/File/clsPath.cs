@@ -33,8 +33,8 @@ public partial class clsPath {
     /// <summary>
     /// ���݂̃t�@�C���̐�΃p�X
     /// </summary>
-    static public string _getAbsolutFilePath(string fileName) {    
-          string path =  Path.GetFullPath("./"+fileName);
+    static public string _getAbsolutFilePath(string filePath) {    
+          string path = Path.GetFullPath(filePath);
           return path;
    }
 

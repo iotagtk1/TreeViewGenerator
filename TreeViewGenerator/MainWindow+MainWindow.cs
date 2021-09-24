@@ -200,17 +200,15 @@ namespace TreeViewGenerator
 			
 		}
 
-		private void on_templateBtn_clicked(object sender , EventArgs e){
+		private void on_templateBtn_clicked(object sender , EventArgs e)
+		{
+
+			string absolutDirPath = clsFile._getExePath_replace(templateDir);
 			
-			clsDiagnosticsProcess._openDirBroser(templateDir);
+			clsDiagnosticsProcess._openDirBroser(absolutDirPath);
 			
 		}
-		
 
-		
-		
-		
-		
 	}
 
 }

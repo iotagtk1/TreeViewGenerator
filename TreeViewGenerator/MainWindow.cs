@@ -10,7 +10,7 @@ namespace TreeViewGenerator
     {
         private string saveDataFilePath = "./data.json";
 
-        private string templateDir = "./template";
+        private string templateDir = "template";
         
         enum OutPutType
         {
