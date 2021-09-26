@@ -13,6 +13,8 @@ namespace TreeViewProtokApp.template
         public string ListStoreName = "ListStore1";
 
         public string SubNameSpace = "";
+        
+        public string ProjectName = "";
 
         public string ModelName = "testModel";
 
@@ -28,6 +30,8 @@ namespace TreeViewProtokApp.template
         public string ListStoreName = "ListStore1";
         
         public string SubNameSpace = "";
+        
+        public string ProjectName = "";
         
         public string ModelName = "testModel";
 
@@ -45,6 +49,8 @@ namespace TreeViewProtokApp.template
 
         public string SubNameSpace = "";
         
+        public string ProjectName = "";
+        
         public string ModelName = "testModel";
 
     }
@@ -59,6 +65,8 @@ namespace TreeViewProtokApp.template
         public string ListStoreName = "ListStore1";
         
         public string SubNameSpace = "";
+        
+        public string ProjectName = "";
         
         public string ModelName = "testModel";
 
@@ -81,6 +89,8 @@ namespace TreeViewGenerator.template
         
         public string SubNameSpace = "";
         
+        public string ProjectName = "";
+        
         public string ModelName = "testModel";
 
     }
@@ -95,6 +105,8 @@ namespace TreeViewGenerator.template
         public string ListStoreName = "ListStore1";
         
         public string SubNameSpace = "";
+
+        public string ProjectName = "";
 
         public string ModelName = "testModel";
         
@@ -111,6 +123,8 @@ namespace TreeViewGenerator.template
         public string ListStoreName = "ListStore1";
         
         public string SubNameSpace = "";
+        
+        public string ProjectName = "";
 
         public string ModelName = "testModel";
 
@@ -126,6 +140,8 @@ namespace TreeViewGenerator.template
         public string ListStoreName = "ListStore1";
         
         public string SubNameSpace = "";
+        
+        public string ProjectName = "";
         
         public string ModelName = "testModel";
 

@@ -2,8 +2,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Reflection" #>
-<# var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;#>
-namespace <#=assemblyName#><#
+namespace <#=ProjectName#><#
    if (SubNameSpace != "")
    {
 #>.<#= SubNameSpace #> <#

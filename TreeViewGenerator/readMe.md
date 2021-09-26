@@ -48,7 +48,7 @@ You must specify a macro
 copy perst
 
 ```
- -fileDir $FilePath$
+ -fileDir $FilePath$ -projectName $FilePath$
 ```
 
 ### Execution
