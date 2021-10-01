@@ -10,7 +10,6 @@ namespace TreeViewGenerator
     {
         private static clsArgsConfig _singleInstance = null;
         public string ProjectName = "";
-        public string ProjectPath = "";     
         public string FileDirPath = "";
 
         public static clsArgsConfig Instance()
@@ -39,9 +38,9 @@ namespace TreeViewGenerator
         public Boolean _validateCommandKey()
         {
             
-            if (ProjectPath != "")
+            if (ProjectName != "")
             {
-                ProjectName = _getProjectName(ProjectPath);
+                ProjectName = _getProjectName(ProjectName);
             }
 
             if (FileDirPath == "" )
@@ -64,7 +63,7 @@ namespace TreeViewGenerator
                     if (args._safeIndexOf(i + 1) && 
                         commndKeyArray.IndexOf(args[i+1]) == -1 && 
                         args[i+1] != ""){
-                        ProjectPath = args[i + 1];
+                        ProjectName = args[i + 1];
                     }
                     i++;
                     continue;
