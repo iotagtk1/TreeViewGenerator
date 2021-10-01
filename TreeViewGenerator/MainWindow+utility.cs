@@ -108,7 +108,7 @@ namespace TreeViewGenerator
 	    
 	    Dictionary<string,string> kataCheckDic =
 		    new Dictionary<string,string> (){
-			    {"(~/(?i)^bit|bool$/)", "bool"},
+			    {"(~/(?i)^bit|bool|boolean/)", "bool"},
 			    {"(~/(?i)^tinyint$/)","byte"},
 			    {"(~/(?i)^uniqueidentifier| uuid$/)", "Guid"},
 			    {"(~/(?i)^int | integer | number$/)", "long"},

@@ -106,7 +106,7 @@ namespace TreeViewGenerator
 		/// <param name="e"></param>
 		private void on_closeBtn_clicked(object sender, EventArgs e)
 		{
-			this.Close();
+			this.Destroy();
 		}
 
 		private void on_defualtSetBtn_clicked(object sender , EventArgs e)
