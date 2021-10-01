@@ -10,7 +10,7 @@ namespace <#=ProjectName#><#
 #>
 {
 [UI] private readonly Gtk.TreeView <#=TreeViewName#> = null;
-private void _mkTreeView()
+private void _mkTreeView_<#=ModelName#>()
 {
     Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
 

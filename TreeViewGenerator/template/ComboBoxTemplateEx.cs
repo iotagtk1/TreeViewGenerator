@@ -67,7 +67,14 @@ namespace TreeViewGenerator.template
             
             #line default
             #line hidden
-            this.Write(" = null;\nprivate void _mkComboBox()\n{\n");
+            this.Write(" = null;\nprivate void _mkComboBox_");
+            
+            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write("()\n{\n");
             
             #line 15 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
 

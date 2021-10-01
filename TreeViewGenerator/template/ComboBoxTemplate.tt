@@ -12,7 +12,7 @@ namespace <#=ProjectName#><#
 {
 
 [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
-private void _mkComboBox()
+private void _mkComboBox_<#=ModelName#>()
 {
     <#=ComboBoxName#>.Clear();
     CellRendererText cell = new CellRendererText();
