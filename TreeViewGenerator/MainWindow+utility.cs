@@ -38,7 +38,7 @@ namespace TreeViewGenerator
 
 		    if (clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] == "")
 		    {
-			    ModelViewEntry.Text = TableViewModel1.title + "Model";
+			    ModelViewEntry.Text = TableViewModel1.title ;
 		    }
 		    if (clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] == "")
 		    {
