@@ -78,20 +78,19 @@ using Microsoft.Data.Sqlite;
 
                 while (reader.Read())
                 {
-                    
-                    for (int i = 0; i < reader.FieldCount; i++)
+
+                    if (table.Columns.Count == 0)
                     {
-                        string name = reader.GetName(i);
-                        if (columnName.Contains(name))
+                        for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            table.Columns.Add(name);
+                            string name = reader.GetName(i);
+                            if (columnName.Contains(name))
+                            {
+                                table.Columns.Add(name);
+                            }
                         }
                     }
-                    break;
-                }
-                
-                while (reader.Read())
-                {
+                  
                     DataRow dr = table.NewRow();
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
@@ -102,6 +101,7 @@ using Microsoft.Data.Sqlite;
                         }
                     }
                     table.Rows.Add(dr);
+                    
                 }
 
             } catch(Exception en) {

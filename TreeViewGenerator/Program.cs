@@ -17,6 +17,14 @@ namespace TreeViewGenerator
             try
             {
                 clsArgsConfig.Instance();
+                
+                List<string> a = new List<string>();
+                a.Add("-fileDir");
+                a.Add("/home/ita/C#/App_GitHub/gladeGenerator/gladeGenerator/gladeGenerator/GladeGeneratorGUI");
+                a.Add("-projectName");
+                a.Add("/home/ita/C#/App_GitHub/gladeGenerator/gladeGenerator/gladeGenerator/GladeGeneratorGUI"); 
+                args = a.ToArray();
+
 
    
                 clsArgsConfig.Instance()._setArgs(args);

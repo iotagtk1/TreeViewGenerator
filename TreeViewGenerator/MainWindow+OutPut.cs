@@ -47,7 +47,7 @@ namespace TreeViewGenerator
 					t.ListStoreName = listStoreText;
 					t.SubNameSpace = subNameText;
 					t.ColumnModelArray = columnModelArray;
-					
+					t.ProjectName = clsArgsConfig.Instance().ProjectName;
 					txt = t.TransformText();
 					break;
 			    case OutPutType.TreeViewEx:
@@ -57,7 +57,7 @@ namespace TreeViewGenerator
 				    t2.ListStoreName = listStoreText;
 				    t2.SubNameSpace = subNameText;
 				    t2.ColumnModelArray = columnModelArray;
-				    
+				    t2.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = t2.TransformText();
 				    break;  
 			    case OutPutType.ComboBox:
@@ -67,6 +67,7 @@ namespace TreeViewGenerator
 				    c.ListStoreName = listStoreText;
 				    c.SubNameSpace = subNameText;
 				    c.ColumnModelArray = columnModelArray;
+				    c.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = c.TransformText();
 				    break;
 			    case OutPutType.ComboBoxEx:
@@ -76,6 +77,7 @@ namespace TreeViewGenerator
 				    c2.ListStoreName = listStoreText;
 				    c2.SubNameSpace = subNameText;
 				    c2.ColumnModelArray = columnModelArray;
+				    c2.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = c2.TransformText();
 				    break;
 		    }

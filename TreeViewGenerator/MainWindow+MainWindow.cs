@@ -62,8 +62,6 @@ namespace TreeViewGenerator
 
 		}
 
-
-
 		/// <summary>
 		/// ColumnViewをクリックする
 		/// </summary>

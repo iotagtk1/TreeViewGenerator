@@ -133,7 +133,8 @@ namespace TreeViewGenerator
 		    foreach (string paternStr in kataCheckDic.Keys)
 		    {
 			    Match match = Regex.Match(kataOld, paternStr);
-			    if (match.Groups.Count > 0)
+			    //2以上にする
+			    if (match.Groups.Count > 1)
 			    {
 				    string kataNew = kataCheckDic[paternStr];
 				    return kataNew;

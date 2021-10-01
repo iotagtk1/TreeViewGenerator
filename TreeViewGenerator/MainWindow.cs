@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
@@ -23,7 +24,7 @@ namespace TreeViewGenerator
         {
             try
             {
-
+                
                 _initConfigFile();
 
                 if (clsArgsConfig.Instance()._validateCommandKey())

@@ -17,13 +17,9 @@ private void _mkTreeView()
 <#
 foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 {
-   
-    
+
     if (ColumnModel1.effective && ColumnModel1.typeFix != "bool"){
 #>
-typeFix 
- <#= ColumnModel1.typeFix#>
-
     Gtk.TreeViewColumn <#=ColumnModel1.title#>Column = new Gtk.TreeViewColumn ();
     <#=ColumnModel1.title#>Column.Title = "<#=ColumnModel1.title#>";
     Gtk.CellRendererText <#=ColumnModel1.title#>Cell = new Gtk.CellRendererText();
