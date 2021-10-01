@@ -146,7 +146,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line default
             #line hidden
-            this.Write("}\n}\n");
+            this.Write("    }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

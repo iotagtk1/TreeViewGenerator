@@ -57,4 +57,6 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 
     <#=TreeViewName#>._mkBinding();
 
+    }
+
 }

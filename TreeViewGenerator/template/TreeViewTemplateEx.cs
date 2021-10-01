@@ -363,7 +363,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line default
             #line hidden
-            this.Write("._mkBinding();\n\n}");
+            this.Write("._mkBinding();\n\n    }\n\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

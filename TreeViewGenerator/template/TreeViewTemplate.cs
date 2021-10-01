@@ -510,7 +510,7 @@ if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
             
             #line default
             #line hidden
-            this.Write("}\n");
+            this.Write("\n    }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
