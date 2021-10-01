@@ -12,8 +12,10 @@ namespace TreeViewGenerator
     {
 	    private void _initConfigFile()
 	    {
-        		                
-		    clsIniFile._sharedObject("./config.ini");
+
+		    string configIniPath = clsFile._getExePath_replace("./config.ini");
+		    
+		    clsIniFile._sharedObject(configIniPath);
         		    
 		    if (clsIniFile.singlton["config", "TreeViewBtn_active"] == "")
 		    {
