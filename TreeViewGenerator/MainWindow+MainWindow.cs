@@ -52,6 +52,8 @@ namespace TreeViewGenerator
 				
 				_setModelNameHint(SelectedTableViewRow);
 
+				_initTextFiled();
+
 				_mkColumnTalbeSelect(SelectedTableViewRow);
 
 				_outPutText();
