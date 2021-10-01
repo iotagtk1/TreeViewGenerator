@@ -11,8 +11,42 @@ using UI = Gtk.Builder.ObjectAttribute;
 
 namespace TreeViewGenerator
 {
+
     partial class MainWindow
     {
+	    
+	    /// <summary>
+	    /// Modelの名前ヒントを追加する
+	    /// </summary>
+	    /// <param name="TableViewModel1"></param>
+	    private void _setModelNameHint(TableViewModel TableViewModel1){
+
+		    if (clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"] == "")
+		    {
+			    TreeViewEntry.Text = TableViewModel1.title + "TreeView";
+		    }
+
+		    if (clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] == "")
+		    {
+			    ComboViewEntry.Text = TableViewModel1.title + "ComboView";
+		    }
+
+		    if (clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] == "")
+		    {
+			    ListStoreEntry.Text = TableViewModel1.title + "ListStore";
+		    }
+
+		    if (clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] == "")
+		    {
+			    ModelViewEntry.Text = TableViewModel1.title + "Model";
+		    }
+		    if (clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] == "")
+		    {
+			    SubNameSpaceEntry.Text = TableViewModel1.title;
+		    }
+
+	    }
+
 
 	    /// <summary>
 	    /// 書き出すタイプを取得する

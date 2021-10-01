@@ -50,7 +50,7 @@ namespace TreeViewGenerator
 				
 				SelectedDbTableKey = _getDbTableKey();
 				
-				_initTextFiled();
+				_setModelNameHint(SelectedTableViewRow);
 
 				_mkColumnTalbeSelect(SelectedTableViewRow);
 
