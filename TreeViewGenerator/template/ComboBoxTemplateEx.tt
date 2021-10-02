@@ -10,6 +10,7 @@ namespace <#=ProjectName#><#
 #>
 {
 [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
 private void _mkComboBox_<#=ModelName#>()
 {
 <#
@@ -26,8 +27,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 #>
 
     Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
-
-    List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
+    
     foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
         <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
     }

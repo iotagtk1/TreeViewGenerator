@@ -12,14 +12,13 @@ namespace <#=ProjectName#><#
 {
 
 [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+ListStore <#=ListStoreName#> = new ListStore(typeof (string));
 private void _mkComboBox_<#=ModelName#>()
 {
     <#=ComboBoxName#>.Clear();
     CellRendererText cell = new CellRendererText();
     <#=ComboBoxName#>.PackStart(cell, false);
-    <#=ComboBoxName#>.AddAttribute(cell, "text", 0);
-
-    ListStore <#=ListStoreName#> = new ListStore(typeof (string));
+    <#=ComboBoxName#>.AddAttribute(cell, "text", 0);   
 
     <#=ComboBoxName#>.Model = <#=ListStoreName#>;
 

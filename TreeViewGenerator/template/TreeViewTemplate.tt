@@ -10,10 +10,9 @@ namespace <#=ProjectName#><#
 #>
 {
 [UI] private readonly Gtk.TreeView <#=TreeViewName#> = null;
+Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
 private void _mkTreeView_<#=ModelName#>()
-{
-    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
-
+{    
 <#
 foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 {

@@ -67,16 +67,37 @@ namespace TreeViewGenerator.template
             
             #line default
             #line hidden
-            this.Write(" = null;\nprivate void _mkComboBox_");
+            this.Write(" = null;\nList<");
             
             #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
+            this.Write("> ");
+            
+            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write("Array = new List<");
+            
+            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write(">();\nprivate void _mkComboBox_");
+            
+            #line 14 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
             this.Write("()\n{\n");
             
-            #line 15 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 16 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
 
 
 foreach (ColumnModel ColumnModel1 in ColumnModelArray)
@@ -89,21 +110,21 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             #line hidden
             this.Write("    ");
             
-            #line 22 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ComboBoxName));
             
             #line default
             #line hidden
             this.Write("._mkCellRendererText(\"");
             
-            #line 22 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
             
             #line default
             #line hidden
             this.Write("\");   \n");
             
-            #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 24 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
 
     }
 }
@@ -113,40 +134,19 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             #line hidden
             this.Write("\n    Gtk.ListStore ");
             
-            #line 28 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 29 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
             this.Write(" = new Gtk.ListStore (typeof (");
             
-            #line 28 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
+            #line 29 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
-            this.Write("));\n\n    List<");
-            
-            #line 30 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
-            
-            #line default
-            #line hidden
-            this.Write("> ");
-            
-            #line 30 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
-            
-            #line default
-            #line hidden
-            this.Write("Array = new List<");
-            
-            #line 30 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
-            
-            #line default
-            #line hidden
-            this.Write(">();\n    foreach (");
+            this.Write("));\n    \n    foreach (");
             
             #line 31 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));

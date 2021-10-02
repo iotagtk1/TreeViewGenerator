@@ -74,3 +74,7 @@ Copy it and use it.
 The UI library for the template is used here
 
 [UI library](https://qiita.com/iota_11/items/cf5ac9c11969ad8b8307)
+
+### Rider Code Format
+
+Menu - Code - codeReFormat
