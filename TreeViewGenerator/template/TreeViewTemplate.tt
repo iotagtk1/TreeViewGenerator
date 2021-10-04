@@ -2,6 +2,11 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Reflection" #>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Gtk;
+using UI = Gtk.Builder.ObjectAttribute;
 namespace <#=ProjectName#><#
    if (SubNameSpace != "")
    {
@@ -9,68 +14,52 @@ namespace <#=ProjectName#><#
    }
 #>
 {
-[UI] private readonly Gtk.TreeView <#=TreeViewName#> = null;
-Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
-private void _mkTreeView_<#=ModelName#>()
-{    
+
+public class cls<#=TreeViewName#>{
+
+    [UI] private readonly Gtk.TreeView <#=TreeViewName#> = null;
+    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
+
+    private void _mkTreeView_<#=ModelName#>()
+    {    
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
 
-    if (ColumnModel1.effective && ColumnModel1.typeFix != "bool"){
+    if (columnModel1.effective && columnModel1.typeFix != "bool"){
 #>
-    Gtk.TreeViewColumn <#=ColumnModel1.title#>Column = new Gtk.TreeViewColumn ();
-    <#=ColumnModel1.title#>Column.Title = "<#=ColumnModel1.title#>";
-    Gtk.CellRendererText <#=ColumnModel1.title#>Cell = new Gtk.CellRendererText();
-    <#=ColumnModel1.title#>Column.PackStart(<#=ColumnModel1.title#>Cell, true);
+            Gtk.TreeViewColumn <#=columnModel1.title#>Column = new Gtk.TreeViewColumn ();
+            <#=columnModel1.title#>Column.Title = "<#=columnModel1.title#>";
+            Gtk.CellRendererText <#=columnModel1.title#>Cell = new Gtk.CellRendererText();
+            <#=columnModel1.title#>Column.PackStart(<#=columnModel1.title#>Cell, true);
 <#
-    }else if (ColumnModel1.effective && ColumnModel1.typeFix == "bool"){
+    }else if (columnModel1.effective && columnModel1.typeFix == "bool"){
 #>
-    Gtk.TreeViewColumn <#=ColumnModel1.title#>Column = new Gtk.TreeViewColumn ();
-    <#=ColumnModel1.title#>Column.Title = "<#=ColumnModel1.title#>";
-    Gtk.CellRendererToggle <#=ColumnModel1.title#>Cell = new Gtk.CellRendererToggle();
-    <#=ColumnModel1.title#>Column.PackStart(<#=ColumnModel1.title#>Cell, true);
-    <#=ColumnModel1.title#>Cell.Toggled += delegate(object o, ToggledArgs args)
-    {
-        TreeIter iter;
-        if ( <#=ListStoreName#>.GetIterFromString(out iter, args.Path))
-        {
-            <#=ModelName#> <#=ModelName#>1 = (<#=ModelName#>) <#=ListStoreName#>.GetValue(iter, 0);
-            <#=ModelName#>1.<#=ColumnModel1.title#> = <#=ModelName#>1.<#=ColumnModel1.title#> == true ? false : true;
-        }
-    };
+            Gtk.TreeViewColumn <#=columnModel1.title#>Column = new Gtk.TreeViewColumn ();
+            <#=columnModel1.title#>Column.Title = "<#=columnModel1.title#>";
+            Gtk.CellRendererToggle <#=columnModel1.title#>Cell = new Gtk.CellRendererToggle();
+            <#=columnModel1.title#>Column.PackStart(<#=columnModel1.title#>Cell, true);
+            <#=columnModel1.title#>Cell.Toggled += delegate(object o, ToggledArgs args) {
+                TreeIter iter;
+                if ( <#=ListStoreName#>.GetIterFromString(out iter, args.Path))
+                {
+                    <#=ModelName#> <#=ModelName#>1 = (<#=ModelName#>) <#=ListStoreName#>.GetValue(iter, 0);
+                    <#=ModelName#>1.<#=columnModel1.title#> = <#=ModelName#>1.<#=columnModel1.title#> == true ? false : true;
+                }
+            };
 <#
     }
-#>       
+#>  
 <#
 }
 #>
-    List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
-
-    foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
-        <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
-    }
-
-    <#=TreeViewName#>.Model = <#=ListStoreName#>;
-
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
-    {#>
-    <#=TreeViewName#>.AppendColumn(<#=ColumnModel1.title#>Column);
-<#
-    }
-}
-#>
-
-<#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
-{
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
         #>
-    <#=ColumnModel1.title#>Column.SetCellDataFunc (<#=ColumnModel1.title#>Cell, new Gtk.TreeCellDataFunc (Render<#=ColumnModel1.title#>));
+    <#=columnModel1.title#>Column.SetCellDataFunc (<#=columnModel1.title#>Cell, new Gtk.TreeCellDataFunc (Render<#=columnModel1.title#>));
         <#
     }
 }
@@ -78,26 +67,39 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 
 }
 
+        private void _mkTreeViewBinding_<#=ModelName#>()
+        {    
+
+            <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
+
+            List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
+
+            foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
+                <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
+            }
+
+            <#=TreeViewName#>.Model = <#=ListStoreName#>;
+
+        }
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
  #>
-
-    private void Render<#=ColumnModel1.title#>(Gtk.TreeViewColumn column, Gtk.CellRenderer cell, Gtk.ITreeModel model, Gtk.TreeIter iter)
-    {
-        <#=ModelName#> <#=ModelName#>1 = (<#=ModelName#>) model.GetValue (iter, 0);
-        <#if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
+        private void Render<#=columnModel1.title#>(Gtk.TreeViewColumn column, Gtk.CellRenderer cell, Gtk.ITreeModel model, Gtk.TreeIter iter)
+        {
+            <#=ModelName#> <#=ModelName#>1 = (<#=ModelName#>) model.GetValue (iter, 0);
+        <#if (columnModel1.effective && columnModel1.typeFix != "bool")
         {#>
-        (cell as Gtk.CellRendererText).Text = <#=ModelName#>1.<#=ColumnModel1.title#>;
-      <#}
+            (cell as Gtk.CellRendererText).Text = <#=ModelName#>1.<#=columnModel1.title#>;
+      <#
+        }
         #>
-    }
+        }
 <#
-    }
+        }
 }
-#>
-
-    }
+#>   
+  }
 }

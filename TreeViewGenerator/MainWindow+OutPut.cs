@@ -13,17 +13,17 @@ namespace TreeViewGenerator
     {
 	    private void _outPutText()
 	    {
-		    List<ColumnModel> ColumnModelArray_OutPut = new List<ColumnModel>();
+		    List<columnModel> columnModelArray_OutPut = new List<columnModel>();
 
 		    if (ColumnListViewStore != null)
 		    {
 			    ColumnListViewStore.Foreach (delegate (ITreeModel model, TreePath path, TreeIter iter)  {
-				    ColumnModel modelObj = model.GetValue(iter, 0) as ColumnModel;
-				    ColumnModelArray_OutPut.Add(modelObj);
+				    columnModel modelObj = model.GetValue(iter, 0) as columnModel;
+				    columnModelArray_OutPut.Add(modelObj);
 				    return false;
 			    });
 
-			    string outPutText = _getOutPutText(ColumnModelArray_OutPut,
+			    string outPutText = _getOutPutText(columnModelArray_OutPut,
 				    ListStoreEntry.Text,
 				    ModelViewEntry.Text,
 				    SubNameSpaceEntry.Text,
@@ -35,7 +35,7 @@ namespace TreeViewGenerator
 		    }
 	    }
 
-	    private string _getOutPutText(List<ColumnModel> columnModelArray,string listStoreText,string modelText,string subNameText,string treeViewText = "",string comboViewText = "")
+	    private string _getOutPutText(List<columnModel> columnModelArray,string listStoreText,string modelText,string subNameText,string treeViewText = "",string comboViewText = "")
 	    {
 		    string txt = "";
 		    switch (SelectedOutPutType)
@@ -46,7 +46,7 @@ namespace TreeViewGenerator
 					t.TreeViewName = treeViewText;
 					t.ListStoreName = listStoreText;
 					t.SubNameSpace = subNameText;
-					t.ColumnModelArray = columnModelArray;
+					t.columnModelArray = columnModelArray;
 					t.ProjectName = clsArgsConfig.Instance().ProjectName;
 					txt = t.TransformText();
 					break;
@@ -56,7 +56,7 @@ namespace TreeViewGenerator
 				    t2.TreeViewName = treeViewText;
 				    t2.ListStoreName = listStoreText;
 				    t2.SubNameSpace = subNameText;
-				    t2.ColumnModelArray = columnModelArray;
+				    t2.columnModelArray = columnModelArray;
 				    t2.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = t2.TransformText();
 				    break;  
@@ -66,7 +66,7 @@ namespace TreeViewGenerator
 				    c.ComboBoxName = comboViewText;
 				    c.ListStoreName = listStoreText;
 				    c.SubNameSpace = subNameText;
-				    c.ColumnModelArray = columnModelArray;
+				    c.columnModelArray = columnModelArray;
 				    c.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = c.TransformText();
 				    break;
@@ -76,7 +76,7 @@ namespace TreeViewGenerator
 				    c2.ComboBoxName = comboViewText;
 				    c2.ListStoreName = listStoreText;
 				    c2.SubNameSpace = subNameText;
-				    c2.ColumnModelArray = columnModelArray;
+				    c2.columnModelArray = columnModelArray;
 				    c2.ProjectName = clsArgsConfig.Instance().ProjectName;
 				    txt = c2.TransformText();
 				    break;

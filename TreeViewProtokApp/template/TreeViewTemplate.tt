@@ -16,7 +16,7 @@ private void _mkTreeView()
     Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective && ColumnModel1.typeFix == "text"){
 #>
@@ -56,7 +56,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
     <#=TreeViewName#>.Model = <#=ListStoreName#>;
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {#>
@@ -67,7 +67,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 #>
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {
@@ -81,7 +81,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
 }
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {

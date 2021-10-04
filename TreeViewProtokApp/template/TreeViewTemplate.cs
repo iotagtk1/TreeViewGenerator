@@ -91,7 +91,7 @@ namespace TreeViewProtokApp.template
             
             #line 18 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/TreeViewTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective && ColumnModel1.typeFix == "text"){
 
@@ -353,7 +353,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line 58 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/TreeViewTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {
@@ -388,7 +388,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line 69 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/TreeViewTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {
@@ -431,7 +431,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             
             #line 83 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/TreeViewTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective)
     {

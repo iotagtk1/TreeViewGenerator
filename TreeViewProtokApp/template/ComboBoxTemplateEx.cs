@@ -78,9 +78,9 @@ namespace TreeViewProtokApp.template
             #line 16 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/ComboBoxTemplateEx.tt"
 
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 
             
@@ -96,7 +96,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             this.Write("._mkCellRendererText(\"");
             
             #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/ComboBoxTemplateEx.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden

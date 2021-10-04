@@ -3,6 +3,11 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Gtk" #>
 <#@ import namespace="System.Reflection" #>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Gtk;
+using UI = Gtk.Builder.ObjectAttribute;
 namespace <#=ProjectName#><#
    if (SubNameSpace != "")
    {
@@ -11,27 +16,31 @@ namespace <#=ProjectName#><#
 #>
 {
 
-[UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
-ListStore <#=ListStoreName#> = new ListStore(typeof (string));
-private void _mkComboBox_<#=ModelName#>()
-{
-    <#=ComboBoxName#>.Clear();
-    CellRendererText cell = new CellRendererText();
-    <#=ComboBoxName#>.PackStart(cell, false);
-    <#=ComboBoxName#>.AddAttribute(cell, "text", 0);   
+public class cls<#=ComboBoxName#>{
 
-    <#=ComboBoxName#>.Model = <#=ListStoreName#>;
+    [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+    ListStore <#=ListStoreName#> = new ListStore(typeof (string));
+
+    private void _mkComboBox_<#=ModelName#>()
+    {
+        <#=ComboBoxName#>.Clear();
+        CellRendererText cell = new CellRendererText();
+        <#=ComboBoxName#>.PackStart(cell, false);
+        <#=ComboBoxName#>.AddAttribute(cell, "text", 0);   
+
+        <#=ComboBoxName#>.Model = <#=ListStoreName#>;
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 #>
-    <#=ListStoreName#>.AppendValues ("<#=ColumnModel1.title#>");   
+        <#=ListStoreName#>.AppendValues ("<#=columnModel1.title#>");   
 <#
     }
 }
 #>
     }
+  }
 }

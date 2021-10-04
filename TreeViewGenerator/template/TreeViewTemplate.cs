@@ -28,15 +28,15 @@ namespace TreeViewGenerator.template
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("namespace ");
+            this.Write("using System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing Gtk;\nusing UI = Gtk.Builder.ObjectAttribute;\nnamespace ");
             
-            #line 5 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 10 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectName));
             
             #line default
             #line hidden
             
-            #line 5 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 10 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
    if (SubNameSpace != "")
    {
@@ -46,470 +46,463 @@ namespace TreeViewGenerator.template
             #line hidden
             this.Write(".");
             
-            #line 8 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SubNameSpace));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 8 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
    }
 
             
             #line default
             #line hidden
-            this.Write("{\n[UI] private readonly Gtk.TreeView ");
+            this.Write("{\n\npublic class cls");
             
-            #line 12 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 18 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TreeViewName));
             
             #line default
             #line hidden
-            this.Write(" = null;\nGtk.ListStore ");
+            this.Write("{\n\n    [UI] private readonly Gtk.TreeView ");
             
-            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 20 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TreeViewName));
+            
+            #line default
+            #line hidden
+            this.Write(" = null;\n    Gtk.ListStore ");
+            
+            #line 21 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
             this.Write(" = new Gtk.ListStore (typeof (");
             
-            #line 13 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 21 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
-            this.Write("));\nprivate void _mkTreeView_");
-            
-            #line 14 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
-            
-            #line default
-            #line hidden
-            this.Write("()\n{    \n");
-            
-            #line 16 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
-{
-
-    if (ColumnModel1.effective && ColumnModel1.typeFix != "bool"){
-
-            
-            #line default
-            #line hidden
-            this.Write("    Gtk.TreeViewColumn ");
-            
-            #line 22 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
-            
-            #line default
-            #line hidden
-            this.Write("Column = new Gtk.TreeViewColumn ();\n    ");
+            this.Write("));\n\n    private void _mkTreeView_");
             
             #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write("()\n    {    \n");
+            
+            #line 25 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+
+foreach (columnModel columnModel1 in columnModelArray)
+{
+
+    if (columnModel1.effective && columnModel1.typeFix != "bool"){
+
+            
+            #line default
+            #line hidden
+            this.Write("            Gtk.TreeViewColumn ");
+            
+            #line 31 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
+            
+            #line default
+            #line hidden
+            this.Write("Column = new Gtk.TreeViewColumn ();\n            ");
+            
+            #line 32 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write("Column.Title = \"");
             
-            #line 23 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 32 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("\";\n    Gtk.CellRendererText ");
+            this.Write("\";\n            Gtk.CellRendererText ");
             
-            #line 24 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 33 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("Cell = new Gtk.CellRendererText();\n    ");
+            this.Write("Cell = new Gtk.CellRendererText();\n            ");
             
-            #line 25 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 34 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write("Column.PackStart(");
             
-            #line 25 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 34 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write("Cell, true);\n");
             
-            #line 26 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 35 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
-    }else if (ColumnModel1.effective && ColumnModel1.typeFix == "bool"){
+    }else if (columnModel1.effective && columnModel1.typeFix == "bool"){
 
             
             #line default
             #line hidden
-            this.Write("    Gtk.TreeViewColumn ");
+            this.Write("            Gtk.TreeViewColumn ");
             
-            #line 29 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 38 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("Column = new Gtk.TreeViewColumn ();\n    ");
+            this.Write("Column = new Gtk.TreeViewColumn ();\n            ");
             
-            #line 30 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write("Column.Title = \"");
             
-            #line 30 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("\";\n    Gtk.CellRendererToggle ");
+            this.Write("\";\n            Gtk.CellRendererToggle ");
             
-            #line 31 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 40 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("Cell = new Gtk.CellRendererToggle();\n    ");
+            this.Write("Cell = new Gtk.CellRendererToggle();\n            ");
             
-            #line 32 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 41 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write("Column.PackStart(");
             
-            #line 32 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 41 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("Cell, true);\n    ");
+            this.Write("Cell, true);\n            ");
             
-            #line 33 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 42 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("Cell.Toggled += delegate(object o, ToggledArgs args)\n    {\n        TreeIter iter;\n        if ( ");
+            this.Write("Cell.Toggled += delegate(object o, ToggledArgs args) {\n                TreeIter iter;\n                if ( ");
             
-            #line 36 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 44 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
-            this.Write(".GetIterFromString(out iter, args.Path))\n        {\n            ");
+            this.Write(".GetIterFromString(out iter, args.Path))\n                {\n                    ");
             
-            #line 38 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 46 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 38 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 46 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1 = (");
             
-            #line 38 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 46 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write(") ");
             
-            #line 38 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 46 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
-            this.Write(".GetValue(iter, 0);\n            ");
+            this.Write(".GetValue(iter, 0);\n                    ");
             
-            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 47 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1.");
             
-            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 47 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 47 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1.");
             
-            #line 39 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 47 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write(" == true ? false : true;\n        }\n    };\n");
+            this.Write(" == true ? false : true;\n                }\n            };\n");
             
-            #line 42 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 50 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
     }
 
             
             #line default
             #line hidden
-            this.Write("       \n");
+            this.Write("  \n");
             
-            #line 45 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 53 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
 }
 
             
             #line default
             #line hidden
-            this.Write("    List<");
             
-            #line 48 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 56 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+
+foreach (columnModel columnModel1 in columnModelArray)
+{
+    if (columnModel1.effective)
+    {
+        
+            
+            #line default
+            #line hidden
+            this.Write("    ");
+            
+            #line 62 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
+            
+            #line default
+            #line hidden
+            this.Write("Column.SetCellDataFunc (");
+            
+            #line 62 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
+            
+            #line default
+            #line hidden
+            this.Write("Cell, new Gtk.TreeCellDataFunc (Render");
+            
+            #line 62 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
+            
+            #line default
+            #line hidden
+            this.Write("));\n        ");
+            
+            #line 63 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+
+    }
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("\n}\n\n        private void _mkTreeViewBinding_");
+            
+            #line 70 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write("()\n        {    \n\n            ");
+            
+            #line 73 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
+            
+            #line default
+            #line hidden
+            this.Write(" = new Gtk.ListStore (typeof (");
+            
+            #line 73 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
+            
+            #line default
+            #line hidden
+            this.Write("));\n\n            List<");
+            
+            #line 75 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 48 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 75 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("Array = new List<");
             
-            #line 48 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 75 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
-            this.Write(">();\n\n    foreach (");
+            this.Write(">();\n\n            foreach (");
             
-            #line 50 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 77 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 50 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 77 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1 in ");
             
-            #line 50 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 77 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
-            this.Write("Array) {\n        ");
+            this.Write("Array) {\n                ");
             
-            #line 51 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 78 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
             this.Write(".AppendValues (");
             
-            #line 51 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 78 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
-            this.Write("1);\n    }\n\n    ");
+            this.Write("1);\n            }\n\n            ");
             
-            #line 54 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 81 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TreeViewName));
             
             #line default
             #line hidden
             this.Write(".Model = ");
             
-            #line 54 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 81 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
             
             #line default
             #line hidden
-            this.Write(";\n\n");
+            this.Write(";\n\n        }\n");
             
-            #line 56 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 84 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
-    {
-            
-            #line default
-            #line hidden
-            this.Write("    ");
-            
-            #line 61 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TreeViewName));
-            
-            #line default
-            #line hidden
-            this.Write(".AppendColumn(");
-            
-            #line 61 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
-            
-            #line default
-            #line hidden
-            this.Write("Column);\n");
-            
-            #line 62 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-
-    }
-}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n");
-            
-            #line 67 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
-{
-    if (ColumnModel1.effective)
-    {
-        
-            
-            #line default
-            #line hidden
-            this.Write("    ");
-            
-            #line 73 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
-            
-            #line default
-            #line hidden
-            this.Write("Column.SetCellDataFunc (");
-            
-            #line 73 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
-            
-            #line default
-            #line hidden
-            this.Write("Cell, new Gtk.TreeCellDataFunc (Render");
-            
-            #line 73 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
-            
-            #line default
-            #line hidden
-            this.Write("));\n        ");
-            
-            #line 74 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-
-    }
-}
-
-            
-            #line default
-            #line hidden
-            this.Write("\n}\n\n");
-            
-            #line 81 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
-{
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
  
             
             #line default
             #line hidden
-            this.Write("\n    private void Render");
+            this.Write("        private void Render");
             
-            #line 88 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 90 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
-            this.Write("(Gtk.TreeViewColumn column, Gtk.CellRenderer cell, Gtk.ITreeModel model, Gtk.TreeIter iter)\n    {\n        ");
+            this.Write("(Gtk.TreeViewColumn column, Gtk.CellRenderer cell, Gtk.ITreeModel model, Gtk.TreeIter iter)\n        {\n            ");
             
-            #line 90 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 92 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 90 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 92 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1 = (");
             
-            #line 90 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 92 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write(") model.GetValue (iter, 0);\n        ");
             
-            #line 91 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-if (ColumnModel1.effective && ColumnModel1.typeFix != "bool")
+            #line 93 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+if (columnModel1.effective && columnModel1.typeFix != "bool")
         {
             
             #line default
             #line hidden
-            this.Write("        (cell as Gtk.CellRendererText).Text = ");
+            this.Write("            (cell as Gtk.CellRendererText).Text = ");
             
-            #line 93 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 95 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
             
             #line default
             #line hidden
             this.Write("1.");
             
-            #line 93 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            #line 95 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
             this.Write(";\n      ");
             
-            #line 94 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
-}
+            #line 96 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+
+        }
         
             
             #line default
             #line hidden
-            this.Write("    }\n");
+            this.Write("        }\n");
             
-            #line 97 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
+            #line 100 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplate.tt"
 
-    }
+        }
 }
 
             
             #line default
             #line hidden
-            this.Write("\n    }\n}");
+            this.Write("   \n  }\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

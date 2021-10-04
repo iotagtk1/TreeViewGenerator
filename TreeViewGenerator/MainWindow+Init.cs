@@ -39,30 +39,30 @@ namespace TreeViewGenerator
 		    customCheckBtn.Active = Convert.ToBoolean(clsIniFile.singlton["config", "customCheckBtn_customTemplate"]) ? true : false;
 
 	    }
-	    private void _initTextFiled(){
+	    private void _initTextFiled(string SelectedDbTableKey_t){
 
-		    if (clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"] != "")
+		    if (clsIniFile.singlton[SelectedDbTableKey_t, "TreeViewEntry"] != "")
 		    {
-			    TreeViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"];
+			    TreeViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey_t, "TreeViewEntry"];
 		    }
 
-		    if (clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] != "")
+		    if (clsIniFile.singlton[SelectedDbTableKey_t, "ComboViewEntry"] != "")
 		    {
-			    ComboViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"];
+			    ComboViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey_t, "ComboViewEntry"];
 		    }
 
-		    if (clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] != "")
+		    if (clsIniFile.singlton[SelectedDbTableKey_t, "ListStoreEntry"] != "")
 		    {
-			    ListStoreEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"];
+			    ListStoreEntry.Text = clsIniFile.singlton[SelectedDbTableKey_t, "ListStoreEntry"];
 		    }
 
-		    if (clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] != "")
+		    if (clsIniFile.singlton[SelectedDbTableKey_t, "ModelViewEntry"] != "")
 		    {
-			    ModelViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"];
+			    ModelViewEntry.Text = clsIniFile.singlton[SelectedDbTableKey_t, "ModelViewEntry"];
 		    }
-		    if (clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] != "")
+		    if (clsIniFile.singlton[SelectedDbTableKey_t, "SubNameSpaceEntry"] != "")
 		    {
-			    SubNameSpaceEntry.Text = clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"];
+			    SubNameSpaceEntry.Text = clsIniFile.singlton[SelectedDbTableKey_t, "SubNameSpaceEntry"];
 		    }
 
 	    }

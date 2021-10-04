@@ -144,7 +144,6 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">SubNameSpace1</property>
             <signal name="changed" handler="on_SubNameSpaceEntry_changed" swapped="no"/>
           </object>
           <packing>

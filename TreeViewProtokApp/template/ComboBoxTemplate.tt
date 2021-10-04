@@ -25,12 +25,12 @@ private void _mkComboBox()
     <#=ComboBoxName#>.Model = <#=ListStoreName#>;
 
 <#
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 #>
-    <#=ListStoreName#>.AppendValues ("<#=ColumnModel1.title#>");   
+    <#=ListStoreName#>.AppendValues ("<#=columnModel1.title#>");   
 <#
     }
 }

@@ -29,8 +29,8 @@ namespace TreeViewGenerator
 			    TreeIter iter;
 			    if (ColumnListViewStore.GetIterFromString(out iter, args.Path))
 			    {
-				   ColumnModel ColumnModel1 = (ColumnModel)ColumnListViewStore.GetValue(iter, 0);
-				   ColumnModel1.effective = ColumnModel1.effective == true ? false : true;
+				   columnModel columnModel1 = (columnModel)ColumnListViewStore.GetValue(iter, 0);
+				   columnModel1.effective = columnModel1.effective == true ? false : true;
 				   _saveAll();
 				   _outPutText();
 			    }
@@ -51,39 +51,39 @@ namespace TreeViewGenerator
 			    return;
 		    }
 
-		    List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+		    List<columnModel> columnModelArray = new List<columnModel>();
 		    ColumnListViewStore.Foreach((model, path, iter) =>{
-			    ColumnModel testModel1 = model.GetValue(iter, 0) as ColumnModel;    
-			    ColumnModelArray.Add(testModel1);
+			    columnModel testModel1 = model.GetValue(iter, 0) as columnModel;    
+			    columnModelArray.Add(testModel1);
 			    return false;
 		    });
 		    
 		    if (dataColumnDic.ContainsKey(SelectedDbTableKey))
 		    {
-			    dataColumnDic[SelectedDbTableKey] = ColumnModelArray;
+			    dataColumnDic[SelectedDbTableKey] = columnModelArray;
 		    }
 		    else
 		    {
-			    dataColumnDic.Add(SelectedDbTableKey,ColumnModelArray);
+			    dataColumnDic.Add(SelectedDbTableKey,columnModelArray);
 		    }
 
 		    if (dataColumnDic != null)
 		    {
-			    clsFile._saveJsonData<Dictionary<string, List<ColumnModel>>>(saveDataFilePath, dataColumnDic);
+			    clsFile._saveJsonData<Dictionary<string, List<columnModel>>>(saveDataFilePath, dataColumnDic);
 		    }
 
 	    }
 
-	    private Dictionary<string, List<ColumnModel>> dataColumnDic = null;
+	    private Dictionary<string, List<columnModel>> dataColumnDic = null;
 
 	    /// <summary>
 	    /// TableSelect
 	    /// </summary>
 	    /// <param name="TableViewModel1"></param>
-	    private void _mkColumnTalbeSelect(TableViewModel TableViewModel1)
+	    private void _mkColumnTalbeSelect(tableViewModel tableViewModel1)
 	    {
 
-		    if (TableViewModel1 == null || TableViewModel1.title == "")
+		    if (tableViewModel1 == null || tableViewModel1.title == "")
 		    {
 			    columnView.Model = null;
 			    return;
@@ -95,45 +95,45 @@ namespace TreeViewGenerator
 			    return;
 		    }
 
-		    ColumnListViewStore = new Gtk.ListStore (typeof (ColumnModel));
+		    ColumnListViewStore = new Gtk.ListStore (typeof (columnModel));
 
-		    string sql = "PRAGMA table_info('" + TableViewModel1.title  +"');";
+		    string sql = "PRAGMA table_info('" + tableViewModel1.title  +"');";
 		    DataTable columnDb = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});
 
 		    //確定
 		    if (columnDb != null && columnDb.Rows.Count > 0)
 		    {
-			    dataColumnDic = clsFile._getJsonData<Dictionary<string, List<ColumnModel>>>(saveDataFilePath);
+			    dataColumnDic = clsFile._getJsonData<Dictionary<string, List<columnModel>>>(saveDataFilePath);
 
 			    if (dataColumnDic == null)
 			    {
-				    dataColumnDic = new Dictionary<string, List<ColumnModel>>();
+				    dataColumnDic = new Dictionary<string, List<columnModel>>();
 			    }
 			   
-			    List<ColumnModel> ColumnModel_OldArray = new List<ColumnModel>();
+			    List<columnModel> columnModel_OldArray = new List<columnModel>();
 			    if (dataColumnDic != null && dataColumnDic.ContainsKey(SelectedDbTableKey) && dataColumnDic[SelectedDbTableKey] != null)
 			    {
-				    ColumnModel_OldArray = dataColumnDic[SelectedDbTableKey];
+				    columnModel_OldArray = dataColumnDic[SelectedDbTableKey];
 			    }
 			    
 			    foreach (DataRow dr in columnDb.Rows)
 			    {
-				    ColumnModel ColumnModel1 = new ColumnModel();
-				    ColumnModel1.title = dr["name"].ToString();
-				    ColumnModel1.type = dr["type"].ToString();
-				    ColumnModel1.typeFix = _getNewKata(dr["type"].ToString()).ToLower();
-				    ColumnModel1.effective = true;
+				    columnModel columnModel1 = new columnModel();
+				    columnModel1.title = dr["name"].ToString();
+				    columnModel1.type = dr["type"].ToString();
+				    columnModel1.typeFix = _getNewKata(dr["type"].ToString()).ToLower();
+				    columnModel1.effective = true;
 				    
-				    foreach (ColumnModel ColumnModel_old in ColumnModel_OldArray)
+				    foreach (columnModel columnModel_old in columnModel_OldArray)
 				    {
-					    if (ColumnModel_old.title == ColumnModel1.title)
+					    if (columnModel_old.title == columnModel1.title)
 					    {
-						    ColumnModel1.effective = ColumnModel_old.effective;
+						    columnModel1.effective = columnModel_old.effective;
 						    break;
 					    }
 				    }
 				    
-				    ColumnListViewStore.AppendValues (ColumnModel1);
+				    ColumnListViewStore.AppendValues (columnModel1);
 			    }
 
 			    columnView.Model = ColumnListViewStore;

@@ -18,32 +18,29 @@ namespace TreeViewGenerator
 	    /// <summary>
 	    /// Modelの名前ヒントを追加する
 	    /// </summary>
-	    /// <param name="TableViewModel1"></param>
-	    private void _setModelNameHint(TableViewModel TableViewModel1){
+	    /// <param name="tableViewModel1"></param>
+	    private void _setModelNameHint(tableViewModel tableViewModel1){
 
 		    if (clsIniFile.singlton[SelectedDbTableKey, "TreeViewEntry"] == "")
 		    {
-			    TreeViewEntry.Text = TableViewModel1.title + "TreeView";
+			    TreeViewEntry.Text = tableViewModel1.title + "TreeView";
 		    }
 
 		    if (clsIniFile.singlton[SelectedDbTableKey, "ComboViewEntry"] == "")
 		    {
-			    ComboViewEntry.Text = TableViewModel1.title + "ComboView";
+			    ComboViewEntry.Text = tableViewModel1.title + "ComboView";
 		    }
 
 		    if (clsIniFile.singlton[SelectedDbTableKey, "ListStoreEntry"] == "")
 		    {
-			    ListStoreEntry.Text = TableViewModel1.title + "ListStore";
+			    ListStoreEntry.Text = tableViewModel1.title + "ListStore";
 		    }
 
 		    if (clsIniFile.singlton[SelectedDbTableKey, "ModelViewEntry"] == "")
 		    {
-			    ModelViewEntry.Text = TableViewModel1.title ;
+			    ModelViewEntry.Text = tableViewModel1.title ;
 		    }
-		    if (clsIniFile.singlton[SelectedDbTableKey, "SubNameSpaceEntry"] == "")
-		    {
-			    SubNameSpaceEntry.Text = TableViewModel1.title;
-		    }
+		    
 
 	    }
 
@@ -77,12 +74,12 @@ namespace TreeViewGenerator
 	    /// <returns></returns>
 	    private string _getDbKey()
 	    {
-		    if (SelectedDataBaseRow == null || ((DbModel)SelectedDataBaseRow).dbPath == "")
+		    if (SelectedDataBaseRow == null || ((dbModel)SelectedDataBaseRow).dbPath == "")
 		    {
 			    return "";
 		    } 
 		    
-		    string dbPathKey = ((DbModel)SelectedDataBaseRow).dbPath._md5();
+		    string dbPathKey = ((dbModel)SelectedDataBaseRow).dbPath._md5();
 		    
 		    return dbPathKey ;
 	    }
@@ -95,13 +92,13 @@ namespace TreeViewGenerator
 	    {
 		    if (SelectedDataBaseRow == null || 
 		        SelectedTableViewRow == null || 
-		        ((DbModel)SelectedDataBaseRow).dbPath == "" || ((TableViewModel)SelectedTableViewRow).title == "")
+		        ((dbModel)SelectedDataBaseRow).dbPath == "" || ((tableViewModel)SelectedTableViewRow).title == "")
 		    {
 			    return "";
 		    } 
 		    
-		    string dbPathKey = ((DbModel)SelectedDataBaseRow).dbPath._md5();
-		    string titleKey = ((TableViewModel)SelectedTableViewRow).title._md5();
+		    string dbPathKey = ((dbModel)SelectedDataBaseRow).dbPath._md5();
+		    string titleKey = ((tableViewModel)SelectedTableViewRow).title._md5();
 		    
 		    return dbPathKey + titleKey;
 	    }

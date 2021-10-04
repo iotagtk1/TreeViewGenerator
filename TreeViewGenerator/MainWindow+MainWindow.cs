@@ -10,9 +10,9 @@ namespace TreeViewGenerator
 	partial class MainWindow
 	{
 		
-		DbModel SelectedDataBaseRow;
-		TableViewModel SelectedTableViewRow;
-		ColumnModel SelectedColumnViewRow;
+		dbModel SelectedDataBaseRow;
+		tableViewModel SelectedTableViewRow;
+		columnModel SelectedColumnViewRow;
 		OutPutType SelectedOutPutType;
 
 		/// <summary>
@@ -27,7 +27,7 @@ namespace TreeViewGenerator
 			ITreeModel model;
 			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
-				SelectedDataBaseRow = (DbModel)DbListViewStore.GetValue(iter, 0);
+				SelectedDataBaseRow = (dbModel)DbListViewStore.GetValue(iter, 0);
 				
 				_mkTalbeSelect(SelectedDataBaseRow);
 			}
@@ -46,13 +46,13 @@ namespace TreeViewGenerator
 			ITreeModel model;
 			if (((Gtk.TreeSelection)sender).GetSelected(out model,out iter))
 			{
-				SelectedTableViewRow = (TableViewModel)TableListViewStore.GetValue(iter, 0);
+				SelectedTableViewRow = (tableViewModel)TableListViewStore.GetValue(iter, 0);
 				
 				SelectedDbTableKey = _getDbTableKey();
 				
 				_setModelNameHint(SelectedTableViewRow);
 
-				_initTextFiled();
+				_initTextFiled(SelectedDbTableKey);
 
 				_mkColumnTalbeSelect(SelectedTableViewRow);
 
@@ -74,8 +74,8 @@ namespace TreeViewGenerator
 			ITreeModel model;
 			if (((Gtk.TreeSelection)sender).GetSelected(out model, out iter))
 			{
-				SelectedColumnViewRow  = (ColumnModel)ColumnListViewStore.GetValue(iter, 0);
-				((ColumnModel)SelectedColumnViewRow).effective = ((ColumnModel)SelectedColumnViewRow).effective == true ? false : true;
+				SelectedColumnViewRow  = (columnModel)ColumnListViewStore.GetValue(iter, 0);
+				((columnModel)SelectedColumnViewRow).effective = ((columnModel)SelectedColumnViewRow).effective == true ? false : true;
 				_saveAll();
 				_outPutText();
 

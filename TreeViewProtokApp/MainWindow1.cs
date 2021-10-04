@@ -69,24 +69,24 @@ namespace TreeViewProtokApp
 
         public MainWindow1() : this(new Builder("MainWindow1.glade"))
         {
-            List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+            List<columnModel> columnModelArray = new List<columnModel>();
             
-            ColumnModel ColumnModel1 = new ColumnModel();
-            ColumnModel1.title = "artist";
-            ColumnModel1.effective = true;
-            ColumnModelArray.Add(ColumnModel1);
+            columnModel columnModel1 = new columnModel();
+            columnModel1.title = "artist";
+            columnModel1.effective = true;
+            columnModelArray.Add(columnModel1);
 
-            ColumnModel ColumnModel2 = new ColumnModel();
-            ColumnModel2.title = "SongName";
-            ColumnModel2.effective = true;
-            ColumnModelArray.Add(ColumnModel2);
+            columnModel columnModel2 = new columnModel();
+            columnModel2.title = "SongName";
+            columnModel2.effective = true;
+            columnModelArray.Add(columnModel2);
 
             TreeViewTemplate TreeViewTemplate1 = new TreeViewTemplate();
-            TreeViewTemplate1.ColumnModelArray = ColumnModelArray;
+            TreeViewTemplate1.columnModelArray = columnModelArray;
             var b = TreeViewTemplate1.TransformText();
 
             ComboBoxTemplate ComboBoxTemplate1 = new ComboBoxTemplate();
-            ComboBoxTemplate1.ColumnModelArray = ColumnModelArray;
+            ComboBoxTemplate1.columnModelArray = columnModelArray;
             var c = ComboBoxTemplate1.TransformText();
 
            _mkTreeView();
@@ -94,11 +94,11 @@ namespace TreeViewProtokApp
            _mkComboBox();
            
            TreeViewTemplateEx TreeViewTemplateEx1 = new TreeViewTemplateEx();
-           TreeViewTemplateEx1.ColumnModelArray = ColumnModelArray;
+           TreeViewTemplateEx1.columnModelArray = columnModelArray;
            var b2 = TreeViewTemplateEx1.TransformText();
 
            ComboBoxTemplateEx ComboBoxTemplateEx1 = new ComboBoxTemplateEx();
-           ComboBoxTemplateEx1.ColumnModelArray = ColumnModelArray;
+           ComboBoxTemplateEx1.columnModelArray = columnModelArray;
            var c2 = ComboBoxTemplateEx1.TransformText();
            
            Console.WriteLine(c2);

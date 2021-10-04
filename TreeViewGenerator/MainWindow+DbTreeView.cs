@@ -46,11 +46,11 @@ namespace TreeViewGenerator
 	    private void _mkSelect(ArrayList fileList)
 	    {
 		    
-		    DbListViewStore = new Gtk.ListStore (typeof (DbModel));
+		    DbListViewStore = new Gtk.ListStore (typeof (dbModel));
 		    
 		    foreach (String dbPath in fileList)
 		    {
-			    DbModel dbModel = new DbModel();
+			    dbModel dbModel = new dbModel();
 			    dbModel.title = clsPath._getFileNameNoExtension(dbPath);
 			    dbModel.dbPath = dbPath;
 			    DbListViewStore.AppendValues (dbModel);

@@ -209,10 +209,12 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="vscroll_policy">natural</property>
+                <property name="wrap_mode">word</property>
                 <property name="left_margin">3</property>
                 <property name="right_margin">3</property>
                 <property name="top_margin">3</property>
                 <property name="bottom_margin">3</property>
+                <property name="indent">10</property>
                 <property name="overwrite">True</property>
               </object>
             </child>

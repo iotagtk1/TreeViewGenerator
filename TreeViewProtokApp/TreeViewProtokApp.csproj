@@ -56,17 +56,17 @@
         <DesignTime>True</DesignTime>
         <DependentUpon>ComboBoxTemplateEx.tt</DependentUpon>
       </Compile>
-      <Compile Remove="ColumnModel.cs" />
+      <Compile Remove="columnModel.cs" />
       <Compile Remove="DbModel.cs" />
       <Compile Remove="TableViewModel.cs" />
-      <Compile Include="..\TreeViewGenerator\DbModel\ColumnModel.cs">
-        <Link>DbModel\ColumnModel.cs</Link>
+      <Compile Include="..\TreeViewGenerator\DbModel\columnModel.cs">
+        <Link>DbModel\columnModel.cs</Link>
       </Compile>
-      <Compile Include="..\TreeViewGenerator\DbModel\DbModel.cs">
-        <Link>DbModel\DbModel.cs</Link>
+      <Compile Include="..\TreeViewGenerator\DbModel\dbModel.cs">
+        <Link>DbModel\dbModel.cs</Link>
       </Compile>
-      <Compile Include="..\TreeViewGenerator\DbModel\TableViewModel.cs">
-        <Link>DbModel\TableViewModel.cs</Link>
+      <Compile Include="..\TreeViewGenerator\DbModel\tableViewModel.cs">
+        <Link>DbModel\tableViewModel.cs</Link>
       </Compile>
     </ItemGroup>
 

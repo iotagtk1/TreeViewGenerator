@@ -4,7 +4,7 @@ namespace TreeViewProtokApp.template
 {
     partial class TreeViewTemplate
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "treeView1";
         
@@ -21,7 +21,7 @@ namespace TreeViewProtokApp.template
     }
     partial class ComboBoxTemplate
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
         
         public string TreeViewName = "";
 
@@ -39,7 +39,7 @@ namespace TreeViewProtokApp.template
     
     partial class TreeViewTemplateEx
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "treeView1";
         
@@ -56,7 +56,7 @@ namespace TreeViewProtokApp.template
     }
     partial class ComboBoxTemplateEx
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "";
         
@@ -79,7 +79,7 @@ namespace TreeViewGenerator.template
 
     partial class TreeViewTemplate 
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "treeView1";
         
@@ -96,7 +96,7 @@ namespace TreeViewGenerator.template
     }
     partial class ComboBoxTemplate
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "";
         
@@ -114,7 +114,7 @@ namespace TreeViewGenerator.template
 
     partial class TreeViewTemplateEx 
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
 
         public string TreeViewName = "treeView1";
         
@@ -131,7 +131,7 @@ namespace TreeViewGenerator.template
     }
     partial class ComboBoxTemplateEx 
     {
-        public List<ColumnModel> ColumnModelArray = new List<ColumnModel>();
+        public List<columnModel> columnModelArray = new List<columnModel>();
         
         public string TreeViewName = "";
 

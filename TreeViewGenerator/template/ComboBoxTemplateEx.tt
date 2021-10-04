@@ -2,6 +2,11 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Reflection" #>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Gtk;
+using UI = Gtk.Builder.ObjectAttribute;
 namespace <#=ProjectName#><#
    if (SubNameSpace != "")
    {
@@ -9,33 +14,42 @@ namespace <#=ProjectName#><#
    }
 #>
 {
-[UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
-List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
-private void _mkComboBox_<#=ModelName#>()
-{
+
+public class cls<#=ComboBoxName#>{
+
+    [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
+
+    private void _mkComboBox_<#=ModelName#>()
+    {
 <#
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 #>
-    <#=ComboBoxName#>._mkCellRendererText("<#=ColumnModel1.title#>");   
+            <#=ComboBoxName#>._mkCellRendererText("<#=columnModel1.title#>");   
 <#
     }
 }
-#>
-
-    Gtk.ListStore <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
-    
-    foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
-        <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
+#> 
     }
 
-    <#=ComboBoxName#>._mkBinding();
+        private void _mkComboBoxBinding_<#=ModelName#>()
+        {
+            <#=ListStoreName#> = new Gtk.ListStore (typeof (<#=ModelName#>));
 
-    <#=ComboBoxName#>.Model = <#=ListStoreName#>;
+            List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
+        
+        foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
+            <#=ListStoreName#>.AppendValues (<#=ModelName#>1);
+        }
 
+            <#=ComboBoxName#>._mkBinding();
+
+            <#=ComboBoxName#>.Model = <#=ListStoreName#>;
+
+        }
     }
-
 }

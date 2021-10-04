@@ -91,7 +91,7 @@ namespace TreeViewProtokApp.template
             
             #line 19 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/TreeViewTemplateEx.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel ColumnModel1 in columnModelArray)
 {
     if (ColumnModel1.effective && ColumnModel1.typeFix == "text")
     {

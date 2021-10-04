@@ -25,7 +25,7 @@ namespace TreeViewGenerator
 		    
 	    }
 
-	    private void _mkTalbeSelect(DbModel dbModel1)
+	    private void _mkTalbeSelect(dbModel dbModel1)
 	    {
 		    
 		    SelectedDbTableKey = "";
@@ -33,7 +33,7 @@ namespace TreeViewGenerator
 		    clsSqliteM._remove();
 		    clsSqliteM._sharedObject(dbModel1.dbPath);
 
-		    TableListViewStore = new Gtk.ListStore (typeof (TableViewModel));
+		    TableListViewStore = new Gtk.ListStore (typeof (tableViewModel));
 
 		    string sql = "select name from sqlite_master where type='table';";
 		    DataTable db = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name"});
@@ -42,9 +42,9 @@ namespace TreeViewGenerator
 		    {
 			    foreach (DataRow dr in db.Rows)
 			    {
-				    TableViewModel TableViewModel1 = new TableViewModel();
-				    TableViewModel1.title = dr["name"].ToString();
-				    TableListViewStore.AppendValues (TableViewModel1);
+				    tableViewModel tableViewModel1 = new tableViewModel();
+				    tableViewModel1.title = dr["name"].ToString();
+				    TableListViewStore.AppendValues (tableViewModel1);
 			    }
 			    tableView.Model = TableListViewStore;
 		    }

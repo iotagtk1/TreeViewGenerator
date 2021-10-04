@@ -27,11 +27,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="DbModel\dbModel.cs" />
       <Compile Include="..\TreeViewProtokApp\template\clsTreeViewTemplate.cs">
         <Link>template\clsTreeViewTemplate.cs</Link>
       </Compile>
-      <Compile Include="DbModel\DbModel.cs" />
       <Compile Remove="Template\TreeViewTemplate.cs" />
       <Compile Remove="Template\**" />
       <Compile Remove="clsTreeViewTemplate.cs" />

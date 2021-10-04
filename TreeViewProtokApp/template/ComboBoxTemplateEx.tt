@@ -15,12 +15,12 @@ private void _mkComboBox()
 {
 <#
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 #>
-    <#=ComboBoxName#>._mkCellRendererText("<#=ColumnModel1.title#>");   
+    <#=ComboBoxName#>._mkCellRendererText("<#=columnModel1.title#>");   
 <#
     }
 }

@@ -120,9 +120,9 @@ namespace TreeViewProtokApp.template
             
             #line 27 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/ComboBoxTemplate.tt"
 
-foreach (ColumnModel ColumnModel1 in ColumnModelArray)
+foreach (columnModel columnModel1 in columnModelArray)
 {
-    if (ColumnModel1.effective)
+    if (columnModel1.effective)
     {
 
             
@@ -138,7 +138,7 @@ foreach (ColumnModel ColumnModel1 in ColumnModelArray)
             this.Write(".AppendValues (\"");
             
             #line 33 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewProtokApp/template/ComboBoxTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ColumnModel1.title));
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnModel1.title));
             
             #line default
             #line hidden
