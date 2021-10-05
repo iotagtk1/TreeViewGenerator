@@ -123,6 +123,27 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="..\README.md">
+        <Link>README.md</Link>
+      </Content>
+      <Content Include="..\readMe\1.png">
+        <Link>readMe\1.png</Link>
+      </Content>
+      <Content Include="..\readMe\2.png">
+        <Link>readMe\2.png</Link>
+      </Content>
+      <Content Include="..\readMe\3.png">
+        <Link>readMe\3.png</Link>
+      </Content>
+      <Content Include="..\readMe\5.png">
+        <Link>readMe\5.png</Link>
+      </Content>
+      <Content Include="..\readMe\6.png">
+        <Link>readMe\6.png</Link>
+      </Content>
+      <Content Include="..\readMe\7.png">
+        <Link>readMe\7.png</Link>
+      </Content>
       <Content Include="template\ComboBoxTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>ComboBoxTemplate.cs</LastGenOutput>
