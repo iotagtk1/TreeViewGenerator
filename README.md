@@ -3,24 +3,6 @@
 ### Explanation
 
 Generate TreeView ComboView program statement from Sqlite table structure
-### Environment
-.net5
-
-Rider
-
-GtkSharp
-
-Dapper
-
-Dapper Extensions
-
-Microsoft.Data.Sqlite.Core
-
-System.CodeDom
-
-INIFileParserDotNetCore
-
-SQLitePCLRaw.bundle_green
 
 ### Sqlite Setting
 
@@ -78,3 +60,23 @@ The UI library for the template is used here
 ### Rider Code Format
 
 Menu - Code - codeReFormat
+
+### Environment
+.net5
+
+Rider
+
+GtkSharp
+
+Dapper
+
+Dapper Extensions
+
+Microsoft.Data.Sqlite.Core
+
+System.CodeDom
+
+INIFileParserDotNetCore
+
+SQLitePCLRaw.bundle_green
+
