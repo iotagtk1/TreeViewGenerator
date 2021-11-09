@@ -80,3 +80,9 @@ INIFileParserDotNetCore
 
 SQLitePCLRaw.bundle_green
 
+#### Use Rider for Free
+
+If you are an open source developer, you can use all JetBrains products for free!
+
+https://www.jetbrains.com/community/opensource
+
