@@ -20,7 +20,9 @@
 
     <ItemGroup>
         <PackageReference Include="Dapper" Version="2.0.90" />
+        <PackageReference Include="DapperExtensions" Version="1.7.0" />
         <PackageReference Include="GtkSharp" Version="3.24.24.*" />
+        <PackageReference Include="INIFileParserDotNetCore" Version="2.5.2" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.10" />
         <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.6" />
         <PackageReference Include="System.CodeDom" Version="5.0.0" />
@@ -168,10 +170,6 @@
 
     <ItemGroup>
       <Folder Include="readMe" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\core_commonclasses\DB\Dapper-Extensions-master\DapperExtensions\DapperExtensions.csproj" />
     </ItemGroup>
 
 </Project>
