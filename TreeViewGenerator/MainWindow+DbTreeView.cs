@@ -13,13 +13,16 @@ namespace TreeViewGenerator
 
 		    ArrayList filesArray = new ArrayList();
             
-		    if (clsFile._isFile(fileFolderPath) && fileFolderPath._indexOf(".db3") != -1)
+		    if (clsFile._isFile(fileFolderPath) && (fileFolderPath._indexOf(".db3") != -1 || fileFolderPath._indexOf(".db") != -1))
 		    {
 			    filesArray.Add(fileFolderPath);
  
 		    }else if (clsFolder._isFolder(fileFolderPath))
 		    {
-			    filesArray = clsFile._getFileList(fileFolderPath, ".db3", null, isAllDir: true);
+			    ArrayList filesArray1 = clsFile._getFileList(fileFolderPath, ".db", null, isAllDir: true);
+			    ArrayList filesArray2 = clsFile._getFileList(fileFolderPath, ".db3", null, isAllDir: true);
+			    filesArray.AddRange(filesArray1);
+			    filesArray.AddRange(filesArray2);	    
 		    }
 
 		    if (filesArray.Count == 0)
