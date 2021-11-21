@@ -13,7 +13,7 @@ namespace TreeViewGenerator
 
 		    ArrayList filesArray = new ArrayList();
             
-		    if (clsFile._isFile(fileFolderPath) && (fileFolderPath._indexOf(".db3") != -1 || fileFolderPath._indexOf(".db") != -1))
+		    if (clsFile._isFile(fileFolderPath) && (fileFolderPath._indexOf(".db") != -1 || fileFolderPath._indexOf(".sqlite") != -1))
 		    {
 			    filesArray.Add(fileFolderPath);
  
@@ -21,8 +21,10 @@ namespace TreeViewGenerator
 		    {
 			    ArrayList filesArray1 = clsFile._getFileList(fileFolderPath, ".db", null, isAllDir: true);
 			    ArrayList filesArray2 = clsFile._getFileList(fileFolderPath, ".db3", null, isAllDir: true);
+			    ArrayList filesArray3 = clsFile._getFileList(fileFolderPath, ".sqlite", null, isAllDir: true);
 			    filesArray.AddRange(filesArray1);
-			    filesArray.AddRange(filesArray2);	    
+			    filesArray.AddRange(filesArray2);  
+			    filesArray.AddRange(filesArray3);   
 		    }
 
 		    if (filesArray.Count == 0)
