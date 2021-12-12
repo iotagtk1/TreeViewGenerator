@@ -11,6 +11,11 @@ namespace TreeViewGenerator
         private static clsArgsConfig _singleInstance = null;
         public string ProjectName = "";
         public string FileDirPath = "";
+        public Boolean isDbType_Sqlite = true;
+        
+        public string MySql_DataBase = "";
+        public string MySql_UserId = "";  
+        public string MySql_Password = "";  
 
         public static clsArgsConfig Instance()
         {
@@ -33,8 +38,13 @@ namespace TreeViewGenerator
             }
         }
 
+        /// <summary>
+        /// 引数の次の値が引数名でないことをチェックする
+        /// </summary>
         private List<string> commndKeyArray = new List<string> {
-            "-fileDir"};
+            "-fileDir","-projectName","-dbType","-dataBase","-userId","-passWord"};
+        
+   
         public Boolean _validateCommandKey()
         {
             
@@ -75,6 +85,57 @@ namespace TreeViewGenerator
                         commndKeyArray.IndexOf(args[i+1]) == -1 && 
                         args[i+1] != ""){
                         FileDirPath = args[i + 1];
+                    }
+                    i++;
+                    continue;
+                }
+                
+                if (commandKey._indexOf("-dbType") != -1)
+                {
+                    if (args._safeIndexOf(i + 1) && 
+                        commndKeyArray.IndexOf(args[i+1]) == -1 && 
+                        args[i+1] != ""){
+                        var dbType = args[i + 1];
+                        if (dbType.ToLower() == "mySql")
+                        {
+                            isDbType_Sqlite = false;
+                        }
+                    }
+                    i++;
+                    continue;
+                }
+                
+                if (commandKey._indexOf("-dataBase") != -1)
+                {
+                    if (args._safeIndexOf(i + 1) && 
+                        commndKeyArray.IndexOf(args[i+1]) == -1 && 
+                        args[i+1] != ""){
+                        MySql_DataBase = args[i + 1];
+                     
+                    }
+                    i++;
+                    continue;
+                }
+                
+                if (commandKey._indexOf("-userId") != -1)
+                {
+                    if (args._safeIndexOf(i + 1) && 
+                        commndKeyArray.IndexOf(args[i+1]) == -1 && 
+                        args[i+1] != ""){
+                        MySql_UserId = args[i + 1];
+                       
+                    }
+                    i++;
+                    continue;
+                }
+                
+                if (commandKey._indexOf("-passWord") != -1)
+                {
+                    if (args._safeIndexOf(i + 1) && 
+                        commndKeyArray.IndexOf(args[i+1]) == -1 && 
+                        args[i+1] != ""){
+                        MySql_Password = args[i + 1];
+                        
                     }
                     i++;
                     continue;

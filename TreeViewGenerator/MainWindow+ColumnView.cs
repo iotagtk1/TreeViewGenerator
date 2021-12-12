@@ -97,8 +97,17 @@ namespace TreeViewGenerator
 
 		    ColumnListViewStore = new Gtk.ListStore (typeof (columnModel));
 
-		    string sql = "PRAGMA table_info('" + tableViewModel1.title  +"');";
-		    DataTable columnDb = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});
+		    DataTable columnDb = null;
+		    if (!clsArgsConfig.Instance().isDbType_Sqlite)
+		    {
+			    string sql = "PRAGMA table_info('" + tableViewModel1.title  +"');";
+			    columnDb = clsMySqlM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});
+		    }
+		    else
+		    {
+			    string sql = "PRAGMA table_info('" + tableViewModel1.title  +"');";
+			    columnDb = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});	    
+		    }
 
 		    //確定
 		    if (columnDb != null && columnDb.Rows.Count > 0)

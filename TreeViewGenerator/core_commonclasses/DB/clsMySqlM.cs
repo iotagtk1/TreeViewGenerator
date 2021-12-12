@@ -5,33 +5,37 @@ using DapperExtensions;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
+using MySql.Data.MySqlClient;
 
     /*
-     * SQLitePCLRaw.bundle_e_sqlite3
+     * MySql 
      * Dapper
      *
      *
-     *  clsIniFile._sharedObject(configFileName);
-        clsSqliteM._sharedObject(clsIniFile.singlton["config", "dbPath"]);
-        clsSqliteM.singleton._mkForeign_key();     
+        MySqlConnectionStringBuilder b = new MySqlConnectionStringBuilder();
+        b.Server = "localhost";
+        b.Port = 3306;
+        b.Database = "";
+        b.UserID = "";
+        b.Password = "";
+
+        clsMySqlM._sharedObject(b);
         clsDapper._init();
         string sql = "Select * from otherUser Where effective = '1' order by create_date asc ; ;";
-        List<OtherUser> OtherUserResult = clsSqliteM.singleton._ReqAsync<OtherUser>( new OtherUser() , sql:sql);
-        clsSqliteM.singleton._UpdateAsync<OtherUser>(OwnerUser1);
-        clsSqliteM.singleton._DeleteAsync<OtherUser>(OwnerUser1);
-        clsSqliteM.singleton._InsertAsync<OtherUser>(OwnerUser1);
-     * 
+        List<OtherUser> OtherUserResult = clsMySqlM.singleton._ReqAsync<OtherUser>( new OtherUser() , sql:sql);
+        clsMySqlM.singleton._UpdateAsync<OtherUser>(OwnerUser1);
+        clsMySqlM.singleton._DeleteAsync<OtherUser>(OwnerUser1);
+        clsMySqlM.singleton._InsertAsync<OtherUser>(OwnerUser1);
      */
 
-    public class clsSqliteM
+    public class clsMySqlM
     {
         
-        public static clsSqliteM singleton;
+        public static clsMySqlM singleton;
         
-        public static clsSqliteM _sharedObject(string path) {
+        public static clsMySqlM _sharedObject(MySqlConnectionStringBuilder connectionBuilder) {
             if (singleton == null) {
-                singleton = new clsSqliteM(path);
+                singleton = new clsMySqlM(connectionBuilder);
             }
             return singleton;
         }
@@ -41,19 +45,16 @@ using Microsoft.Data.Sqlite;
             singleton = null;
         }
 
-        public SqliteConnection con = null;
-        public clsSqliteM(string path) {
+        public MySqlConnection con = null;
+        public clsMySqlM(MySqlConnectionStringBuilder connectionBuilder) {
 
             try {
-                
-                SqliteConnectionStringBuilder b = new SqliteConnectionStringBuilder();
-                b.DataSource = path;
-            
-                con = new SqliteConnection(b.ConnectionString);
+
+                con = new MySqlConnection(connectionBuilder.ConnectionString);
                 
                 Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
                 
-                DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.SqliteDialect();
+                DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.MySqlDialect();
                 
                 con.Open();
                 
@@ -150,6 +151,12 @@ using Microsoft.Data.Sqlite;
             return -1;
         }
         
+        /// <summary>
+        /// 使用不可
+        /// </summary>
+        /// <param name="val"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public async Task<object> _InsertAsync<T>(T val) where T : class
         {
             try {
@@ -172,6 +179,12 @@ using Microsoft.Data.Sqlite;
             return -1;
         }
         
+        /// <summary>
+        /// 使用不可
+        /// </summary>
+        /// <param name="val"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public async Task<object> _UpdateAsync<T>(T val) where T : class
         {
             try {
@@ -194,6 +207,12 @@ using Microsoft.Data.Sqlite;
             return -1;
         }
         
+        /// <summary>
+        /// 使用不可
+        /// </summary>
+        /// <param name="val"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public async Task<object> _DeleteAsync<T>(T val) where T : class
         {
             try {
@@ -208,11 +227,9 @@ using Microsoft.Data.Sqlite;
         public Int64 _lastId() {
             try {
 
-                var sql ="SELECT last_insert_rowid() as lastId;";
- 
-                Int64 num = con.QueryFirst(sql);
-
-                return num;
+                var sql ="SELECT last_insert_id() as lastId;";
+                var result = con.QueryFirst(sql);
+                return result.lastId;
 
             } catch(Exception en) {
                 Console.WriteLine(en.Message);

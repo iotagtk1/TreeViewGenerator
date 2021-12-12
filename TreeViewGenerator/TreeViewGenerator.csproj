@@ -24,6 +24,7 @@
         <PackageReference Include="GtkSharp" Version="3.24.24.*" />
         <PackageReference Include="INIFileParserDotNetCore" Version="2.5.2" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.10" />
+        <PackageReference Include="MySql.Data" Version="8.0.27" />
         <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.6" />
         <PackageReference Include="System.CodeDom" Version="5.0.0" />
     </ItemGroup>

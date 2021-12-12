@@ -30,7 +30,15 @@ You must specify a macro
 copy perst
 
 ```
- -fileDir $FilePath$ -projectName $FilePath$
+ -fileDir $FilePath$ -projectName $FilePath$ -dbType sqlite -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
+```
+
+**DbType default is sqlite**
+
+####Select MySql
+
+```
+-dbType mysql -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
 ```
 
 ### Execution
@@ -73,6 +81,8 @@ Dapper
 Dapper Extensions
 
 Microsoft.Data.Sqlite.Core
+
+MySql
 
 System.CodeDom
 

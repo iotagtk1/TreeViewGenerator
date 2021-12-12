@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using Gtk;
+using MySql.Data.MySqlClient;
 using UI = Gtk.Builder.ObjectAttribute;
 
 namespace TreeViewGenerator
@@ -30,13 +31,34 @@ namespace TreeViewGenerator
 		    
 		    SelectedDbTableKey = "";
 
-		    clsSqliteM._remove();
-		    clsSqliteM._sharedObject(dbModel1.dbPath);
+		    DataTable db = null;
+
+		    if (!clsArgsConfig.Instance().isDbType_Sqlite)
+		    {
+			    MySqlConnectionStringBuilder b = new MySqlConnectionStringBuilder();
+			    b.Server = "localhost";
+			    b.Port = 3306;
+			    b.Database = clsArgsConfig.Instance().MySql_DataBase;
+			    b.UserID = clsArgsConfig.Instance().MySql_UserId;
+			    b.Password = clsArgsConfig.Instance().MySql_Password;
+
+			    clsMySqlM._sharedObject(b);
+			    clsDapper._initMySql();
+			    
+			    string sql = "show tables;";
+			    db = clsMySqlM.singleton._ReqDynamic(sql,new List<string>(){"name"});  
+		    }
+		    else
+		    {
+			    clsSqliteM._remove();
+			    clsSqliteM._sharedObject(dbModel1.dbPath);
+			    clsDapper._initSqlite();
+
+			    string sql = "select name from sqlite_master where type='table';";
+			    db = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name"});  
+		    }
 
 		    TableListViewStore = new Gtk.ListStore (typeof (tableViewModel));
-
-		    string sql = "select name from sqlite_master where type='table';";
-		    DataTable db = clsSqliteM.singleton._ReqDynamic(sql,new List<string>(){"name"});
 
 		    if (db != null && db.Rows.Count > 0)
 		    {

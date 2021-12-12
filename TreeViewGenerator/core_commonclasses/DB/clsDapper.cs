@@ -1,22 +1,49 @@
 using System;
 using System.Data;
 using Dapper;
+using DapperExtensions.Sql;
 
 /*
  * DateTimeOffset、Guid、TimeSpan 変換する時に使う
- * 公式のDapperを仕様場合はSqliteのカラム名に_を含めないこと。エラーになる
+ *
+public class testMap : ClassMapper<test>
+{
+    public testMap()
+    {
+        Table("test");
+        AutoMap();
+        Map(f => f.tes1Tes2).Column("tes1_tes2");
+    }
+}
+
+//mapperを指定する
+ DapperExtensions.DapperExtensions.DefaultMapper = typeof (testMap);
+ 
+  DapperExtensions.DapperExtensions.SetMappingAssemblies(new[]
+ {
+     typeof (testMap).Assembly,
+     typeof (testMap).Assembly
+ });
+ * 
  */
 
 public class clsDapper
 {
 
-    public static void _init()
+    public static void _initSqlite()
     {
+        //Dapperの_の入ったカラム名を有効にする。Extensionは別
         Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
   
         DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.SqliteDialect();
     }
-
+    public static void _initMySql()
+    {
+        //Dapperの_の入ったカラム名を有効にする。Extensionは別
+        Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+  
+        DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.MySqlDialect();
+    }
 
     public static void _addTypeHandler()
     {
