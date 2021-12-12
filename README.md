@@ -29,14 +29,15 @@ Set the path of the program
 You must specify a macro
 copy perst
 
-```
- -fileDir $FilePath$ -projectName $FilePath$ -dbType sqlite -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
-```
 
+###Select Sqlite
+```
+ -fileDir $FilePath$ -projectName $FilePath$ 
+```
 **DbType default is sqlite**
 
-####Select MySql
-
+###Select MySql
+****
 ```
 -dbType mysql -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
 ```
