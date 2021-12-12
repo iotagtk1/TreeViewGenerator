@@ -114,6 +114,9 @@ using Microsoft.Data.Sqlite;
                     table.Rows.Add(dr);
                     
                 }
+                
+                con.Close();
+                con.Open();
 
             } catch(Exception en) {
                 Console.WriteLine(en.Message);

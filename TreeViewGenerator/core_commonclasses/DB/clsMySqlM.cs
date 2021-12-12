@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
     /*
-     * MySql 
+     * Microsoft.Data.Sqlite.Core
+     * SQLitePCLRaw.bundle_e_sqlite3
      * Dapper
      *
      *
@@ -32,7 +33,8 @@ using MySql.Data.MySqlClient;
     {
         
         public static clsMySqlM singleton;
-        
+
+        private List<bool> resultArray = new List<bool>();
         public static clsMySqlM _sharedObject(MySqlConnectionStringBuilder connectionBuilder) {
             if (singleton == null) {
                 singleton = new clsMySqlM(connectionBuilder);
@@ -55,8 +57,9 @@ using MySql.Data.MySqlClient;
                 Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
                 
                 DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.MySqlDialect();
-
-
+                
+                con.Open();
+                
             } catch(Exception e) {
                 Console.WriteLine("DBに接続できない" + e.Message);
                 throw;
@@ -67,16 +70,11 @@ using MySql.Data.MySqlClient;
         {
             List<T> array = new List<T>();
             try {
-                con.Open();
                 var result = con.Query<T>(sql);
-               
                 foreach (var item in result)
                 {
                     array.Add(item);
                 }
-                
-                con.Close();
-                
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -88,8 +86,6 @@ using MySql.Data.MySqlClient;
         {
             DataTable table = null;
             try {
-                con.Open();
-                
                 var reader = con.ExecuteReader(sql);
                 
                 table = new DataTable();
@@ -123,6 +119,7 @@ using MySql.Data.MySqlClient;
                 }
                 
                 con.Close();
+                con.Open();
 
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
@@ -136,15 +133,11 @@ using MySql.Data.MySqlClient;
         {
             List<T> array = new List<T>();
             try {
-                await con.OpenAsync();
                 var result = await con.QueryAsync<T>(sql);
-                await con.CloseAsync();
-                
                 foreach (var item in result)
                 {
                     array.Add(item);
                 }
-
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -156,13 +149,9 @@ using MySql.Data.MySqlClient;
         {
             try {
                 
-                con.Open();
-                var result = con.Insert<T>(val);
-                con.Close();
-
-                return result;
-
-
+                var r = con.Insert<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -179,12 +168,9 @@ using MySql.Data.MySqlClient;
         public async Task<object> _InsertAsync<T>(T val) where T : class
         {
             try {
-                
-                await con.OpenAsync();
-                var result = await con.InsertAsync<T>(val);
-                await con.CloseAsync();
-
-                return result;
+                var r = await con.InsertAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -196,11 +182,9 @@ using MySql.Data.MySqlClient;
         {
             try {
                 
-                 con.Open();
-                 var result = con.Update<T>(val);
-                 con.Close();
-
-                 return result;
+                var r = con.Update<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -216,14 +200,11 @@ using MySql.Data.MySqlClient;
         /// <returns></returns>
         public async Task<object> _UpdateAsync<T>(T val) where T : class
         {
-            try {
-                
-                await con.OpenAsync(); 
-                var result = await con.UpdateAsync<T>(val);
-                await con.CloseAsync();
-
-                return result;
-
+            try
+            {
+                var r = await con.UpdateAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -234,11 +215,11 @@ using MySql.Data.MySqlClient;
         public object _Delete<T>(T val) where T : class
         {
             try {
-                 con.Open();
-                 var result = con.Delete<T>(val);
-                 con.Close();
-                 return result;
-
+                
+                var r = con.Delete<T>(val);
+                resultArray.Add(r);
+                return r; 
+                
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -255,11 +236,10 @@ using MySql.Data.MySqlClient;
         public async Task<object> _DeleteAsync<T>(T val) where T : class
         {
             try {
-                await con.OpenAsync(); 
-                var result =await con.DeleteAsync<T>(val);
-                await con.CloseAsync();
-                return result;
-
+                
+                var r = await con.DeleteAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -271,10 +251,7 @@ using MySql.Data.MySqlClient;
             try {
 
                 var sql ="SELECT last_insert_id() as lastId;";
-                con.Open();
                 var result = con.QueryFirst(sql);
-                con.Close();
-                
                 return result.lastId;
 
             } catch(Exception en) {
@@ -282,6 +259,67 @@ using MySql.Data.MySqlClient;
             }
             return -1;
         }
+        
+        public void _Open() {
+            try {
+                con.Open();
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }
+        
+        public void _Close() {
+            try {
+                con.Close();
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }  
+        public MySqlTransaction _Begin() {
+            try
+            {
+                MySqlCommand command = new MySqlCommand();
+                command.Connection = con;
+                MySqlTransaction  transaction = con.BeginTransaction();
+                resultArray = new List<bool>();
+                return transaction;
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+
+            return null;
+        }  
+        
+        public Boolean _doRollBack(MySqlTransaction transaction ,List<bool> resultArray_t) {
+            try
+            {
+                if (resultArray_t.Contains(false))
+                {
+                    transaction.Rollback();
+                    return true;
+                }
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+
+            return false;
+        }    
+        
+        public void _Commit(MySqlTransaction transaction) {
+            try
+            {
+                transaction.Commit();
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }
+
+
+
+
 
 
     }
