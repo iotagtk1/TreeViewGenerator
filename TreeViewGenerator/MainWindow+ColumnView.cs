@@ -100,8 +100,13 @@ namespace TreeViewGenerator
 		    DataTable columnDb = null;
 		    if (!clsArgsConfig.Instance().isDbType_Sqlite)
 		    {
-			    string sql = "PRAGMA table_info('" + tableViewModel1.title  +"');";
-			    columnDb = clsMySqlM.singleton._ReqDynamic(sql,new List<string>(){"name","type"});
+			    string sql = "SHOW COLUMNS FROM " + tableViewModel1.title  + ";";
+			    columnDb = clsMySqlM.singleton._ReqDynamic(sql,new List<string>(){"Field","Type"});
+			    columnDb.Columns.Add("name");
+			    foreach (DataRow dr in columnDb.Rows)
+			    {
+				    dr["name"] = dr["Field"];
+			    }
 		    }
 		    else
 		    {

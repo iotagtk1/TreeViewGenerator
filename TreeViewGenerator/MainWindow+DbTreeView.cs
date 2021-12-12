@@ -63,6 +63,21 @@ namespace TreeViewGenerator
 
 		    dataBaseView.Model = DbListViewStore;
 	    }
+	    
+	    private void _mkSelect_mySql()
+	    {
+		    
+		    DbListViewStore = new Gtk.ListStore (typeof (dbModel));
+
+		    dbModel dbModel = new dbModel();
+		    dbModel.title = clsPath._getFileNameNoExtension("mySql");
+		    dbModel.dbPath = "mySql";
+		    DbListViewStore.AppendValues (dbModel);		   
+
+		    dataBaseView.Model = DbListViewStore;
+	    }
+	    
+	    
 		
     }
 }

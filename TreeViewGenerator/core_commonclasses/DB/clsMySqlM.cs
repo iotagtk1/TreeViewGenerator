@@ -55,9 +55,8 @@ using MySql.Data.MySqlClient;
                 Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
                 
                 DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.MySqlDialect();
-                
-                con.Open();
-                
+
+
             } catch(Exception e) {
                 Console.WriteLine("DBに接続できない" + e.Message);
                 throw;
@@ -68,11 +67,16 @@ using MySql.Data.MySqlClient;
         {
             List<T> array = new List<T>();
             try {
+                con.Open();
                 var result = con.Query<T>(sql);
+               
                 foreach (var item in result)
                 {
                     array.Add(item);
                 }
+                
+                con.Close();
+                
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -84,6 +88,8 @@ using MySql.Data.MySqlClient;
         {
             DataTable table = null;
             try {
+                con.Open();
+                
                 var reader = con.ExecuteReader(sql);
                 
                 table = new DataTable();
@@ -115,6 +121,8 @@ using MySql.Data.MySqlClient;
                     table.Rows.Add(dr);
                     
                 }
+                
+                con.Close();
 
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
@@ -128,11 +136,15 @@ using MySql.Data.MySqlClient;
         {
             List<T> array = new List<T>();
             try {
+                await con.OpenAsync();
                 var result = await con.QueryAsync<T>(sql);
+                await con.CloseAsync();
+                
                 foreach (var item in result)
                 {
                     array.Add(item);
                 }
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -143,7 +155,14 @@ using MySql.Data.MySqlClient;
         public object _Insert<T>(T val) where T : class
         {
             try {
-                return con.Insert<T>(val);
+                
+                con.Open();
+                var result = con.Insert<T>(val);
+                con.Close();
+
+                return result;
+
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -160,7 +179,12 @@ using MySql.Data.MySqlClient;
         public async Task<object> _InsertAsync<T>(T val) where T : class
         {
             try {
-                return await con.InsertAsync<T>(val);
+                
+                await con.OpenAsync();
+                var result = await con.InsertAsync<T>(val);
+                await con.CloseAsync();
+
+                return result;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -171,7 +195,12 @@ using MySql.Data.MySqlClient;
         public object _Update<T>(T val) where T : class
         {
             try {
-                return con.Update<T>(val);
+                
+                 con.Open();
+                 var result = con.Update<T>(val);
+                 con.Close();
+
+                 return result;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -188,7 +217,13 @@ using MySql.Data.MySqlClient;
         public async Task<object> _UpdateAsync<T>(T val) where T : class
         {
             try {
-                return await con.UpdateAsync<T>(val);
+                
+                await con.OpenAsync(); 
+                var result = await con.UpdateAsync<T>(val);
+                await con.CloseAsync();
+
+                return result;
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -199,7 +234,11 @@ using MySql.Data.MySqlClient;
         public object _Delete<T>(T val) where T : class
         {
             try {
-                return con.Delete<T>(val);
+                 con.Open();
+                 var result = con.Delete<T>(val);
+                 con.Close();
+                 return result;
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -216,7 +255,11 @@ using MySql.Data.MySqlClient;
         public async Task<object> _DeleteAsync<T>(T val) where T : class
         {
             try {
-                return await con.DeleteAsync<T>(val);
+                await con.OpenAsync(); 
+                var result =await con.DeleteAsync<T>(val);
+                await con.CloseAsync();
+                return result;
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -228,7 +271,10 @@ using MySql.Data.MySqlClient;
             try {
 
                 var sql ="SELECT last_insert_id() as lastId;";
+                con.Open();
                 var result = con.QueryFirst(sql);
+                con.Close();
+                
                 return result.lastId;
 
             } catch(Exception en) {

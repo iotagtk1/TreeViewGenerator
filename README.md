@@ -26,7 +26,6 @@ Uncheck Run after file sync.
 ### Arguments Macro Required
 
 Set the path of the program
-You must specify a macro
 copy perst
 
 
@@ -39,7 +38,7 @@ copy perst
 ###Select MySql
 ****
 ```
--dbType mysql -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
+ -fileDir $FilePath$ -projectName $FilePath$ -dbType mysql -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
 ```
 
 ### Execution

@@ -44,8 +44,8 @@ namespace TreeViewGenerator
 
 			    clsMySqlM._sharedObject(b);
 			    clsDapper._initMySql();
-			    
-			    string sql = "show tables;";
+
+			    string sql = "SELECT table_name as name FROM information_schema.tables WHERE table_schema = '" +  b.Database +"';";
 			    db = clsMySqlM.singleton._ReqDynamic(sql,new List<string>(){"name"});  
 		    }
 		    else

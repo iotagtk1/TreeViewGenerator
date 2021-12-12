@@ -37,14 +37,27 @@ namespace TreeViewGenerator
                          _mkTableTreeView();
      
                          _mkColumnTableTreeView();
-     
-                         ArrayList dbPathArray = _dirPathAnalyze(clsArgsConfig.Instance().FileDirPath);
-                         if (dbPathArray != null && dbPathArray.Count > 0)
+
+                         ArrayList dbPathArray = null;
+                         if (!clsArgsConfig.Instance().isDbType_Sqlite)
                          {
-                             _mkSelect(dbPathArray);
+                             
+                             _mkSelect_mySql();
+                         
                          }
+                         else
+                         {
+                             dbPathArray = _dirPathAnalyze(clsArgsConfig.Instance().FileDirPath);
+                             
+                             if (dbPathArray != null && dbPathArray.Count > 0)
+                             {
+                                 _mkSelect(dbPathArray);
+                             }
+                         }
+     
+                         
              
-                }
+                    }
 
             }
             catch (Exception e)

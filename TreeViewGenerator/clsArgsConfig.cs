@@ -96,7 +96,7 @@ namespace TreeViewGenerator
                         commndKeyArray.IndexOf(args[i+1]) == -1 && 
                         args[i+1] != ""){
                         var dbType = args[i + 1];
-                        if (dbType.ToLower() == "mySql")
+                        if (dbType.ToLower() == "mysql")
                         {
                             isDbType_Sqlite = false;
                         }
