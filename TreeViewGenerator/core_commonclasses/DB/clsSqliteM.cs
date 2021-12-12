@@ -29,6 +29,8 @@ using Microsoft.Data.Sqlite;
         
         public static clsSqliteM singleton;
         
+        private List<bool> resultArray = new List<bool>();
+        
         public static clsSqliteM _sharedObject(string path) {
             if (singleton == null) {
                 singleton = new clsSqliteM(path);
@@ -145,7 +147,9 @@ using Microsoft.Data.Sqlite;
         public object _Insert<T>(T val) where T : class
         {
             try {
-                return con.Insert<T>(val);
+                var r = con.Insert<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -156,7 +160,9 @@ using Microsoft.Data.Sqlite;
         public async Task<object> _InsertAsync<T>(T val) where T : class
         {
             try {
-                return await con.InsertAsync<T>(val);
+                var r = await con.InsertAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -167,7 +173,9 @@ using Microsoft.Data.Sqlite;
         public object _Update<T>(T val) where T : class
         {
             try {
-                return con.Update<T>(val);
+                var r = con.Update<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -178,7 +186,9 @@ using Microsoft.Data.Sqlite;
         public async Task<object> _UpdateAsync<T>(T val) where T : class
         {
             try {
-                return await con.UpdateAsync<T>(val);
+                var r = await con.UpdateAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -189,7 +199,11 @@ using Microsoft.Data.Sqlite;
         public object _Delete<T>(T val) where T : class
         {
             try {
-                return con.Delete<T>(val);
+  
+                var r = con.Delete<T>(val);
+                resultArray.Add(r);
+                return r;
+
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -200,7 +214,9 @@ using Microsoft.Data.Sqlite;
         public async Task<object> _DeleteAsync<T>(T val) where T : class
         {
             try {
-                return await con.DeleteAsync<T>(val);
+                var r = await con.DeleteAsync<T>(val);
+                resultArray.Add(r);
+                return r;
             } catch(Exception en) {
                 Console.WriteLine(en.Message);
                 throw;
@@ -223,5 +239,63 @@ using Microsoft.Data.Sqlite;
             return -1;
         }
 
+        public void _Open() {
+            try {
+                con.Open();
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }
+        
+        public void _Close() {
+            try {
+                con.Close();
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }  
+        public SqliteTransaction _Begin() {
+            try
+            {
+                SqliteCommand command = new SqliteCommand();
+                command.Connection = con;
+                SqliteTransaction  transaction = con.BeginTransaction();
+                resultArray = new List<bool>();
+                return transaction;
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+
+            return null;
+        }  
+        
+        public Boolean _doRollBack(SqliteTransaction transaction ,List<bool> resultArray_t) {
+            try
+            {
+                if (resultArray_t.Contains(false))
+                {
+                    transaction.Rollback();
+                    return true;
+                }
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+
+            return false;
+        }    
+        
+        public void _Commit(SqliteTransaction transaction) {
+            try
+            {
+                transaction.Commit();
+
+            } catch(Exception en) {
+                Console.WriteLine(en.Message);
+            }
+        }
+        
+        
 
     }
