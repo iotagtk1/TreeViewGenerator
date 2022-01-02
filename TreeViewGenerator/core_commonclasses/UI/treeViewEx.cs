@@ -10,7 +10,6 @@ namespace Gtk
         {
             foreach (TreeViewColumnEx column in treeView.Columns)
             {
-
                 if (!(column is TreeViewColumnEx))
                 {
                     return;
