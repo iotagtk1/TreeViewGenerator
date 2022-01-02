@@ -63,7 +63,7 @@ Copy it and use it.
 ### Template UI library
 The UI library for the template is used here
 
-[UI library](https://qiita.com/iota_11/items/cf5ac9c11969ad8b8307)
+You can find the UI library in the Custom UI folder.
 
 ### Rider Code Format
 
