@@ -32,6 +32,7 @@ foreach (columnModel columnModel1 in columnModelArray)
             <#=columnModel1.title#>Column.Title = "<#=columnModel1.title#>";
             Gtk.CellRendererText <#=columnModel1.title#>Cell = new Gtk.CellRendererText();
             <#=columnModel1.title#>Column.PackStart(<#=columnModel1.title#>Cell, true);
+            <#=TreeViewName#>.AppendColumn (<#=columnModel1.title#>Column);
 <#
     }else if (columnModel1.effective && columnModel1.typeFix == "bool"){
 #>
@@ -39,6 +40,7 @@ foreach (columnModel columnModel1 in columnModelArray)
             <#=columnModel1.title#>Column.Title = "<#=columnModel1.title#>";
             Gtk.CellRendererToggle <#=columnModel1.title#>Cell = new Gtk.CellRendererToggle();
             <#=columnModel1.title#>Column.PackStart(<#=columnModel1.title#>Cell, true);
+            <#=TreeViewName#>.AppendColumn (<#=columnModel1.title#>Column);
             <#=columnModel1.title#>Cell.Toggled += delegate(object o, ToggledArgs args) {
                 TreeIter iter;
                 if ( <#=ListStoreName#>.GetIterFromString(out iter, args.Path))
