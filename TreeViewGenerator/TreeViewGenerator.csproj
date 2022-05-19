@@ -8,9 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="**\*.glade" />
-        <EmbeddedResource Include="**\*.glade">
-            <LogicalName>%(Filename)%(Extension)</LogicalName>
+        <EmbeddedResource Include="core_commonclasses/UI/buttonEx.glade">
+          <LogicalName>buttonEx.glade</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="core_commonclasses/UI/DateDialog.glade">
+          <LogicalName>DateDialog.glade</LogicalName>
+        </EmbeddedResource>
+        <None Include="CustomUI/DateDialog.glade">
+          <LogicalName>DateDialog.glade</LogicalName>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <EmbeddedResource Include="MainWindow.glade">
+          <LogicalName>MainWindow.glade</LogicalName>
         </EmbeddedResource>
         <None Update="treeViewGene.db3">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -18,6 +27,46 @@
         <None Remove="Template\TreeViewTemplate.tt" />
         <EmbeddedResource Remove="Template\**" />
         <None Remove="Template\**" />
+        <None Update="**\*.glade">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\clsDialog.cs" />
+        <None Include="CustomUI\clsDialog.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\clsDialog+Utility.cs" />
+        <None Include="CustomUI\clsDialog+Utility.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\ComboBoxEx.cs" />
+        <None Include="CustomUI\ComboBoxEx.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\DateDialog.cs" />
+        <None Include="CustomUI\DateDialog.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="CustomUI\DateDialog.glade~">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\RenderCell.cs" />
+        <None Include="CustomUI\RenderCell.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\TreeViewColumnEx.cs" />
+        <None Include="CustomUI\TreeViewColumnEx.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="CustomUI\treeViewEx.cs" />
+        <None Include="CustomUI\treeViewEx.cs">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <EmbeddedResource Remove="readMe\**" />
+        <Compile Remove="readMe\**" />
+        <None Remove="readMe\**" />
+        <Compile Remove="CustomUI\**" />
+        <EmbeddedResource Remove="CustomUI\**" />
+        <None Remove="CustomUI\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,6 +81,34 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="..\CustomUI\clsDialog+Utility.cs">
+        <Link>CustomUI\clsDialog+Utility.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\clsDialog.cs">
+        <Link>CustomUI\clsDialog.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\ComboBoxEx.cs">
+        <Link>CustomUI\ComboBoxEx.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\DateDialog.cs">
+        <Link>CustomUI\DateDialog.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\RenderCell.cs">
+        <Link>CustomUI\RenderCell.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\TreeViewColumnEx.cs">
+        <Link>CustomUI\TreeViewColumnEx.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\treeViewEx.cs">
+        <Link>CustomUI\treeViewEx.cs</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <Compile Include="..\TreeViewProtokApp\template\clsTreeViewTemplate.cs">
         <Link>template\clsTreeViewTemplate.cs</Link>
       </Compile>
@@ -128,26 +205,45 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\README.md">
+      <None Include="..\CustomUI\buttonEx.glade">
+        <Link>CustomUI\buttonEx.glade</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\DateDialog.glade">
+        <Link>CustomUI\DateDialog.glade</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\CustomUI\DateDialog.glade~">
+        <Link>CustomUI\DateDialog.glade~</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="..\README.md">
         <Link>README.md</Link>
-      </Content>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <Content Include="..\readMe\1.png">
         <Link>readMe\1.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\readMe\2.png">
         <Link>readMe\2.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\readMe\3.png">
         <Link>readMe\3.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\readMe\5.png">
         <Link>readMe\5.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\readMe\6.png">
         <Link>readMe\6.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="..\readMe\7.png">
         <Link>readMe\7.png</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="template\ComboBoxTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -169,10 +265,6 @@
         <LastGenOutput>TreeViewTemplateEx.cs</LastGenOutput>
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="readMe" />
     </ItemGroup>
 
 </Project>
