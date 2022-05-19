@@ -17,19 +17,19 @@ namespace Gtk
             {
                 this.Title = title;
             }
-
             Gtk.CellRendererTextEx CellRendererText1 = new Gtk.CellRendererTextEx();
             if (width != 0)
             {
                 this.MinWidth = width;
             }
-
+            
             this.Expand = isExpand;
             this.Sizing = isAutoSize ? TreeViewColumnSizing.Autosize : TreeViewColumnSizing.Fixed;
             this.PackStart(CellRendererText1, isPackStart);
             listStore1 = (ListStore)treeView.Model;
             if (isEditable)
             {
+                
                 CellRendererText1.Editable = isAutoEdit;
                 CellRendererText1.Edited += delegate(object o, EditedArgs args)
                 {
@@ -143,24 +143,28 @@ namespace Gtk
         private void _RenderCellDo(Gtk.TreeViewColumn column, Gtk.CellRenderer cell,
             Gtk.ITreeModel model, Gtk.TreeIter iter)
         {
-            if (!(column is TreeViewColumnEx))
+            try
             {
-                return;
+                if (!(column is TreeViewColumnEx))
+                {
+                    clsUtility._getProgramLine(" _RenderCellDo ");
+                    return;
+                }
+                TreeViewColumnEx column1 = (column as TreeViewColumnEx);
+                if (column1.bindingPropertyName == null || column1.bindingPropertyName == "")
+                {
+                    Console.WriteLine("PropertyNameがない");
+                    return;
+                }  
+                object modelData = (object)model.GetValue(iter, 0);
+                object value = modelData._performSelector_Property(column1.bindingPropertyName);
+                _setCellData(value, cell);
             }
-
-            TreeViewColumnEx column1 = (column as TreeViewColumnEx);
-
-            if (column1.bindingPropertyName == "" || column1.bindingPropertyName == null)
+            catch (Exception e)
             {
-                Console.WriteLine("PropertyNameがない");
-                return;
+                Console.WriteLine(e);
+                
             }
-
-            object modelData = (object)model.GetValue(iter, 0);
-
-            object value = modelData._performSelector_Property(column1.bindingPropertyName);
-
-            _setCellData(value, cell);
         }
 
         private void _setCellData(object value, Gtk.CellRenderer cell)
