@@ -2,16 +2,15 @@
 using Gdk;
 using Gtk;
 
-public class clsClipboard{
-
-    
+public class clsClipboard
+{
     static public void _setText(string text)
     {
         Gdk.Atom _atom = Gdk.Atom.Intern("CLIPBOARD", false);
         Gtk.Clipboard _clipBoard = Gtk.Clipboard.Get(_atom);
 
         _clipBoard.SetText(text);
-        
+
         //テキストをクリップボードへペースト
         // _clipBoard.Text = text;
     }
@@ -25,33 +24,33 @@ public class clsClipboard{
         _clipBoard.Image = image;
     }
 
-    static public string _getText() {
-        
+    static public string _getText()
+    {
         Gdk.Atom _atom = Gdk.Atom.Intern("CLIPBOARD", false);
         Gtk.Clipboard _clipBoard = Gtk.Clipboard.Get(_atom);
 
         //クリップボードからテキストをコピー
         if (_clipBoard.WaitIsTextAvailable())
         {
-            var text  = _clipBoard.WaitForText();
+            var text = _clipBoard.WaitForText();
             return text;
         }
-        return ""; 
+
+        return "";
     }
 
     static public Pixbuf _getImage()
     {
         Gdk.Atom _atom = Gdk.Atom.Intern("CLIPBOARD", false);
         Gtk.Clipboard _clipBoard = Gtk.Clipboard.Get(_atom);
-        
+
         //クリップボードからイメージをコピー
         if (_clipBoard.WaitIsImageAvailable())
         {
-            var image  = _clipBoard.WaitForImage();
+            var image = _clipBoard.WaitForImage();
             return image;
         }
-        
+
         return null;
     }
-
 }

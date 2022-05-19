@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,258 +12,341 @@ using Window = Gtk.Window;
 	clsDialog._mkMessageDialog_Ok(this,"","",
 		delegate(MessageDialog md, ResponseType result)
 		{
-			if (result == ResponseType.Yes)
-				Application.Quit();
-			else
-				md.Destroy();
-	});
+			if (result == ResponseType.Yes){
+			    Application.Quit();
+			}else{
+			    md.Destroy();
+			}				
+    	}
+	);
  * 
  */
 
 public partial class clsDialog
 {
-	public static void _mkColorSelectionDialog_Ok(Window win, string title,
-		Color currentColor,Color preColor,
-		Action<ColorSelectionDialog, ResponseType> func)
-	{
-		
-		if (title == "")
-		{
-			title = "Change Color";
-		}
-		
-		Gtk.ColorSelectionDialog cs = new ColorSelectionDialog(title);
-		cs.Parent = win;
-		cs.ColorSelection.HasPalette = true;
-		
-		if (!currentColor.Equals(null))
-		{
-			cs.ColorSelection.CurrentColor = currentColor;
-		}
-		
-		if (!preColor.Equals(null))
-		{
-			cs.ColorSelection.PreviousColor = preColor;
-		}
+    /// <summary>
+    /// ColorSelectionDialog_Ok
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="currentColor"></param>
+    /// <param name="preColor"></param>
+    /// <param name="func"></param>
+    public static void _mkColorSelectionDialog_Ok(Window win, string title,
+        Color currentColor, Color preColor,
+        Action<ColorSelectionDialog, ResponseType> func)
+    {
+        if (title == "")
+        {
+            title = "Change Color";
+        }
 
-		Gtk.ResponseType retult1 = (ResponseType)cs.Run();
-		func(cs, retult1);
-	}
+        Gtk.ColorSelectionDialog cs = new ColorSelectionDialog(title);
+        cs.Parent = win;
+        cs.ColorSelection.HasPalette = true;
 
-	public static void _mkAppChooserDialog_AcceptCancel(Window win, string title,
-		Action<AppChooserDialog, ResponseType> func)
-	{
-		Gtk.AppChooserDialog ac = new AppChooserDialog(IntPtr.Zero);
-		ac.Parent = win;
-		if (title != "")
-		{
-			ac.Heading = title;
-		}
-		Gtk.ResponseType retult1 = (ResponseType)ac.Run();
-		func(ac, retult1);
-	}
+        if (!currentColor.Equals(null))
+        {
+            cs.ColorSelection.CurrentColor = currentColor;
+        }
 
+        if (!preColor.Equals(null))
+        {
+            cs.ColorSelection.PreviousColor = preColor;
+        }
 
-	public static void _mkRecentChooserDialog_AcceptCancel(Window win, 
-		string title, 
-		List<Gtk.RecentFilter> filters ,
-		Action<RecentChooserDialog, ResponseType> func)
-	{
-		Gtk.RecentChooserDialog rc = new RecentChooserDialog(IntPtr.Zero);
+        Gtk.ResponseType retult1 = (ResponseType)cs.Run();
+        
+        func(cs, retult1);
+    }
 
-		rc.Parent = win;
+    /// <summary>
+    /// AppChooserDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="func"></param>
+    public static void _mkAppChooserDialog_AcceptCancel(Window win, string title,
+        Action<AppChooserDialog, ResponseType> func)
+    {
+        Gtk.AppChooserDialog ac = new AppChooserDialog(IntPtr.Zero);
+        ac.Parent = win;
+        if (title != "")
+        {
+            ac.Heading = title;
+        }
 
-		if (title == "")
-		{
-			title = "Recent Documents";
-		}
+        Gtk.ResponseType retult1 = (ResponseType)ac.Run();
+        func(ac, retult1);
+    }
 
-		rc.Title = title;
-		
-		if (filters != null && filters.Count > 0)
-		{
-			_addRecentFilter(rc,filters);
-		}
-		_setRecentDefuaultFilter(rc);
+    /// <summary>
+    /// RecentChooserDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="filters"></param>
+    /// <param name="func"></param>
+    public static void _mkRecentChooserDialog_AcceptCancel(Window win,
+        string title,
+        List<Gtk.RecentFilter> filters,
+        Action<RecentChooserDialog, ResponseType> func)
+    {
+        Gtk.RecentChooserDialog rc = new RecentChooserDialog(IntPtr.Zero);
 
-		Gtk.ResponseType retult1 = (ResponseType)rc.Run();
-			
-		func(rc, retult1);
-	}
+        rc.Parent = win;
 
-	public static void _mkLoadFileDialog_AcceptCancel(Window win, string title,
-		List<FileFilter> filters, Action<FileChooserDialog, ResponseType> func)
-	{
+        if (title == "")
+        {
+            title = "Recent Documents";
+        }
 
-		if (title == "")
-		{
-			title = "Choose the file to open";
-		}
+        rc.Title = title;
 
-		Gtk.FileChooserDialog fc =
-			new Gtk.FileChooserDialog(title,
-				win,
-				FileChooserAction.Open,
-				"Cancel",ResponseType.Cancel,
-				"Open",ResponseType.Accept);
+        if (filters != null && filters.Count > 0)
+        {
+            _addRecentFilter(rc, filters);
+        }
 
-		if (filters != null && filters.Count > 0)
-		{
-			_addFilter(fc,filters);
-		}
-		_setFileDefuaultFilter(fc);
-		
-		Gtk.ResponseType retult1 = (ResponseType)fc.Run();
-			
-		func(fc, retult1);
-	}
-	
-	public static void _mkSaveFileDialog_AcceptCancel(Window win, string title,
-		
-		List<Gtk.FileFilter> filters, Action<FileChooserDialog, ResponseType> func)
-	{
+        _setRecentDefuaultFilter(rc);
 
-		if (title == "")
-		{
-			title = "Choose the file to Save";
-		}
+        Gtk.ResponseType retult1 = (ResponseType)rc.Run();
 
-		Gtk.FileChooserDialog fc =
-			new Gtk.FileChooserDialog(title,
-				win,
-				FileChooserAction.Save,
-				"Cancel",ResponseType.Cancel,
-				"Save",ResponseType.Accept);
+        func(rc, retult1);
+    }
 
-		if (filters != null && filters.Count > 0)
-		{
-			_addFilter(fc,filters);
-		}
-		_setFileDefuaultFilter(fc);
+    /// <summary>
+    /// ChooseFileDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="filters"></param>
+    /// <param name="func"></param>
+    public static void _mkChooseFileDialog_AcceptCancel(Window win, string title,
+        List<FileFilter> filters, Action<FileChooserDialog, ResponseType> func)
+    {
+        if (title == "")
+        {
+            title = "Choose the file to open";
+        }
 
-		Gtk.ResponseType retult1 = (ResponseType)fc.Run();
-			
-		func(fc, retult1);
-	}	
-	
-	public static void _mkSelectFolderDialog_AcceptCancel(Window win, string title,Action<FileChooserDialog, ResponseType> func)
-	{
+        Gtk.FileChooserDialog fc =
+            new Gtk.FileChooserDialog(title,
+                win,
+                FileChooserAction.Open,
+                "Cancel", ResponseType.Cancel,
+                "Open", ResponseType.Accept);
 
-		if (title == "")
-		{
-			title = "Choose the Folder";
-		}
+        if (filters != null && filters.Count > 0)
+        {
+            _addFilter(fc, filters);
+        }
 
-		Gtk.FileChooserDialog fc =
-			new Gtk.FileChooserDialog(title,
-				win,
-				FileChooserAction.SelectFolder,
-				"Cancel",ResponseType.Cancel,
-				"Save",ResponseType.Accept);
+        _setFileDefuaultFilter(fc);
 
-		Gtk.ResponseType retult1 = (ResponseType)fc.Run();
-			
-		func(fc, retult1);
-	}
-	
-	public static void _mkCreateFolderDialog_AcceptCancel(Window win, string title,
-		Action<FileChooserDialog, ResponseType> func)
-	{
+        Gtk.ResponseType retult1 = (ResponseType)fc.Run();
 
-		if (title == "")
-		{
-			title = "Create the Folder";
-		}
+        func(fc, retult1);
+    }
 
-		Gtk.FileChooserDialog fc =
-			new Gtk.FileChooserDialog(title,
-				win,
-				FileChooserAction.CreateFolder,
-				"Cancel",ResponseType.Cancel,
-				"Save",ResponseType.Accept);
+    /// <summary>
+    /// SaveFileDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="filters"></param>
+    /// <param name="func"></param>
+    public static void _mkSaveFileDialog_AcceptCancel(Window win, string title,
+        List<Gtk.FileFilter> filters, Action<FileChooserDialog, ResponseType> func)
+    {
+        if (title == "")
+        {
+            title = "Choose the file to Save";
+        }
 
-		Gtk.ResponseType retult1 = (ResponseType)fc.Run();
-			
-		func(fc, retult1);
-	}
-	
-	public static void _mkMessageDialog_YesNo(Window win, string title,string subTitle, Action<MessageDialog, ResponseType> func)
-	{
-		MessageDialog messageDialog = new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.YesNo, title);
-		ResponseType retult = (ResponseType)messageDialog.Run();
+        Gtk.FileChooserDialog fc =
+            new Gtk.FileChooserDialog(title,
+                win,
+                FileChooserAction.Save,
+                "Cancel", ResponseType.Cancel,
+                "Save", ResponseType.Accept);
 
-		if (subTitle != "")
-		{
-			messageDialog.SecondaryText = subTitle;
-		}
+        if (filters != null && filters.Count > 0)
+        {
+            _addFilter(fc, filters);
+        }
 
-		func(messageDialog, retult);
-	}
+        _setFileDefuaultFilter(fc);
 
-	public static void _mkMessageDialog_Ok(Window win, string title,string subTitle, Action<MessageDialog, ResponseType> func)
-	{
-		MessageDialog messageDialog = new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,title);
-		ResponseType retult = (ResponseType)messageDialog.Run();
-		
-		if (subTitle != "")
-		{
-			messageDialog.SecondaryText = subTitle;
-		}
-		
-		func(messageDialog, retult);
-	}
+        Gtk.ResponseType retult1 = (ResponseType)fc.Run();
 
-	public static void _mkMessageDialog_OkCancel(Window win, string title,string subTitle, Action<MessageDialog, ResponseType> func)
-	{
-		MessageDialog messageDialog = new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.OkCancel, title);
-		ResponseType retult = (ResponseType)messageDialog.Run();
-		
-		if (subTitle != "")
-		{
-			messageDialog.SecondaryText = subTitle;
-		}
+        func(fc, retult1);
+    }
 
-		func(messageDialog, retult);
-	}
+    /// <summary>
+    /// SelectFolderDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="func"></param>
+    public static void _mkSelectFolderDialog_AcceptCancel(Window win, string title,
+        Action<FileChooserDialog, ResponseType> func)
+    {
+        if (title == "")
+        {
+            title = "Choose the Folder";
+        }
 
-	public static void _mkMessageDialog_Close(Window win, string title,string subTitle, Action<MessageDialog, ResponseType> func)
-	{
-		MessageDialog messageDialog = new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, title);
-		ResponseType retult = (ResponseType)messageDialog.Run();
-		
-		if (subTitle != "")
-		{
-			messageDialog.SecondaryText = subTitle;
-		}		
-		
-		func(messageDialog, retult);
-	}
-	
-	public static void _mkMessageDialog_Cancel(Window win, string title,string subTitle, Action<MessageDialog, ResponseType> func)
-	{
-		MessageDialog messageDialog = new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Cancel, title);
-		ResponseType retult = (ResponseType)messageDialog.Run();
-		
-		if (subTitle != "")
-		{
-			messageDialog.SecondaryText = subTitle;
-		}		
-		
-		func(messageDialog, retult);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+        Gtk.FileChooserDialog fc =
+            new Gtk.FileChooserDialog(title,
+                win,
+                FileChooserAction.SelectFolder,
+                "Cancel", ResponseType.Cancel,
+                "Save", ResponseType.Accept);
+
+        Gtk.ResponseType retult1 = (ResponseType)fc.Run();
+
+        func(fc, retult1);
+    }
+
+    /// <summary>
+    /// CreateFolderDialog_AcceptCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="func"></param>
+    public static void _mkCreateFolderDialog_AcceptCancel(Window win, string title,
+        Action<FileChooserDialog, ResponseType> func)
+    {
+        if (title == "")
+        {
+            title = "Create the Folder";
+        }
+
+        Gtk.FileChooserDialog fc =
+            new Gtk.FileChooserDialog(title,
+                win,
+                FileChooserAction.CreateFolder,
+                "Cancel", ResponseType.Cancel,
+                "Save", ResponseType.Accept);
+
+        Gtk.ResponseType retult1 = (ResponseType)fc.Run();
+
+        func(fc, retult1);
+    }
+
+    /// <summary>
+    /// MessageDialog_YesNo
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="subTitle"></param>
+    /// <param name="func"></param>
+    public static void _mkMessageDialog_YesNo(Window win, string title, string subTitle,
+        Action<MessageDialog, ResponseType> func)
+    {
+        MessageDialog messageDialog =
+            new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.YesNo, title);
+        
+        if (subTitle != "")
+        {
+            messageDialog.SecondaryText = subTitle;
+        }
+        
+        ResponseType retult = (ResponseType)messageDialog.Run();
+
+        func(messageDialog, retult);
+    }
+
+    /// <summary>
+    /// MessageDialog_Ok
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="subTitle"></param>
+    /// <param name="func"></param>
+    public static void _mkMessageDialog_Ok(Window win, string title, string subTitle,
+        Action<MessageDialog, ResponseType> func)
+    {
+        MessageDialog messageDialog =
+            new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, title);
+        
+        if (subTitle != "")
+        {
+            messageDialog.SecondaryText = subTitle;
+        }
+        
+        ResponseType retult = (ResponseType)messageDialog.Run();
+
+        func(messageDialog, retult);
+    }
+
+    /// <summary>
+    /// MessageDialog_OkCancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="subTitle"></param>
+    /// <param name="func"></param>
+    public static void _mkMessageDialog_OkCancel(Window win, string title, string subTitle,
+        Action<MessageDialog, ResponseType> func)
+    {
+        MessageDialog messageDialog =
+            new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.OkCancel, title);
+        
+        if (subTitle != "")
+        {
+            messageDialog.SecondaryText = subTitle;
+        }
+        
+        ResponseType retult = (ResponseType)messageDialog.Run();
+
+        func(messageDialog, retult);
+    }
+
+    /// <summary>
+    /// MessageDialog_Close
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="subTitle"></param>
+    /// <param name="func"></param>
+    public static void _mkMessageDialog_Close(Window win, string title, string subTitle,
+        Action<MessageDialog, ResponseType> func)
+    {
+        MessageDialog messageDialog =
+            new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, title);
+        
+        if (subTitle != "")
+        {
+            messageDialog.SecondaryText = subTitle;
+        }
+        
+        ResponseType retult = (ResponseType)messageDialog.Run();
+
+        func(messageDialog, retult);
+    }
+
+    /// <summary>
+    /// MessageDialog_Cancel
+    /// </summary>
+    /// <param name="win"></param>
+    /// <param name="title"></param>
+    /// <param name="subTitle"></param>
+    /// <param name="func"></param>
+    public static void _mkMessageDialog_Cancel(Window win, string title, string subTitle,
+        Action<MessageDialog, ResponseType> func)
+    {
+        MessageDialog messageDialog =
+            new MessageDialog(win, DialogFlags.Modal, MessageType.Info, ButtonsType.Cancel, title);
+       
+        if (subTitle != "")
+        {
+            messageDialog.SecondaryText = subTitle;
+        }
+        
+        ResponseType retult = (ResponseType)messageDialog.Run();
+
+        func(messageDialog, retult);
+    }
 }
