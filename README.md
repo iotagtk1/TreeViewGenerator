@@ -29,13 +29,13 @@ Set the path of the program
 copy perst
 
 
-###Select Sqlite
+### Select Sqlite
 ```
  -fileDir $FilePath$ -projectName $FilePath$ 
 ```
 **DbType default is sqlite**
 
-###Select MySql
+### Select MySql
 ****
 ```
  -fileDir $FilePath$ -projectName $FilePath$ -dbType mysql -dataBase mySqlDataBaseName -userId mySqlUserId -passWord mySqlPassWord
