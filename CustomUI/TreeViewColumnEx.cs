@@ -10,7 +10,7 @@ namespace Gtk
         public String bindingPropertyName = "";
         private Gtk.ListStore listStore1 = null;
 
-        public CellRendererText _mkCellRendererText(TreeView treeView, string title = "", int width = 0,
+        public CellRendererText _mkCellRendererText(TreeView treeView, string title = "", int minWidth = 0, int maxWidth = 0,
             bool isEditable = true, bool isExpand = false, bool isPackStart = true , bool isAutoEdit = true,bool isAutoSize = false)
         {
             if (title != "")
@@ -18,18 +18,21 @@ namespace Gtk
                 this.Title = title;
             }
             Gtk.CellRendererTextEx CellRendererText1 = new Gtk.CellRendererTextEx();
-            if (width != 0)
+            if (minWidth != 0)
             {
-                this.MinWidth = width;
+                this.MinWidth = minWidth;
             }
-            
+            if (maxWidth != 0)
+            {
+                this.MaxWidth = maxWidth;
+            }      
+
             this.Expand = isExpand;
             this.Sizing = isAutoSize ? TreeViewColumnSizing.Autosize : TreeViewColumnSizing.Fixed;
             this.PackStart(CellRendererText1, isPackStart);
             listStore1 = (ListStore)treeView.Model;
             if (isEditable)
             {
-                
                 CellRendererText1.Editable = isAutoEdit;
                 CellRendererText1.Edited += delegate(object o, EditedArgs args)
                 {
@@ -49,7 +52,7 @@ namespace Gtk
             return CellRendererText1;
         }
 
-        public CellRendererPixbuf _mkCellRendererPixbuf(TreeView treeView, string title = "", int width = 0,
+        public CellRendererPixbuf _mkCellRendererPixbuf(TreeView treeView, string title = "",int minWidth = 0,int maxWidth = 0,
             bool isExpand = false, bool isPackStart = true,bool isAutoSize = false)
         {
             if (title != "")
@@ -59,9 +62,13 @@ namespace Gtk
 
             Gtk.CellRendererPixbuf CellRendererPixbuf1 = new Gtk.CellRendererPixbuf();
 
-            if (width != 0)
+            if (minWidth != 0)
             {
-                this.MinWidth = width;
+                this.MinWidth = minWidth;
+            }
+            if (maxWidth != 0)
+            {
+                this.MaxWidth = maxWidth;
             }
 
             this.Expand = isExpand;
@@ -73,7 +80,7 @@ namespace Gtk
             return CellRendererPixbuf1;
         }
 
-        public CellRendererToggle _mkCellRendererToggle(TreeView treeView, string title = "", int width = 0,
+        public CellRendererToggle _mkCellRendererToggle(TreeView treeView, string title = "", int minWidth = 0,int maxWidth = 0,
             bool isToggled = false, bool isExpand = false, bool isPackStart = true,bool isAutoSize = false)
         {
             if (title != "")
@@ -82,11 +89,14 @@ namespace Gtk
             }
 
             Gtk.CellRendererToggle CellRendererToggle1 = new Gtk.CellRendererToggle();
-            if (width != 0)
+            if (minWidth != 0)
             {
-                this.MinWidth = width;
+                this.MinWidth = minWidth;
             }
-
+            if (maxWidth != 0)
+            {
+                this.MaxWidth = maxWidth;
+            }
             this.Expand = isExpand;
             this.Sizing = isAutoSize ? TreeViewColumnSizing.Autosize : TreeViewColumnSizing.Fixed;
             listStore1 = (ListStore)treeView.Model;
@@ -110,8 +120,8 @@ namespace Gtk
             return CellRendererToggle1;
         }
 
-        public CellRendererProgress _mkCellRendererProgress(TreeView treeView, string title = "", int width = 0,
-            bool isExpand = false, bool isPackStart = true,bool isAutoSize = false)
+        public CellRendererProgress _mkCellRendererProgress(TreeView treeView, string title = "" , 
+            int minWidth = 0 , int maxWidth = 0, bool isExpand = false, bool isPackStart = true,bool isAutoSize = false)
         {
             if (title != "")
             {
@@ -119,9 +129,13 @@ namespace Gtk
             }
 
             Gtk.CellRendererProgress CellRendererProgress1 = new Gtk.CellRendererProgress();
-            if (width != 0)
+            if (minWidth != 0)
             {
-                this.MinWidth = width;
+                this.MinWidth = minWidth;
+            }
+            if (maxWidth != 0)
+            {
+                this.MaxWidth = maxWidth;
             }
 
             this.Expand = isExpand;
@@ -147,7 +161,7 @@ namespace Gtk
             {
                 if (!(column is TreeViewColumnEx))
                 {
-                    clsUtility._getProgramLine(" _RenderCellDo ");
+                    Console.WriteLine("_RenderCellDo");
                     return;
                 }
                 TreeViewColumnEx column1 = (column as TreeViewColumnEx);
