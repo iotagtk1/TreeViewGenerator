@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
-        <PackageVersion>1.1.5</PackageVersion>
+        <PackageVersion>1.1.6</PackageVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
