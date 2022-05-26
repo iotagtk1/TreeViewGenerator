@@ -62,8 +62,8 @@ foreach (columnModel columnModel1 in columnModelArray)
 
             List<<#=ModelName#>> <#=ModelName#>Array = new List<<#=ModelName#>>();
 
-            <#=ListStoreName#>.Clear();
             <#=TreeViewName#>.Model = null;
+            <#=ListStoreName#>.Clear();
 
             foreach (<#=ModelName#> <#=ModelName#>1 in <#=ModelName#>Array) {
                 <#=ListStoreName#>.AppendValues (<#=ModelName#>1);

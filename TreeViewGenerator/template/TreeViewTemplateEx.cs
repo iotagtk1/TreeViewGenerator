@@ -345,18 +345,18 @@ foreach (columnModel columnModel1 in columnModelArray)
             this.Write(">();\n\n            ");
             
             #line 65 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplateEx.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
-            
-            #line default
-            #line hidden
-            this.Write(".Clear();\n            ");
-            
-            #line 66 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TreeViewName));
             
             #line default
             #line hidden
-            this.Write(".Model = null;\n\n            foreach (");
+            this.Write(".Model = null;\n            ");
+            
+            #line 66 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplateEx.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ListStoreName));
+            
+            #line default
+            #line hidden
+            this.Write(".Clear();\n\n            foreach (");
             
             #line 68 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/TreeViewTemplateEx.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelName));
