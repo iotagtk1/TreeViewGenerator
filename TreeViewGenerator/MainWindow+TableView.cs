@@ -21,7 +21,7 @@ namespace TreeViewGenerator
 		    Gtk.TreeViewColumnEx TitleColumn = new Gtk.TreeViewColumnEx ();
 		    TitleColumn.Title = "Table";
 		    TitleColumn.bindingPropertyName = "title";
-		    CellRendererText cell = TitleColumn._mkCellRendererText(tableView , "",100,false);
+		    CellRendererText cell = TitleColumn._mkCellRendererText(tableView , "",100,100,false);
 		    tableView._mkBinding();
 		    
 	    }

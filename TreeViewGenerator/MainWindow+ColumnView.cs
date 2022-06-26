@@ -18,7 +18,7 @@ namespace TreeViewGenerator
 		    Gtk.TreeViewColumnEx TitleColumn = new Gtk.TreeViewColumnEx ();
 		    TitleColumn.Title = "Column";
 		    TitleColumn.bindingPropertyName = "title";
-		    CellRendererText cell = TitleColumn._mkCellRendererText(columnView , "",100,false);
+		    CellRendererText cell = TitleColumn._mkCellRendererText(columnView , "",100,100,false);
 		    
 		    Gtk.TreeViewColumnEx　isNgTimerColumn = new Gtk.TreeViewColumnEx ();
 		    isNgTimerColumn.Title = "OutPut";
