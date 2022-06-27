@@ -40,15 +40,12 @@ namespace Gtk
                 CellRendererText1.Editable = isAutoEdit;
                 CellRendererText1.Edited += delegate(object o, EditedArgs args)
                 {
-                    listStore1 = (ListStore)treeView.Model;
-                    Gtk.CellRendererTextEx o1 = (Gtk.CellRendererTextEx)o;
-                    TreePath treePath1 = new TreePath(args.Path);
                     TreeIter iter;
-                    if (listStore1 != null)
+                    listStore1 = (ListStore)treeView.Model;
+                    if (listStore1.GetIterFromString(out iter, args.Path))
                     {
-                        listStore1.GetIter(out iter, treePath1);
-                        object testModel1 = (object)listStore1.GetValue(iter, 0);
-                        _setModelData(testModel1, bindingPropertyName, args.NewText);
+                        object modelData = (object)listStore1.GetValue(iter, 0);
+                        _setModelData(modelData, bindingPropertyName, args.NewText);
                     }
                 };
             }
@@ -124,7 +121,7 @@ namespace Gtk
             }
 
             this.PackStart(CellRendererToggle1, isPackStart);
-            treeView.AppendColumn(this);
+            treeView1.AppendColumn(this);
             return CellRendererToggle1;
         }
 
@@ -153,7 +150,6 @@ namespace Gtk
             treeView.AppendColumn(this);
             return CellRendererProgress1;
         }
-
         public void _mkBinding()
         {
             if (this.Cells.Length > 0)
@@ -161,10 +157,9 @@ namespace Gtk
                 this.SetCellDataFunc(this.Cells[0], new Gtk.TreeCellDataFunc(_RenderCellDo));
             }
         }
-
-        private void _RenderCellDo(Gtk.TreeViewColumn column, Gtk.CellRenderer cell,
-            Gtk.ITreeModel model, Gtk.TreeIter iter)
-        {
+        
+        private void _RenderCellDo(Gtk.TreeViewColumn column, Gtk.CellRenderer cellRender,
+            Gtk.ITreeModel model, Gtk.TreeIter iter){
             try
             {
                 if (!(column is TreeViewColumnEx))
@@ -181,61 +176,61 @@ namespace Gtk
                 object modelData = (object)model.GetValue(iter, 0);
                 object value = modelData._performSelector_Property(column1.bindingPropertyName);
                 
-                _setCellData(value, cell);
+                Console.WriteLine(column1.bindingPropertyName + " " + value);
+
+                _setCellData(value, cellRender);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
             }
         }
-
-        private void _setCellData(object value, Gtk.CellRenderer cell)
+        private void _setCellData(object value, Gtk.CellRenderer cellRender)
         {
-            if (value != null && cell is Gtk.CellRendererText && (value is String))
+            if (value != null && cellRender is Gtk.CellRendererText && (value is String))
             {
-                (cell as Gtk.CellRendererText).Text = value as String;
+                (cellRender as Gtk.CellRendererText).Text = value as String;
             }
-            else if (value != null && cell is Gtk.CellRendererText && (value is int))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererText && (value is int))
             {
-                (cell as Gtk.CellRendererText).Text = ((int)value).ToString();
-            }else if (value != null && cell is Gtk.CellRendererText && (value is double))
+                (cellRender as Gtk.CellRendererText).Text = ((int)value).ToString();
+            }else if (value != null && value != "" && cellRender is Gtk.CellRendererText && (value is double))
             {
-                (cell as Gtk.CellRendererText).Text = ((double)value).ToString();
-            }else if (value != null && cell is Gtk.CellRendererText && (value is long))
+                (cellRender as Gtk.CellRendererText).Text = ((double)value).ToString();
+            }else if (value != null && value != "" && cellRender is Gtk.CellRendererText && (value is long))
             {
-                (cell as Gtk.CellRendererText).Text = ((long)value).ToString();
-            }else if (value != null && cell is Gtk.CellRendererText && (value is decimal))
+                (cellRender as Gtk.CellRendererText).Text = ((long)value).ToString();
+            }else if (value != null && value != "" && cellRender is Gtk.CellRendererText && (value is decimal))
             {
-                (cell as Gtk.CellRendererText).Text = ((decimal)value).ToString();
+                (cellRender as Gtk.CellRendererText).Text = ((decimal)value).ToString();
             }
-            else if (value != null && cell is Gtk.CellRendererText && (value is DateTime))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererText && (value is DateTime))
             {
-                (cell as Gtk.CellRendererText).Text = ((DateTime)value).ToString();
+                (cellRender as Gtk.CellRendererText).Text = ((DateTime)value).ToString();
             }
-            else if (value != null && cell is Gtk.CellRendererPixbuf && (value is String))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererPixbuf && (value is String))
             {
-                (cell as Gtk.CellRendererPixbuf).Pixbuf = new Pixbuf(null, (value as String));
+                (cellRender as Gtk.CellRendererPixbuf).Pixbuf = new Pixbuf(null, (value as String));
             }
-            else if (value != null && cell is Gtk.CellRendererToggle && (value is String))
+            else if (value != null && cellRender is Gtk.CellRendererToggle && (value is String))
             {
-                (cell as Gtk.CellRendererToggle).Active = Convert.ToBoolean((value is String));
+                (cellRender as Gtk.CellRendererToggle).Active = Convert.ToBoolean((value is String));
             }
-            else if (value != null && cell is Gtk.CellRendererProgress && (value is String))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererProgress && (value is String))
             {
-                (cell as Gtk.CellRendererProgress).Value = Convert.ToInt32((value is String));
+                (cellRender as Gtk.CellRendererProgress).Value = Convert.ToInt32((value is String));
             }
-            else if (value != null && cell is Gtk.CellRendererPixbuf && (value is byte[]))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererPixbuf && (value is byte[]))
             {
-                (cell as Gtk.CellRendererPixbuf).Pixbuf = new Pixbuf((byte[])value);
+                (cellRender as Gtk.CellRendererPixbuf).Pixbuf = new Pixbuf((byte[])value);
             }
-            else if (value != null && cell is Gtk.CellRendererToggle && (value is Boolean))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererToggle && (value is Boolean))
             {
-                (cell as Gtk.CellRendererToggle).Active = (Boolean)value;
+                (cellRender as Gtk.CellRendererToggle).Active = (Boolean)value;
             }
-            else if (value != null && cell is Gtk.CellRendererProgress && (value is int))
+            else if (value != null && value != "" && cellRender is Gtk.CellRendererProgress && (value is int))
             {
-                (cell as Gtk.CellRendererProgress).Value = (int)value;
+                (cellRender as Gtk.CellRendererProgress).Value = (int)value;
             }
         }
         private void _setModelData(object modelData1, String bindingPropertyName1, String value)
@@ -247,45 +242,45 @@ namespace Gtk
                 t = Nullable.GetUnderlyingType(t);
             }
 
-            if (value != null && t.Equals(typeof(String)))
+            if (value != null &&  t.Equals(typeof(String)))
             {
                 modelData1._setSelector_Property(bindingPropertyName1, Convert.ToString(value));
             }
-            else if (value != null && t.Equals(typeof(int)))
+            else if (t.Equals(typeof(int)) && int.TryParse(value,out int in1))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToInt32(value));
+                modelData1._setSelector_Property(bindingPropertyName1, in1);
             }
-            else if (value != null && t.Equals(typeof(double)))
+            else if (t.Equals(typeof(double)) && double.TryParse(value,out double do1))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToDouble(value));
+                modelData1._setSelector_Property(bindingPropertyName1, do1);
             }
-            else if (value != null && t.Equals(typeof(long)))
+            else if (t.Equals(typeof(long)) && long.TryParse(value,out long lo))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToInt64(value));
+                modelData1._setSelector_Property(bindingPropertyName1, lo);
             }
-            else if (value != null && t.Equals(typeof(Boolean)))
+            else if (t.Equals(typeof(decimal)) && decimal.TryParse(value,out decimal de))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToBoolean(value));
+                modelData1._setSelector_Property(bindingPropertyName1, de);
             }
-            else if (value != null && t.Equals(typeof(bool)))
+            else if (t.Equals(typeof(Boolean)) && Boolean.TryParse(value,out bool b))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToBoolean(value));
+                modelData1._setSelector_Property(bindingPropertyName1, b);
             }
-            else if (value != null && t.Equals(typeof(DateTime)))
+            else if (t.Equals(typeof(bool)) && bool.TryParse(value,out bool b2))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToDateTime(value));
+                modelData1._setSelector_Property(bindingPropertyName1, b2);
             }
-            else if (value != null && t.Equals(typeof(decimal)))
+            else if (t.Equals(typeof(DateTime)) && DateTime.TryParse(value, out DateTime d))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToDecimal(value));
+                modelData1._setSelector_Property(bindingPropertyName1, d);
             }
-            else if (value != null && t.Equals(typeof(char)))
+            else if (t.Equals(typeof(char)) && char.TryParse(value, out char c))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToChar(value));
+                modelData1._setSelector_Property(bindingPropertyName1, c);
             }
-            else if (value != null && t.Equals(typeof(byte)))
+            else if (t.Equals(typeof(byte)) && byte.TryParse(value, out byte by))
             {
-                modelData1._setSelector_Property(bindingPropertyName1, Convert.ToByte(value));
+                modelData1._setSelector_Property(bindingPropertyName1, by);
             }
         }
     }
