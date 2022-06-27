@@ -175,8 +175,6 @@ namespace Gtk
                 }  
                 object modelData = (object)model.GetValue(iter, 0);
                 object value = modelData._performSelector_Property(column1.bindingPropertyName);
-                
-                Console.WriteLine(column1.bindingPropertyName + " " + value);
 
                 _setCellData(value, cellRender);
             }
