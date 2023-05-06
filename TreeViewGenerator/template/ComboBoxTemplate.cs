@@ -68,7 +68,7 @@ namespace TreeViewGenerator.template
             
             #line default
             #line hidden
-            this.Write("{\n\n    [UI] private readonly Gtk.ComboBox ");
+            this.Write("{\n\n    //[UI] private readonly Gtk.ComboBox ");
             
             #line 21 "/home/ita/C#/App_GitHub/TreeViewGenerator/TreeViewGenerator/template/ComboBoxTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ComboBoxName));

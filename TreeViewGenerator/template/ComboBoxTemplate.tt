@@ -18,7 +18,7 @@ namespace <#=ProjectName#><#
 
 public class cls<#=ComboBoxName#>{
 
-    [UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
+    //[UI] private readonly Gtk.ComboBox <#=ComboBoxName#> = null;
     ListStore <#=ListStoreName#> = new ListStore(typeof (string));
 
     private void _mkComboBox_<#=ModelName#>()

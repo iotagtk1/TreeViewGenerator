@@ -70,11 +70,13 @@ You can find the UI library in the Custom UI folder.
 Menu - Code - codeReFormat
 
 ### Environment
-.net5
+.net6
 
 Rider
 
 GtkSharp
+
+Nuget
 
 Dapper
 
